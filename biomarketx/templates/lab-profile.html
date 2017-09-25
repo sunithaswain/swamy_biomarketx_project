@@ -1,0 +1,648 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load pagination_tags %}
+{% block content %}
+
+<div class="sub-hdr">
+			<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Activities</a></li>
+        <li class="active"><a href="#">Storefront</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Marketing</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+    
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+			<div role="main" class="main">
+
+				<div class="container lb-dtls">
+
+					<div class="row">
+					<!-- filters start -->
+						<div class="col-md-3 lab-border">
+							<div class="lab-profl">
+
+								<div class="fltrs-blk">
+								<div class="row">
+							<div class="col-md-12">
+							<a href="#" class="btn btn-primary btn-icon edit-lab" "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Edit Lab</a> 
+							</div>
+							</div>
+							<div class="fltrs-blk">
+								
+								<h4 class="pull-left">{{lab_name}}</h4>
+							</div>	
+
+							<div class="fltrs-blk">
+								<h4 class="pull-left">{{orgtype}}</h4>
+							</div>	
+
+							<div class="fltrs-blk">
+								 <ul>
+								<li style="color:#1d2127;"><b>City:</b>{{city}},</h4><br></li>
+								<li style="color:#1d2127;"><b>State:</b>{{state}},</h4><br></li>
+								<li style="color:#1d2127;"><b>Country:</b>{{country}}</h4></li>
+								</ul>
+							</div>	
+
+								</div>
+								<div class="fltrs-blk">
+								<h4 class="pull-left">Resources </h4>
+								<a href="#" class="pull-right lb-phots">Manage</a>
+									<!-- <ul class="portfolio-details lb-cnt-tags">
+										<li>
+											<ul class="list list-inline list-icons">
+												<li>Commerical</li>
+												<li>ISO 13485</li>
+												<li>ISO 9001</li>
+											</ul>
+										</li>
+									</ul> -->
+								</div>
+								<div class="clr"></div>
+								<div class="fltrs-blk">
+								<h4 class="pull-left">Tags: </h4>
+								<a href="#" class="pull-right lb-phots">Manage</a>
+									<!-- <ul class="portfolio-details lb-cnt-tags">
+										<li>
+											<ul class="list list-inline list-icons">
+												<li>Commerical</li>
+												<li>ISO 13485</li>
+												<li>ISO 9001</li>
+											</ul>
+										</li>
+									</ul> -->
+								</div>
+								<div class="clr"></div>
+
+								<div class="fltrs-blk">
+								<h4 class="pull-left">Lab Photos</h4>
+								<a href="#" class="pull-right lb-phots">Manage</a>
+								<div class="clr">
+									<img src="{% static 'img/comp-lb-img-1.jpg' %}" />
+								</div>
+								</div>
+
+								<div class="fltrs-blk">
+								<h4 class="pull-left">Lab Members: </h4>
+								<a href="#" class="pull-right lb-phots">Manage</a>
+								<div class="clr"></div>
+								<div class="row">
+									<div class="col-md-3"><img src="{% static 'img/member-1.png' %}" /></div>
+									<div class="col-md-9">
+										<a href="#" title="">Roman Shutov</a>
+										<br />
+										<span>Grant Manager</span>
+									</div>
+								</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- filters end -->
+						
+						<!-- result start -->
+						<div class="col-md-9">
+						<!-- lab detail block start -->
+						<div class="lb-dtl-blk">
+						<div class="row">
+							<div class="col-md-2">
+								<div class="lb-pic"><img src="{% static 'img/comp-2.jpg' %}" title="" alt="" /></div>
+							</div>
+							<div class="col-md-10">
+								{% if lab_name %} 
+								<h3 class="lb-title">{{lab_name}}</h3>
+								{%else%}
+								<h3 class="lb-title">Parseq Lab s.r.o.</h3>
+								{%endif%}
+								{% if lab_title %} 
+								<h6 class="lb-title-sub">{{lab_title}}</h6>
+								{%else%}
+								<h6 class="lb-title-sub">Roztoky, Czech Republic</h6>
+								{% endif %} 
+							</div>
+						</div>	
+						<div class="clr">&nbsp;</div>
+						<div class="row">
+						<div class="col-md-12">
+							{% if lab_description %} 
+							{{ lab_description }}
+
+							{% else %}
+							<p>Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality improvement. The developed products are intended to help translate target sequencing and genome sequencing data into clear and useful information for doctors and medical geneticists.</p>
+							<p>The proliferation of individual genomic data has produced an increase demand for the development of new methods of genetic analysis and solutions to simplify the adaptation of the obtained information for healthcare. </p>
+							<p>Parseq Lab specializes in diagnostic assays for the analysis of hereditary diseases in humans, and comprehensive databases of the most significant genetic variants (mutations and polymorphisms resulting in severe malfunctions formation). The company also develops bioinformatic tools and software for sequencing data interpretation and further application for diagnostic purposes. </p>
+							
+							{% endif %} 
+
+						</div>
+
+						</div>				
+						</div>
+						<!-- lab detail block end -->
+
+						<!-- lab detail tabs start -->
+						<div class="lb-dtls-tbs">
+							<div>
+
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active">
+							<a href="#services" aria-controls="Services" role="tab" data-toggle="tab">Services</a></li>
+							<li role="presentation"><a href="#reviews" aria-controls="Reviews" role="tab" data-toggle="tab">Reviews</a></li>
+							<li role="presentation"><a href="#endorse" aria-controls="Endorse" role="tab" data-toggle="tab">Endorsements</a></li>
+							
+
+							<a href="#" class="btn btn-primary btn-icon req-quto pull-right
+							" "javascript:void(0)" onclick = "document.getElementById('add-service').style.display='block';document.getElementById('add-service-fade').style.display='block'">ADD SERVICES</a>
+							</ul>
+							{% for service in lab_service_info %}
+							<!-- Tab panes -->
+							<div class="tab-content">
+							
+							<div role="tabpanel" class="tab-pane active" id="services">
+							<!-- block one start -->
+							
+							
+
+							<div class="lb-rsl-blk  lb-tab-rslt">
+						
+						<div class="col-md-12">
+						
+						<div class="lb-src-rslt">
+							<div class="portfolio-info stor-frnt">
+								<div class="row">
+									<div class="col-md-12 center">
+										<h4 class="per-hor-pris">${{service.price}} USD per Hour</h4>
+									</div>
+								</div>
+							</div>
+							<h4 class="rst-title">{{service.title}}</h4>
+							<ul class="lb-tb-dtl">
+								<li>{{service.desc}}</li>
+
+								<br />
+								<a href="#" title="">{{service.url}}</a>
+								</li>
+							</ul>
+							<div class="row">
+							<div class="col-md-12 center">
+							<a class="btn btn-primary btn-icon req-quto pull-right" 
+							href="#"
+							"javascript:void(0)" onclick = "document.getElementById('{{service.id}}').style.display='block';document.getElementById('edit-service-fade').style.display='block'">Edit Services</a> 
+							</div>
+							</div>
+							<div class="clr">&nbsp;</div>
+						</div>
+					
+						</div>
+					
+					</div>
+					
+
+
+
+<!-- <div class="white_content" id="edit-service"> -->
+<div class="white_content_labservice edit-service-close"style="margin-left:none" id="{{service.id}}">
+<div>
+	<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('{{service.id}}').style.display='none';document.getElementById('edit-service-fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+
+</div>
+
+ <div>
+                        <form action="/edit_lab_services/"  method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                          <input type="hidden"class="form-control input-lg" name="service_id" value="{{service.id}}">
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Title</label>
+                                <input type="text"class="form-control input-lg" name="service_title" value="{{service.title}}" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Please briefly describe your service capabilities</label>
+                                <textarea rows="4" cols="50" class="form-control input-lg"name="service_desc" >
+                                {{service.desc}}
+                              	</textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Price</label>
+                                <input type="text" class="form-control input-lg"name="service_price" value="{{service.price}}"required>
+                                {{form.service_price.errors}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>URL</label>
+                                <input type="text" class="form-control input-lg"name="service_url" value="{{service.url}}">
+                              </div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                              <input type="submit" value="Edit Services" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+</div>
+
+
+					{%endfor%}
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page={{ contacts.previous_page_number }}"><b>previous</b></a>
+        {% endif %}
+
+        <span class="current">
+            <b>Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.</b>
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}"><b>Next</b></a>
+        {% endif %}
+    </span>
+</div>
+
+					<!-- block one end -->
+
+							</div>
+							<div role="tabpanel" class="tab-pane" id="reviews">
+							<p>Parseq Lab s.r.o. has not received any reviews.</p>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="endorse"> 
+							<p>Be the first to endorse Parseq Lab s.r.o.</p>
+							<div class="portfolio-info stor-frnt">
+								<div class="row">
+									<div class="col-md-12 center">
+										<a class="btn btn-primary btn-icon" href="#">Endorse this lab</a> 
+									</div>
+								</div>
+							</div> 
+							 </div>
+							</div>
+
+							</div>
+						</div>
+						<!-- lab detail tabs end -->
+				
+						</div>
+						<!-- result end -->
+						
+					</div>
+				</div>
+			</div>
+
+<div id="edit-service-fade" class="black_overlay"></div>
+
+<div class="white_content" id="edit-service">
+<div>
+	<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('edit-service').style.display='none';document.getElementById('edit-service-fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+
+</div>
+ <div class="container ">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px"	>
+                    <div class="" style="
+    					margin-left: 50px;">
+                      <div class="box-content">
+                        
+                        <form action="/lab-services/"  method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                         
+                          <p class="errorlist">{{error_message}}</p>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Title</label>
+                                <input type="text"class="form-control input-lg" name="service_title" value="{{service.title}}" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Please briefly describe your service capabilities</label>
+                                <textarea rows="4" cols="50" class="form-control input-lg"name="service_desc" >
+                                
+                              	</textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Price</label>
+                                <input type="text" class="form-control input-lg"name="service_price" required>
+                                {{form.service_price.errors}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>URL</label>
+                                <input type="text" class="form-control input-lg"name="service_url">
+                              </div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                              <input type="submit" value="Add Lab" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+</div>
+<div id="edit-service-fade" class="black_overlay"></div>
+
+
+
+
+<div class="white_content" id="light">
+<div>
+	<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+</div>
+ <div class="container ">
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px"	>
+                    <div class="featured-box featured-box-primary align-left mt-xlg" style="
+    					margin-left: 50px;">
+                      <div class="box-content">
+                        <h4 class="heading-primary text-uppercase mb-md">Edit Lab</h4>
+                        <form action="/edit-lab-profile/" id="frmSignIn" method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                          
+                          <p class="errorlist">{{error_message}}</p>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Name of Organization</label>
+                                <input type="text"class="form-control input-lg" name="orgname" value="{{lab_name}}">
+                                {{form.orgname.errors}}
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Please briefly describe your service capabilities</label>
+                                <textarea rows="4" cols="50" class="form-control input-lg"name="service_cap" >
+                                {{lab_description}}
+                              	</textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Caption</label>
+                                <input type="text" class="form-control input-lg"name="title"
+                                value="{{lab_title}}" >
+                                {{form.title.errors}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Logo</label>
+                                <input type="file" class="form-control input-lg"name="logo">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>City</label>
+                                <input type="text" class="form-control input-lg"name="city"
+                                placeholder="city">
+                                
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>State</label>
+
+							<select class="form-control input-lg"name="state" >
+								<option value="Alabama">Alabama</option>
+								<option value="Alaska">Alaska</option>
+								<option value="Arizona">Arizona</option>
+								<option value="Arkansas">Arkansas</option>
+								<option value="California">California</option>
+								<option value="Colorado">Colorado</option>
+								<option value="Connecticut">Connecticut</option>
+								<option value="Delaware">Delaware</option>
+								<option value="District Of Columbia">District Of Columbia</option>
+								<option value="Florida">Florida</option>
+								<option value="Georgia">Georgia</option>
+								<option value="HI">Hawaii</option>
+								<option value="Hawaii">Idaho</option>
+								<option value="Illinois">Illinois</option>
+								<option value="Indiana">Indiana</option>
+								<option value="Iowa">Iowa</option>
+								<option value="Kansas">Kansas</option>
+								<option value="Kentucky">Kentucky</option>
+								<option value="Louisiana">Louisiana</option>
+								<option value="Maine">Maine</option>
+								<option value="Maryland">Maryland</option>
+								<option value="Massachusetts">Massachusetts</option>
+								<option value="Michigan">Michigan</option>
+								<option value="Minnesota">Minnesota</option>
+								<option value="Mississippi">Mississippi</option>
+								<option value="Missouri">Missouri</option>
+								<option value="Montana">Montana</option>
+								<option value="New Jersey">New Jersey</option>
+								<option value="New Mexico">New Mexico</option>
+								<option value="New York">New York</option>
+								<option value="South Carolina">South Carolina</option>
+								<option value="Texas">Texas</option>
+								<option value="Washington">Washington</option>
+							</select>			
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Country</label>
+
+							<select class="form-control input-lg" name="country">
+								<option value="United Arab Emirates">United Arab Emirates</option>
+								<option value="United Kingdom">United Kingdom</option>
+								<option value="United States">United States</option>
+								<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+							</select>						</div>
+                            </div>
+                          </div>
+                          <div class="row">
+                          </div>
+                          <div class="row">
+                            
+                            <div class="col-md-12">
+                              <input type="submit" value="Edit Lab" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+</div>
+<div id="fade" class="black_overlay"></div>
+
+<div class="white_content" id="add-service">
+
+<div>
+	<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('add-service').style.display='none';document.getElementById('add-service-fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+
+</div>
+ <div class="container ">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px"	>
+                    <div class="" style="
+    					margin-left: 50px;">
+                      <div class="box-content">
+                        
+                        <form action="/lab-services/"  method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                          <p class="errorlist">{{error_message}}</p>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Title</label>
+                                <input type="text"class="form-control input-lg" name="service_title" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Please briefly describe your service capabilities</label>
+                                <textarea rows="4" cols="50" class="form-control input-lg"name="service_desc" >
+                                
+                              	</textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Price</label>
+                                <input type="text" class="form-control input-lg"name="service_price" required>
+                                {{form.service_price.errors}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>URL</label>
+                                <input type="text" class="form-control input-lg"name="service_url">
+                              </div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                              <input type="submit" value="Add Lab" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+</div>
+<div id="add-service-fade" class="black_overlay"></div>
+
+
+
+
+
+
+{%endblock%}
+
+
+<!-- document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' -->

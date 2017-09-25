@@ -1,0 +1,10 @@
+1.Multi quote Functionality.
+
+2.Quotes List displayed in both dashboard pages with quote status.
+
+3.Lab submit Quote page with quote information.
+
+4.Accept/Reject quote Functionality.
+-----When Click on Accept/Reject Quote some pop up will be come with Accept and Reject buttons.if We click on Accept button,page will redirected to quote information form with "proceed payments button" if we click on proceed payments button it will redirected to payments form and then payments will be done.
+
+---- When we click on Reject button Quote Status will be changed to "Quote Declined " and redirected to quote to quotes page.in quotes page "quote declined" status message will be highlighted.

@@ -1,0 +1,68 @@
+
+
+
+{% load staticfiles %}
+					<!-- <h3>This is about lab page</h3> -->
+
+					{% for lab in all_labs|dictsort:"title" %}
+					<div class="lb-rsl-blk">
+
+						<div class="col-md-12">
+						<div class="lb-src-rslt lab-prof-rslt">
+						<div class="row">
+						<div class="col-md-4">
+						<a class="rst-title" href="#">{{lab.title}}</a>
+						
+						<!-- <h6>Anatomical Force Microscopy</h6> -->
+						<!-- <h6>{{lab.id}}</h6> -->
+						<h6>{{lab.country}} </h6>
+						</div>
+						<div class="col-md-6"><ul class="portfolio-details lb-cnt-tags">
+						<li>
+						<ul class="list list-inline list-icons chips">
+						<li>20% Reviews</li>
+						<li>30 of orders completed</li>
+						</ul>
+						</li>
+						</ul></div>
+						<div class="col-md-2">
+
+						<span class="img-thumbnail pull-right">
+						<img alt="" class="img-responsive" src="{% static 'new_design/img/comp-1.jpg'%}">
+						</span>
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-md-12">
+						<p class="mt-xlg">{{lab.desc}}</p>
+						</div>
+						</div>
+
+						<div class="row">
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-8 pull-right">
+						<!-- <div class="col-md-6">
+						<input type="checkbox" class="pull-left" name="multiquote" value="{{lab.id}}" />
+						<span class="pull-left">&nbsp;&nbsp;Select For Multipul Quotes</span></div> -->
+						<div class="portfolio-info stor-frnt col-md-6">
+						<a href="/send-quote/{{serviceID}}/{{lab.id}}/" class="btn btn-primary btn-icon pull-right rigtr-btn">Request Quote</a> 
+						</div>
+						</div>
+
+						</div>
+
+						</div>
+						<div class="clr">&nbsp;</div>
+						</div>
+						</div>
+						<form action="/multi-quote/{{serviceID}}/" method="post">
+						 {% csrf_token %}
+						
+						<br>
+						<div style=""> 
+						<input type="checkbox" class="pull-left" name="multiquote" value="{{lab.id}}" />
+						<span>&nbsp;&nbsp;Select For Multipul Quotes</span></div>
+						<br>
+						{%endfor%}
+						<input type="submit" value="Get Quote" class="btn btn-primary btn-icon pull-right rigtr-btn">
+						</form>

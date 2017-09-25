@@ -1,0 +1,292 @@
+{% extends "new_base1.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+
+			<div role="main" class="main">
+<div class="clr">&nbsp;</div>
+
+				<div class="container">
+				
+<div class="row"><div class="col-md-12">
+<div class="srt-by pull-right">
+	<a href="#" title="">Name</a>
+	<a href="#" title="">Location</a>
+	<a href="#" title="">Popular</a>
+</div>
+<div class="pull-right"><h6 class="srt-by-titl">Sort By: </h6></div>
+</div></div>
+		<div class="row">
+					<!-- filters start -->
+			<div class="col-md-4">
+				<div class="brws-lft">
+				<form>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default fltrs-blk" id="fltrs-one">
+					<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Type of Result</a></h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body" id="search_typeof_filter">
+						<ul>
+						<li>
+						<input type="checkbox" value="All-list"/>
+						<label>All</label>
+						</li>
+						<li>
+						<input type="checkbox" value="All-Services"/>
+						<label>Services</label>
+						<!-- <span class="pull-right">(1080)</span> -->
+						</li>
+						<li>
+						<input type="checkbox" value="All-Labs"/>
+						<label>Labs</label>
+						<!-- <span class="pull-right">(323)</span> -->
+						</li>
+						</ul>
+
+					</div>
+					</div>
+					</div>
+					<div class="panel panel-default fltrs-blk" id="fltrs-two">
+					<div class="panel-heading" role="tab" id="headingTwo">
+					<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Experiment</a></h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+					<div class="panel-body">
+						<ul>
+						<li>
+						<input type="checkbox" />
+						<label>ELISA</label>
+						<span class="pull-right">(38)</span>
+						</li>
+						<li>
+						<input type="checkbox" />
+						<label>IHC</label>
+						<span class="pull-right">(36)</span>
+						</li>
+						<li>
+						<input type="checkbox" />
+						<label>Flow Cytometry</label>
+						<span class="pull-right">(31)</span>
+						</li>
+						<li>
+						<input type="checkbox" />
+						<label>Western Blot</label>
+						<span class="pull-right">(29)</span>
+						</li>
+						<li>
+						<input type="checkbox" />
+						<label>QPCR</label>
+						<span class="pull-right">(28)</span>
+						</li>
+						<li>
+						<input type="text" placeholder="Start typing to see more..." />
+						</li>
+						</ul>
+					</div>
+					</div>
+					</div>
+					<div class="panel panel-default fltrs-blk" id="fltrs-three">
+					<div class="panel-heading" role="tab" id="headingThree">
+					<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Country</a></h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-body" id="search_country_filter">
+							<ul>
+							{% for con in country_set_1 %}
+							<li>
+								<input type="checkbox" value="{{con}}" />
+								<label>{{con}}</label>
+								<!-- <span class="pull-right">(1135)</span> -->
+							</li>
+						
+		 					{%endfor%}
+		 					</ul>
+						</div>
+					</div>
+					</div>
+					<div class="panel panel-default fltrs-blk" id="fltrs-four">
+					<div class="panel-heading" role="tab" id="headingFour">
+					<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Lab Type</a></h4>
+					</div>
+					<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+					<div class="panel-body" id="search_labtype_filter">
+
+						<ul>
+						<li>
+						<input type="checkbox" value="All-labs"/>
+						<label>All</label>
+						</li>
+						<li>
+						<input type="checkbox" value="Academic" />
+						<label>Academic</label>
+						
+						</li>
+						<li>
+						<input type="checkbox" value="Commercial"/>
+						<label>Commercial</label>
+						
+						</li>
+						</ul>
+					</div>
+					</div>
+					</div>
+
+ 					</div>
+				</form>
+					</div>
+					</div>
+					<!-- filters end -->
+						<!-- result start -->
+					<div class="col-md-8 lab-search-result">
+					
+						<!-- block two start -->
+					{% if lab_final_list %}
+						{% for search in lab_final_list %}
+						<div class="lb-rsl-blk">
+
+							<div class="col-md-12 lazy">
+							<div class="lb-src-rslt lab-prof-rslt">
+							<div class="row">
+							<div class="col-md-4">
+							<a class="rst-title" href="#">{{search.0}}</a>
+							<h6>{{search.1}}</h6>
+
+							{{search.2}}<br>
+							{{search.3}}
+							</div>
+							<div class="col-md-6"><ul class="portfolio-details lb-cnt-tags">
+							<li>
+							<ul class="list list-inline list-icons chips">
+							<li>20% Reviews</li>
+							<li>30 of orders completed</li>
+							</ul>
+							</li>
+							</ul></div>
+							<div class="col-md-2">
+
+							<span class="img-thumbnail pull-right">
+							<img alt="" class="img-responsive" src="{% static 'img/comp-lb-img-1.jpg'%}">
+							</span>
+
+
+							</div>
+							</div>
+
+
+							<div class="row">
+							<div class="col-md-12">
+							<!-- <p class="mt-xlg">Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality. Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality</p> -->
+							</div>
+							</div>
+
+							<div class="row">
+							<div class="clr">&nbsp;</div>
+							<div class="col-md-8 pull-right">
+							<div class="col-md-6">
+							<!-- <input type="checkbox" class="pull-left" /><span class="pull-left">&nbsp;&nbsp;Select For Multipul Quotes</span> -->
+							</div>
+							<div class="portfolio-info stor-frnt col-md-6">
+							<!-- <a href="#" class="btn btn-primary btn-icon pull-right rigtr-btn">Request Quote</a>  -->
+
+							<a href="/lab_list_all/" class="btn btn-primary btn-icon pull-right ">Store Front</a> 
+							</div>
+							</div>
+							</div>
+
+							</div>
+							<div class="clr">&nbsp;</div>
+							</div>
+						</div>
+						{% endfor %}
+					{%else%}
+
+					{%endif%}
+
+					<!-- block two end -->
+					
+
+
+
+					<!--  -->
+				{% if labservices_list %}
+					{% for search in labservices_list %}
+					<div class="lb-rsl-blk">
+
+							<div class="col-md-12 lazy">
+							<div class="lb-src-rslt lab-prof-rslt">
+							<div class="row">
+							<div class="col-md-4">
+							<a class="rst-title" href="#">{{search.0}}</a>
+							<h6>{{search.1}}</h6>
+							<!-- <h6>Roztoky, Czech Republic </h6> -->
+							</div>
+							<div class="col-md-6"><ul class="portfolio-details lb-cnt-tags">
+							<li>
+							<ul class="list list-inline list-icons chips">
+							<li>20% Reviews</li>
+							<li>30 of orders completed</li>
+							</ul>
+							</li>
+							</ul></div>
+							<div class="col-md-2">
+
+							<span class="img-thumbnail pull-right">
+							<img alt="" class="img-responsive" src="{% static 'img/comp-lb-img-1.jpg'%}">
+							</span>
+
+
+							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-12">
+							
+							</div>
+							</div>
+
+							<div class="row">
+							<div class="clr">&nbsp;</div>
+							<div class="col-md-8 pull-right">
+							<div class="col-md-6"><input type="checkbox" class="pull-left" /><span class="pull-left">&nbsp;&nbsp;Select For Multipul Quotes</span></div>
+							<div class="portfolio-info stor-frnt col-md-6">
+							<!-- <a href="#" class="btn btn-primary btn-icon pull-right ">Store Front</a>  -->
+							<a href="#" class="btn btn-primary btn-icon pull-right rigtr-btn">Request Quote</a>
+							</div>
+							</div>
+							</div>
+
+							</div>
+							<div class="clr">&nbsp;</div>
+							</div>
+					</div>
+					{%endfor%}
+
+				{%else%}
+				{% endif %}
+
+
+				<!-- {% if not lab_final_list and labservices_list %}
+				<p>No Result Found</p>
+				{% endif %} -->
+					<!--  -->
+
+					
+
+						</div>
+						<!-- result end -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+{% endblock %}	

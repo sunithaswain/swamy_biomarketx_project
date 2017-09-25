@@ -1,0 +1,188 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}	
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+
+</section>
+	<section class="panel">
+			<header class="panel-heading">
+				<div class="panel-actions">
+					<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+									<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+				</div>
+						
+				<h2 class="panel-title">Quotes</h2>
+			</header>
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Service</th>
+				                <th>Date</th>
+				                <th>Provider</th>
+				                <th>Price</th>
+				                <th>Quote Status</th>
+				                <th>Action</th>
+				                <!-- <th>Accept Quote</th> -->
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+							
+            				{% for quote in display_quotes %}
+								<tr>
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>Provider Name</td>
+									<td class="manage1">{{quote.price}}</td>
+									{%if quote.status_id == 1 %}
+									
+									<td>Pending</td>
+									{% elif quote.status_id == 2 %}
+									<td style="color:rgb(210,49,45)">Declined</td>
+									{% elif quote.status_id == 3 %}
+									<td>Active-Pending</td>
+									{% elif quote.status_id == 4 %}
+									<td style="color:green">Active</td>
+									{%else%}
+									<td>------</td>
+									{%endif%}		
+									<!-- <td>Quote pending</td> -->
+									<td><a href="/buyer/desc/{{quote.id}}">View Details</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									{% if quote.status_id == 2 %}
+									
+									<b style="color:rgb(210,49,45)">Quote Canceled</b>
+									{% elif quote.status_id == 3 %}
+									
+									<b style="color:black">Quote Active Pending</b>
+									{% elif quote.status_id == 4 %}
+									<b style="color:green">Quote Accepted</b>
+									{%else%}
+
+									<span id="demo_value"><a href="/quote-accept/{{quote.id}}/" title="Accept/rejectQuote" 
+									id="quotedata">Accept/Reject Quote</a></span>
+									
+									<!-- <span id="demo_value"><a class="item-action danger modal-with-zoom-anim glyphicon glyphicon-trash buzz " href="#deleteModel" style="text-decoration:none;color:rgba(210, 70, 45, 0.95);" title="Delete"  data-href="/quote-accept/{{quote.id}}/"></a></span> -->
+
+									</td>
+									{%endif%}
+										
+								</tr>
+							
+<div class="modal fade" id="Quote-conformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Your Quote</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>This Will Accept your Quote.</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <a class="btn btn-success btn-ok" href="/quote-accept/{{quote.id}}">Accept</a>
+                    <a class="btn btn-danger btn-ok" href="/quote-reject/{{quote.id}}">Reject</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+							{%endfor%}
+            				
+						</tbody>
+
+
+					</table>
+			
+				</div>
+			</div>
+	</section>
+
+
+	<section>
+		
+			<div class="row qot-dtls">
+				<div class="col-md-6 qot-dtls-lft" style="border: 1px solid;    position: relative;height: 510px;">
+					<div class="panel-body">
+
+						<p><b>Title :&nbsp;</b>{{title}}</p>
+						<p><b>ID :&nbsp;</b>{{quote_id}}</p>
+						<p><b>Status :&nbsp;</b>{{status_name}}</p>
+						<p><b>Requestor :&nbsp;</b>{{name}}</p>
+						<p><b>Lab :&nbsp;</b>{{lab_name}}</p>
+						<p><b>Source : &nbsp; </b> ---</p>
+						<p><b>Requested Date :&nbsp;</b>{{date}}</p>
+						<p><b>SID :&nbsp;</b>{{sid}}</p>
+						<p><b>Notes :&nbsp;</b> ---</p>
+						<p><b>Price :&nbsp;</b> {{price}}</p>
+						<p><b>Duration :&nbsp;</b>{{duration}}</p>
+						{%if download_file %}
+						<p><b>Documents :&nbsp;</b>
+						{{download_file}}&nbsp&nbsp<a href="/static/media/quotes/{{download_file}}"><i class="glyphicon glyphicon-download-alt"></i></a></p>
+						{%else%}
+						
+						<p><b>Documents:&nbsp;</b>No Documents Available</p>
+						{%endif%}
+					</div>
+
+				</div>
+				<div class="col-md-6 qot-dtls-rgt" style="border: 1px solid;">
+					<div class="panel-body">
+						
+						<div class="col-md-12">
+						<h5><b>Description</b></h5>
+						<p><textarea cols="52"  readonly>{{quote_desription}}</textarea></p>
+						</div>
+						<div class="clr">&nbsp;</div>
+
+						<div class="col-md-12">
+							<h5><b>Messages</b></h5>
+							<table class="table table-bordered table-striped mb-none">
+								<thead>
+									<tr>
+										<th>Sender</th>
+										<th>Subject</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for message in message_list|slice:":3" %}
+									<tr>
+										<td>{{message.sender}}</td>
+										<td>{{message.subject}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+										
+							</table>
+							<div class="clr">&nbsp;</div>
+							<a href="/buyer/messages/inbox/" style="margin-left: 180px; font-weight: bolder; float: right;"> View More</a>				
+							<!-- <textarea placeholder="Message"></textarea> -->
+						</div>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-12">
+							<h5><b>Private Notes</b></h5>
+							<textarea cols="52" placeholder="Private Notes"></textarea>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	
+	</section>
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

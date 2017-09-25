@@ -1,0 +1,103 @@
+{% extends "dash_index.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+<lable><b>Filter By Quote Status:</b></lable>
+<select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select>
+{% include "messages.html" %}
+
+</section>
+	<section class="panel">
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Name</th>
+				                <th>Date</th>
+				                <th>LabName</th>
+				                <th>Price</th>			                
+				                <th>Action</th>
+				                <!-- <th>Accept Quote</th> -->
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+							<!-- <tr>04032485680
+				                <td>Tiger Nixon</td>
+				                <td>System Architect</td>
+				                <td>Edinburgh</td>
+				                <td>61</td>
+				                <td>2011/04/25</td>
+				                <td>$320,800</td>
+            				</tr> -->
+            				{% for quote in display_quotes %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>--</td>
+									<td>{{quote.price}}</td>
+									<td><a href="/desc/{{quote.id}}">View Details</a>&nbsp;
+									<a href="#">Accept/Reject Quote</a></td>
+								</tr>
+							{%endfor%}
+
+						</tbody>
+
+
+					</table>
+				
+
+				
+				</div>
+			</div>
+	</section>
+
+
+					
+					<!-- end: page -->
+				</section>		
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="confirm-delete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 id="myModalLabel" class="modal-title">Confirm Delete</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>This Will delete all the corresponding records</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

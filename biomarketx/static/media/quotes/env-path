@@ -1,0 +1,8 @@
+/home/nyros/Documents/swamy/biomarketX/biomarketx_new
+
+
+
+
+{% for field in types|dictsort:"title" %}
+ {{field}}<br />
+{% endfor %}

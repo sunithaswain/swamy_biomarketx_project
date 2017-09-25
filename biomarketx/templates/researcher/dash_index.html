@@ -1,0 +1,853 @@
+{% load staticfiles %}
+{% load i18n %}
+<!doctype html>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>BiomarketX</title>
+		<meta name="keywords" content="BiomarketX" />
+		<meta name="description" content="BiomarketX">
+		<meta name="author" content="BiomarketX">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/bootstrap/css/bootstrap.css' %}" />
+
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/font-awesome/css/font-awesome.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/magnific-popup/magnific-popup.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css' %}" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/select2-bootstrap-theme/select2-bootstrap.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/jquery-datatables-bs3/assets/css/datatables.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/elusive-icons/css/elusive-icons.css' %}" />
+		<!-- data table css -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/summernote/summernote.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/summernote/summernote-bs3.css' %}" />
+
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/jquery-ui/jquery-ui.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/jquery-ui/jquery-ui.theme.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css' %}" />
+		<link rel="stylesheet" href="{% static 'admin/assets/vendor/morris.js/morris.css' %}" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="{% static 'admin/assets/stylesheets/theme.css' %}" />
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="{% static 'admin/assets/stylesheets/skins/default.css' %}" />
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="{% static 'admin/assets/stylesheets/theme-custom.css' %}">
+		<link rel="stylesheet" href="{% static 'admin/css/ourcustom.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/token-input.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/token-input-facebook.css' %}">
+		<!-- Head Libs -->
+		<script src="{% static 'admin/assets/vendor/modernizr/modernizr.js' %}"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		
+
+		<style type="text/css">
+			.errorlist
+			{color:#DB5353;
+
+			margin-left: 3px;
+			list-style: none;
+			}
+
+
+.not-active {
+ pointer-events: none;
+ cursor: default;
+}
+		</style>
+
+
+	<body>
+		<section class="body">
+
+			<!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="../" class="logo">
+						<img src="{% static 'new_design/img/logo.png'%}" height="35" alt="Porto Admin" />
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>
+			
+				<!-- start: search & user box -->
+				<div class="header-center">
+			
+					<form action="/search/" method="POST" class="search nav-form">
+					{% csrf_token %}
+													
+						<div class="ui-widget">
+							<label for="tags"></label>
+							<input id="tags123" placeholder="Search Services" name="search_word"  style="width: 636px;   margin-left: 250px; position: absolute;    height: 50px;">
+						</div>
+					</form>
+			
+					<span class="separator"></span>
+			
+					<ul class="notifications">
+
+						<li>
+							<!-- <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fa fa-envelope"></i>
+								<span class="badge">4</span>
+							</a> -->
+			
+							<div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+									<span class="pull-right label label-default">230</span>
+									Messages
+								</div>
+			
+								<div class="content">
+									<ul>
+										<li>
+											<a href="#" class="clearfix">
+												<figure class="image">
+													<img src="{% static 'admin/assets/images/!sample-user.jpg' %}" alt="Joseph Doe Junior" class="img-circle" />
+												</figure>
+												<span class="title">Joseph Doe</span>
+												<span class="message">Lorem ipsum dolor sit.</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<figure class="image">
+													<img src="{% static 'admin/assets/images/!sample-user.jpg' %}" alt="Joseph Junior" class="img-circle" />
+												</figure>
+												<span class="title">Joseph Junior</span>
+												<span class="message truncate">Truncated message. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam, nec venenatis risus. Vestibulum blandit faucibus est et malesuada. Sed interdum cursus dui nec venenatis. Pellentesque non nisi lobortis, rutrum eros ut, convallis nisi. Sed tellus turpis, dignissim sit amet tristique quis, pretium id est. Sed aliquam diam diam, sit amet faucibus tellus ultricies eu. Aliquam lacinia nibh a metus bibendum, eu commodo eros commodo. Sed commodo molestie elit, a molestie lacus porttitor id. Donec facilisis varius sapien, ac fringilla velit porttitor et. Nam tincidunt gravida dui, sed pharetra odio pharetra nec. Duis consectetur venenatis pharetra. Vestibulum egestas nisi quis elementum elementum.</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<figure class="image">
+													<img src="{% static 'admin/assets/images/!sample-user.jpg' %}" alt="Joe Junior" class="img-circle" />
+												</figure>
+												<span class="title">Joe Junior</span>
+												<span class="message">Lorem ipsum dolor sit.</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<figure class="image">
+													<img src="{% static 'admin/assets/images/!sample-user.jpg' %}" alt="Joseph Junior" class="img-circle" />
+												</figure>
+												<span class="title">Joseph Junior</span>
+												<span class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam.</span>
+											</a>
+										</li>
+									</ul>
+			
+									<hr />
+			
+									<div class="text-right">
+										<a href="#" class="view-more">View All</a>
+									</div>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+			
+					<span class="separator"></span>
+			
+					<div id="userbox" class="userbox header-right">
+						<a href="#" data-toggle="dropdown">
+							<figure class="profile-picture">
+								<!-- <img src="{% static 'admin/assets/images/!logged-user.jpg' %}" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" /> -->
+							</figure>
+							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+								<!-- <span class="name">John Doe Junior</span> -->
+								{% if user %}
+									<span class="role">{{user.email}}</span>
+								{%else%}
+									<span class="role">buyer@yopmail.com</span>
+								{%endif%}
+								
+							</div>
+			
+							<i class="fa custom-caret"></i>
+						</a>
+			
+						<div class="dropdown-menu">
+							<ul class="list-unstyled">
+								<li class="divider"></li>
+						
+								<li>
+									<a role="menuitem" tabindex="-1" href="/logout/"><i class="fa fa-power-off"></i> Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- end: search & user box -->
+				</header>
+			<!-- end: header -->
+
+			<!-- sub nav start -->
+<div class="row">
+<div class="sub-hdr">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/services/Bioimaging/">Services</a></li>
+        <li><a href="/consulting/">Consulting</a></li>
+        <li><a href="https://news.biomarketx.com" target="_blank">News</a></li>
+        <li><a href="/support/">Support</a></li>
+
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#">Q&amp;A</a></li> -->
+        <!-- <li><a href="#">News</a></li> -->
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+</div>
+<!-- sub nav end -->
+
+			<div class="inner-wrapper dsh-sid-sld">
+				<!-- start: sidebar -->
+				<aside id="sidebar-left" class="sidebar-left dsh-sidepnl">
+
+				
+					<div class="sidebar-header">
+						<div class="sidebar-title">
+							<b>Buyer</b>
+						</div>
+						<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+							<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+						</div>
+					</div>
+				
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+								<ul class="nav nav-main">
+									<li class="nav-active">
+										<a href="/buyer/">
+											<i class="fa fa-home" aria-hidden="true"></i>
+											<span>Dashboard</span>
+										</a>
+									</li>
+									<li>
+										<a href="/buyer/messages/inbox/">
+											<span class="pull-right label label-primary"></span>
+											<i class="fa fa-envelope" aria-hidden="true"></i>
+											<span>Messages</span>
+										</a>
+									</li>
+
+									
+									
+									<li>
+										<a href="/buyer/quotes/">
+											<i class="fa fa-list-alt" aria-hidden="true"></i>
+											<span id="testing_12121">Quotes</span>
+										</a>
+
+									</li>
+									<li>
+										<a href="/buyer/orders/">
+											<i class="fa fa-table" aria-hidden="true"></i>
+											<span>Orders</span>
+										</a>
+
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+											<span>Reports</span>
+										</a>
+
+									</li>
+
+									<li>
+										<a href="/buyer/edit/basics/">
+											<i class="fa fa-copy" aria-hidden="true"></i>
+											<span>Profile</span>
+										</a>
+
+									</li>
+									
+
+								</ul>
+							</nav>
+				
+							<hr class="separator" />				
+							<hr class="separator" />			
+
+						</div>
+				
+					</div>
+				
+				</aside>
+				<!-- end: sidebar -->
+
+				
+				{% block content %}
+				{% endblock %}
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="{% static 'admin/assets/images/!sample-user.jpg' %}" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="{% static 'admin/assets/images/!sample-user.jpg' %}" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="{% static 'admin/assets/images/!sample-user.jpg'%}" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="{% static 'admin/assets/images/!sample-user.jpg'%}" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src="{% static 'admin/assets/vendor/jquery/jquery.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/bootstrap/js/bootstrap.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/nanoscroller/nanoscroller.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/magnific-popup/jquery.magnific-popup.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-placeholder/jquery-placeholder.js' %}"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="{% static 'admin/assets/vendor/jquery-ui/jquery-ui.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqueryui-touch-punch/jqueryui-touch-punch.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-appear/jquery-appear.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/flot/jquery.flot.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/flot.tooltip/flot.tooltip.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/flot/jquery.flot.pie.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/flot/jquery.flot.categories.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/flot/jquery.flot.resize.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-sparkline/jquery-sparkline.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/raphael/raphael.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/morris.js/morris.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/gauge/gauge.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/snap.svg/snap.svg.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/liquid-meter/liquid.meter.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/jquery.vmap.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/data/jquery.vmap.sampledata.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/jquery.vmap.world.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js' %}"></script>
+
+		<script src="{% static 'admin/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/summernote/summernote.js' %}"></script>
+
+		<script src="{% static 'admin/assets/javascripts/ui-elements/examples.lightbox.js' %}"></script>
+		<!-- Theme Base, Components and Settings -->
+		<script src="{% static 'admin/assets/javascripts/theme.js' %}"></script>
+		
+		<!-- Theme Custom -->
+		<script src="{% static 'admin/assets/javascripts/theme.custom.js' %}"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="{% static 'admin/assets/javascripts/theme.init.js' %}"></script>
+
+		<!-- Examples --><!-- 
+		<script src="{% static 'admin/assets/javascripts/dashboard/examples.dashboard.js' %}"></script>
+ -->		<!-- Vendor Pages -->
+		<script src="{% static 'admin/assets/javascripts/tables/examples.datatables.editable.js' %}"></script>
+
+		<script src="{% static 'admin/assets/vendor/select2/js/select2.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-datatables/media/js/jquery.dataTables.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-datatables-bs3/assets/js/datatables.js' %}"></script>
+
+		<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="stylesheet"></link>
+
+		<script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+		<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+
+		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+		<script src="{% static 'js/jquery.tokeninput.js' %}"></script>
+
+		<script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.js' %}"></script>
+		<script src="{% static 'js/examples.modals.js' %}"></script>
+		<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+		<script src="{% static 'js/summernote.min.js' %}"></script>
+		<script src="{% static 'js/jquery.MultiFile.js' %}"></script>
+
+
+		<script type="text/javascript">
+		$(document).ready( function() {
+			//alert("hi")
+
+		$('#confirm-delete').on('show.bs.modal', function(e) 
+        {
+        	//alert("dsgahdg")
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
+
+        $('#confirm-delete1').on('show.bs.modal', function(e) 
+        {
+        	//alert("dsgahdg")
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
+
+        $('#confirm-delete2').on('show.bs.modal', function(e) 
+        {
+        	//alert("dsgahdg")
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
+
+
+});
+
+</script>
+
+<script>
+$(document).ready( function() {
+var availableTags;
+  $(function() {
+
+  	 var data = {"salary":500};
+    $.ajax({
+    type: "GET",
+    url: "/searching",
+    data: data,
+    success: function(data) {
+              var availableTags = data.split('*');
+                console.log(availableTags);
+                console.log("this is autocomplete testing");
+                $( "#tags123" ).autocomplete({
+      source: availableTags
+    });
+                },
+          });
+
+  	//console.log(availableTags);
+   
+    
+  });
+
+
+    $(function() {
+
+  	 var data = {"salary":500};
+    $.ajax({
+    type: "GET",
+    url: "/searching",
+    data: data,
+    success: function(data) {
+              var availableTags = data.split('*');
+                console.log("this is autocomplete testing");
+                console.log(availableTags);
+                $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+                },
+          });
+
+  	//console.log(availableTags);
+   
+    
+  });
+
+
+    // messages start
+
+    $(function() {
+
+  	 var data1 = {"salary":700};
+    $.ajax({
+    type: "GET",
+    url: "/compose",
+    data: data1,
+    success: function(data) {
+              //var  = data.split('*');
+
+              console.log("this is indexing");
+              //console.log(email);	
+              console.log(data);
+              var new_data=[]
+				$.each(data, function( index, value ) {
+					new_data.push({id:index, name:value})
+				});
+	              $("#id_recipient").tokenInput(new_data,{preventDuplicates: true});              
+                
+                },
+          });
+
+ 
+  });
+
+    $( ".compose" ).keypress(function() {
+    	var data2 = $('.note-editable').text();
+    	console.log(data2)
+
+    	$.ajax({
+	    type: "GET",
+	    url: "/buyer/messages/compose/",
+	    data: data2,
+	    success: function(data) {
+	    	//alert(data)
+	              
+	                     console.log(data)   
+	                
+	                },
+	          });
+  		//alert( data2)  { the_post : $('#post-comment').val() }
+		});
+
+
+   // messages end
+
+
+var inbox_messages=[];
+var trash_messages=[];
+var reject_quote_url;
+
+    $('#mailbox-email-list input[type="checkbox"]').click(function(){
+    	
+    	if($(this).prop('checked') === true){
+           inbox_messages.push($(this).val());  
+       }
+        else{
+        	
+        	var index = inbox_messages.indexOf($(this).val());
+        	inbox_messages.splice(index,1);
+        	
+        }
+     console.log(inbox_messages)
+   
+});
+
+
+    $('#mailbox-trash-list input[type="checkbox"]').click(function(){
+    	
+    	if($(this).prop('checked') === true){
+           trash_messages.push($(this).val());  
+       	$('.buzz').removeClass('not-active');
+			$('.restore-buzz').removeClass('not-active');
+       }
+        else{
+        	
+        	var index = trash_messages.indexOf($(this).val());
+        	trash_messages.splice(index,1);
+        	if(trash_messages.length==0)
+			  	{
+			  		$('.buzz').addClass('not-active');
+			  		$('.restore-buzz').addClass('not-active');
+			  	}
+        }
+     console.log(trash_messages)
+   
+});
+
+
+$(document).ready(function() 
+    {
+
+
+    	$('#Trashbox').click(function(){
+    	alert("this is trashboax")
+	$.ajax({
+		   
+		   type: "GET",
+		   data: {list1:inbox_messages},
+		   url: "/buyer/messages/trash-box/",
+		   success: function(msg){
+		   alert(inbox_messages)
+		   
+		   window.location = '/buyer/messages/inbox/';
+		   trash_success
+		   }
+		});
+
+});
+
+    	$('#restore').click(function(){
+    	alert("this is trashboax to inbox")
+	$.ajax({
+		   
+		   type: "GET",
+		   data: {list1:trash_messages},
+		   url: "/buyer/messages/trash-inbox/",
+		   success: function(msg){
+		   alert(trash_messages)
+		   
+		   window.location = '/buyer/messages/trash/';
+		   
+		   }
+		});
+
+});
+
+    $('#trash_delete').click(function(){
+    	alert("this is trashboax to delete")
+	$.ajax({
+		   
+		   type: "GET",
+		   data: {list1:trash_messages},
+		   url: "/buyer/messages/trash-delete/",
+		   success: function(msg){
+		   alert(trash_messages)
+		   
+		   window.location = '/buyer/messages/trash/';
+		   
+		   }
+		});
+
+});
+
+});
+
+$('#remove_quote').click(function() {
+    	
+        var reject_quote_url = $('#reject_quote').find('a').attr('name');
+	 $.ajax({
+			   
+			   type: "GET",
+			   data: {list1:"no-data"},
+			   url:reject_quote_url,
+			   success: function(msg){
+			   
+			   //alert(reject_quote_url)
+			   window.location = '/buyer/quotes/';
+			   
+			   }
+			});
+
+    });
+
+//var type_payment=$("#payment_type option:selected").val();
+//alert(type_payment)
+
+
+$("#payment_type").change(function()
+{
+    var type_payment_val=$(this).val();
+	var type_payment_text=$(this).text();
+
+    var dataString = 'type_payment_val='+ type_payment_val;
+    if (type_payment_val=="select") {
+    	//window.location = type_payment_val;
+    	console.log("this is value")
+	}
+
+	else{
+		window.location = type_payment_val;
+	}
+
+});
+
+
+$("#file_download").change(function()
+{
+    var file_download_val=$(this).val();
+	//var type_payment_text=$(this).text();
+
+    var dataString = 'file_download_val='+ file_download_val;
+    if (file_download_val=="select") {
+    	//window.location = type_payment_val;
+    	//console.log("this is value")
+	}
+
+	else{
+		window.location = file_download_val;
+		//alert(file_download_val)
+	}
+
+});
+
+$('#summernote123').summernote(
+        	{height: 150});
+
+
+
+});
+
+</script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#example').DataTable();
+
+    $(".dataTables_length").find("select").css("margin-top","18px")    
+    $(".dataTables_length").find("select").css("height","34px")
+    $(".dataTables_length").find("select").css("padding-right","11px")
+    $(".dataTables_length").find("select").css("padding-left","19px")
+    $(".dataTables_length").find("select").css("padding-bottom","6px")
+    $(".dataTables_length").find("select").css("padding-top","5px")
+  
+    $(".dataTables_filter").find("input").addClass("form-control").attr("placeholder", "Search Here ...")
+    $(".dataTables_filter").find("input").addClass("form-control").css( "width","170px")
+	$(".dataTables_filter").find("input").addClass("form-control").css( "margin-right","172px")
+
+
+});
+
+</script>
+
+<script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_TSCO6ZbV5l1MkJY6xmp4T0iW');
+ 
+
+ 
+ function stripeResponseHandler(status, response) {
+  var $form = $('#payment-form');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.get(0).submit();
+  }
+};
+
+  // ...
+
+
+ jQuery(function($) {
+  $('#payment-form').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+});
+
+ $('#testing_12121').click(function(){
+/*	alert("test")
+var inputs = $(".manage1").text();
+console.log(inputs)
+for(var i = 0; i < inputs.length; i++){
+    alert(inputs[i]);
+}
+*///var info =$("#manage1").text();
+////console.log(info)
+////console.log("this is about info")
+//alert(info)
+
+$(".manage1").each(function() {
+    data = $(this).text();
+    console.log(data)
+});
+})
+
+
+
+
+</script>
+
+ 
+
+	</body>
+</html>

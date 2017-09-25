@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | BiomarketX Admin{% endblock %}
+
+{% block branding %}
+
+{% if request.user.is_superuser %}
+	<h1 id="site-name"><a href="{% url 'admin:index' %}"> BiomarketX Administration Dashboard</a></h1>
+
+{% else %}
+	<h1 id="site-name"><a href="{% url 'admin:login' %}"> BiomarketX Administration Dashboard</a></h1>
+{% endif %}
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

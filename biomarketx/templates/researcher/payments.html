@@ -1,0 +1,127 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+{% block content %}
+<div role="main" class="main">
+	<div class="container">
+    <div class="col-md-3"></div>
+      <div class="col-md-9 table-responsive">
+        <table id="" class="display table mb-none" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Buyer</th>
+              <th>View Details</th>
+              <!-- <th>Salary</th> -->
+            </tr>             
+          </thead>
+          <tbody>
+            {% for quote in quote_info%}
+              <tr>
+
+                  <td>{{quote.service_name}}</td>
+                    <td>{{quote.created_at|date:"d/m/y"}}</td>
+                    <td>{{quote.researcher_name}}</td>
+                    
+                    <td><a class="mt-xs mb-xs popup-with-move-anim btn btn-default" href="#small-dialog">View Details</a></td>
+                  </tr>
+
+                  <div id="small-dialog" class="dialog dialog-sm zoom-anim-dialog mfp-hide">
+                    <h4>Quote Information</h4>
+                    
+                      <p><b>Title :&nbsp;</b>{{quote.service_name}}</p>
+                      <p><b>ID :&nbsp;</b>{{quote.id}}</p>
+                      {%if quote.status_id == 1 %}
+                      
+                      <p><b>Status :&nbsp;</b>Quote Pending</p>
+                      {% elif quote.status_id == 2 %}
+                      <p><b>Status :&nbsp;</b>Quote Declined</p>
+                      {% elif quote.status_id == 3 %}
+                      <p><b>Status :&nbsp;</b>Quote Active-Pending</p>
+                      {% elif quote.status_id == 4 %}
+                      <p><b>Status :&nbsp;</b>Quote Active</p>
+                      {%else%}
+                     <p><b>Status :&nbsp;</b>------</p>
+                      {%endif%}
+                      <p><b>Requestor :&nbsp;</b>{{quote.researcher_name}}</p>
+                      <p><b>Requested Date :&nbsp;</b>{{date|date:"d/m/y"}}</p>
+                      <p><b>Sid :&nbsp;</b>{{quote.sid}}</p>
+                      <p><b>Description :&nbsp;</b>{{quote.desc}}</p>
+                      
+                      <p><b>Price :&nbsp;</b>{{quote.price}}$</p>
+                      <p><b>Duration :&nbsp;</b>{{quote.duration}}</p>
+
+
+                  </div>
+              {%endfor%}
+
+            </tbody>
+            </table>
+
+
+
+
+      <div class="row mt-xl">
+				<div class="counters-text-dark prof-srvcs">
+          <div class="col-md-3"></div>
+          <div class="col-md-12">
+            {% include "messages.html" %}
+						
+						<!-- <div class="spsl-rqst">					
+            	<p style="color:red">{{error_message}}</p>
+                <div class="form-group" style="padding: 15px;">
+                    <div class="col-md-12">
+                      <label class="form-lable"><b>Select Payment Type</b></label>
+                        <select class="form-control input-lg" id="payment" name="select_payment">
+                          <option value="Credit Card">Credit Card</option>
+                          <option value="Wire Transfer">Wire Transfer</option>
+                          <option value="PO">PO</option>
+                        </select>
+                    </div>
+              </div>
+					</di -->
+          <h4>Quote Information</h4><br>
+                      {% for quote in quote_info%}
+                      <div style="">
+                      <p><b>Title :&nbsp;</b>{{quote.service_name}}</p>
+                      <p><b>ID :&nbsp;</b>{{quote.id}}</p>
+                      {%if quote.status_id == 1 %}
+                      
+                      <p><b>Status :&nbsp;</b>Quote Pending</p>
+                      {% elif quote.status_id == 2 %}
+                      <p><b>Status :&nbsp;</b>Quote Declined</p>
+                      {% elif quote.status_id == 3 %}
+                      <p><b>Status :&nbsp;</b>Quote Active-Pending</p>
+                      {% elif quote.status_id == 4 %}
+                      <p><b>Status :&nbsp;</b>Quote Active</p>
+                      {%else%}
+                     <p><b>Status :&nbsp;</b>------</p>
+                      {%endif%}
+                      <p><b>Requestor :&nbsp;</b>{{quote.researcher_name}}</p>
+                      <p><b>Requested Date :&nbsp;</b>{{date|date:"d/m/y"}}</p>
+                      <p><b>Sid :&nbsp;</b>{{quote.sid}}</p>
+                      <p><b>Description :&nbsp;</b>{{quote.desc}}</p>
+                      
+                      <p><b>Price :&nbsp;</b>{{quote.price}}$</p>
+                      <p><b>Duration :&nbsp;</b>{{quote.duration}}</p>
+
+                  </div>
+              {%endfor%}
+              <a href="/proceed-payment/" class="btn btn-success">Proceed to Payments</a>
+
+				</div>						
+			</div>
+		</div>
+	</div>				
+</div>
+
+
+      <!--  -->
+
+
+      <!--  -->
+
+{% endblock %}

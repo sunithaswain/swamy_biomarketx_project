@@ -1,0 +1,119 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}	
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+<lable><b>Filter By Quote Status:</b></lable>
+<select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select>
+
+</section>
+	<section class="panel">
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Name</th>
+				                <th>Date</th>
+				                <th>Client</th>
+				                <th>Action</th>
+				                <th>Submit Quote</th>
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+							
+            				{% for quote in display_res_quotes %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>{{quote.researcher_name}}</td>
+									<td><a href="/desc/{{quote.id}}">View Details</a></td>
+									<td><a href="/provider-quote/{{quote.id}}">Submit Quote</a></td>
+								</tr>
+							{%endfor%}
+            				
+						</tbody>
+
+
+					</table>
+							
+
+				
+				</div>
+			</div>
+	</section>
+
+
+	<section>
+		
+			<div class="row qot-dtls">
+				<div class="col-md-6 qot-dtls-lft">
+					<div class="panel-body">
+
+						{%for quote in display_res_quotes %}
+						<p><b>Title :&nbsp;</b>{{quote.service_name}}</p>
+						<p><b>ID :&nbsp;</b>{{quote_id}}</p>
+						<p><b>Status :&nbsp;</b>{{status_name}}</p>
+						<p><b>Requestor :&nbsp;</b>{{name}}</p>
+						<p><b>Source : &nbsp; </b> ---</p>
+						<p><b>Requested Date :&nbsp;</b>{{date|date:"d/m/y"}}</p>
+						<p><b>Sid :&nbsp;</b>{{sid}}</p>
+						<p><b>Notes :&nbsp;</b> ---</p>
+
+						{%if download_file %}
+						<p><b>Documents :&nbsp;</b>
+						{{download_file}}&nbsp&nbsp<a href="/static/media/quotes/{{download_file}}"><i class="glyphicon glyphicon-download-alt"></i></a></p>
+						{%else%}
+						
+						<p><b>Documents:&nbsp;</b>No Documents Available</p>
+						{%endif%}
+					{%endfor%}
+					</div>
+
+				</div>
+				<div class="col-md-6 qot-dtls-rgt">
+					<div class="panel-body">
+						
+						<div class="col-md-12">
+						<h5><b>Description</b></h5>
+						<p>{{quote_desription}}</p>
+						</div>
+						<div class="clr">&nbsp;</div>
+
+						<div class="col-md-12">
+							<h5><b>Message</b></h5>
+							<textarea placeholder="Message"></textarea>
+						</div>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-12">
+							<h5><b>Private Notes</b></h5>
+							<textarea placeholder="Private Notes"></textarea>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	
+	</section>
+					
+					
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

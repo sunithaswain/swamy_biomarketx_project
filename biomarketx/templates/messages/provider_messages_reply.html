@@ -1,0 +1,128 @@
+{% extends "lab/base-provider.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}	
+
+				<section role="main" class="content-body">
+					<!-- <header class="page-header">
+						<h2>Compose</h2>
+					
+						<div class="right-wrapper pull-right">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="index.html">
+										<i class="fa fa-home"></i>
+									</a>
+								</li>
+								<li><span>Mailbox</span></li>
+								<li><span>Compose</span></li>
+							</ol>
+					
+							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+						</div>
+					</header> -->
+
+					<!-- start: page -->
+					<section class="content-with-menu content-with-menu-has-toolbar mailbox">
+						<div class="content-with-menu-container" data-mailbox data-mailbox-view="compose">
+							<div class="inner-menu-toggle">
+								<a href="#" class="inner-menu-expand" data-open="inner-menu">
+									Show Menu <i class="fa fa-chevron-right"></i>
+								</a>
+							</div>
+							
+							<menu id="content-menu" class="inner-menu" role="menu">
+								{% include 'messages/messages-menu.html' %}
+							</menu>
+							<div class="inner-body">
+
+							
+							<form action="/buyer/messages/compose/" method="post"> 
+
+								{% csrf_token %}
+									<div class="inner-toolbar clearfix">
+										<ul>
+											<li>
+
+												
+												<a href="#" type="submit"><i class="fa fa-send-o mr-sm"></i><input type="submit" value= "Send" id="compose_send"  style="background-color:#1D2127;border-style: none;" /></a>
+
+											</li>
+											<!-- <li>
+												<a href="#"><i class="fa fa-times mr-sm"></i> Discard</a>
+											</li>
+											<li>
+												<a href="#"><i class="fa fa-paperclip mr-sm"></i> Attach</a>
+											</li> -->
+										</ul>
+									</div>
+								<div class="mailbox-compose">
+									<div class="form-horizontal form-bordered form-bordered">
+									<!-- <form class="form-horizontal form-bordered form-bordered"> -->
+							
+										<div class="form-group form-group-invisible">
+											<label for="to" class="control-label-invisible">To:</label>
+											<div class="col-sm-offset-2 col-sm-9 col-md-offset-1 col-md-10">
+												<input id="" type="text" class="form-control form-control-invisible" data-role="tagsinput" data-tag-class="label label-primary" value="{{recipient}}" name="recipient">
+												
+
+												<!-- <input id="id_recipient" type="text" class="form-control"
+												name="recipient"  
+												> -->
+
+												<p style="color:red">{{error_message}}</p>
+												
+
+
+												
+											</div>
+										</div>
+							
+										<!-- <div class="form-group form-group-invisible">
+											<label for="cc" class="control-label-invisible">CC:</label>
+											<div class="col-sm-offset-2 col-sm-9 col-md-offset-1 col-md-10">
+												<input id="cc" type="text" class="form-control form-control-invisible" data-role="tagsinput" data-tag-class="label label-primary" value="">
+											</div>
+										</div> -->
+							
+										<div class="form-group form-group-invisible">
+											<label for="subject" class="control-label-invisible">Subject  : 
+											</label>
+											<div class="col-sm-offset-2 col-sm-9 col-md-offset-1 col-md-10">
+												<input id="id_subject" type="text" class="form-control form-control-invisible" value="{{subject}}" name="subject" maxlength="120"> 
+											</div>
+										</div>
+							
+										<div class="form-group">
+											<div class="compose">
+												<div id="compose-field" class="compose-control" >
+
+												</div>
+
+												
+												<!-- {{form.errors}} -->
+											</div>
+											<!-- <div>
+												<input id="id_body" >
+											</div> -->
+
+											
+										</div>
+									<!-- </form> -->
+											<!-- <div class="form-group">
+												<input type="submit" class="btn btn-primary" style="margin-left: 48px;">
+											</div>
+ -->
+									</div>
+									
+								</div>
+							</form>
+							</div>
+						</div>
+					</section>
+					<!-- end: page -->
+				</section>
+			
+
+
+{% endblock %}

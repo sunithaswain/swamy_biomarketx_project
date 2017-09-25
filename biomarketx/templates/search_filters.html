@@ -1,0 +1,120 @@
+<!-- {% if not service_final_list and not lab_final_list %}
+	<h5>No Result Found</h5>
+{% endif %}
+ -->
+
+{% for search in lab_final_list %}
+
+					<div class="lb-rsl-blk">
+
+						<div class="col-md-12">
+						<div class="lb-src-rslt">
+
+							<div class="portfolio-info stor-frnt">
+								<div class="row">
+									<div class="col-md-12 center">
+										<a href="/store-font/{{search.2}}/" class="btn btn-primary btn-icon">Details</a> 
+									</div>
+								</div>
+							</div>
+
+							<a class="rst-title" href="#">{{search.0}}</a>
+							<p class="mt-xlg">{{search.1}}</p>
+							
+						
+						</div>
+						</div>
+					</div>
+				{% endfor %}				
+
+
+{% for lab  in service_final_list %}
+	<div class="lb-rsl-blk">
+		<div class="col-md-12">
+			<div class="lb-src-rslt">
+
+				<div class="portfolio-info stor-frnt">
+					<div class="row">
+						<div class="col-md-12 center">
+							<a href="#" class="btn btn-primary btn-icon req-quto">Request Quote</a> 
+						</div>
+				</div>
+			</div>
+		<a class="rst-title" href="#">{{lab.0}}</a>
+		<p class="mt-xlg">{{lab.1}}</p>
+		<ul class="portfolio-details lb-cnt-tags">
+			<li>
+			</li>
+		</ul>
+
+		</div>
+		</div>
+	</div>
+{% endfor %}
+
+
+{%if not service_final_list %}
+{% for lab  in all_filter_services %}
+	<div class="lb-rsl-blk">
+		<div class="col-md-12">
+			<div class="lb-src-rslt">
+
+				<div class="portfolio-info stor-frnt">
+					<div class="row">
+						<div class="col-md-12 center">
+							<a href="#" class="btn btn-primary btn-icon req-quto">Request Quote</a> 
+						</div>
+				</div>
+			</div>
+		<a class="rst-title" href="#">{{lab.0}}</a>
+		<p class="mt-xlg">{{lab.1}}</p>
+		<ul class="portfolio-details lb-cnt-tags">
+			<li>
+			</li>
+		</ul>
+
+
+		</div>
+		</div>
+	</div>
+	{% endfor %}
+{%endif%}
+
+
+{%if not lab_final_list %}
+
+{% for search in all_filter_labs %}
+
+					<div class="lb-rsl-blk">
+
+						<div class="col-md-12">
+						<div class="lb-src-rslt">
+
+							<div class="portfolio-info stor-frnt">
+								<div class="row">
+									<div class="col-md-12 center">
+										<a href="/store-font/{{search.2}}/" class="btn btn-primary btn-icon">Details</a> 
+									</div>
+								</div>
+							</div>
+
+							<a class="rst-title" href="#">{{search.0}}</a>
+							<p class="mt-xlg">{{search.1}}</p>
+							
+						</div>
+						</div>
+					</div>
+				{% endfor %}				
+
+
+{%endif%}
+
+
+
+<!-- 
+assssssssssassassas
+{{all_filter_services}}
+{{all_filter_labs}} -->
+
+
+					<!-- block five end -->

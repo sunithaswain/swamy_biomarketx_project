@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+<div style="text-align:center;color:green;font-weight:bold">    
+{{success_message}}</div>
+
+<div role="main" class="main">
+				<div class="slider-container rev_slider_wrapper" style="height: 420px;">
+					<div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"gridwidth": 800, "gridheight": 420}'>
+						<ul>
+							<li data-transition="fade">
+								<img src="{% static 'new_design/img/slide-one.jpg'%}"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+
+								<div class="tp-caption"
+									data-x="center" data-hoffset="-150"
+									data-y="center" data-voffset="-95"
+									data-start="1000"
+									style="z-index: 5"
+									data-transform_in="x:[-300%];opacity:0;s:500;">
+										
+										<h1 style="color:#fff;font-weight:bold;text-align:center;margin-top:80px;">Reshaping Drug Discovery and Development</h1>
+										<h2 style="color:#fff;text-align:center;margin-top:10px;">Trust the Best</h2>
+										<h4 style="color:#fff;text-align:center;margin-top:10px;">Full Service. Quality. Guarenteed</h4>
+									
+									</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters counters-text-dark why-bio">
+						
+						<div class="row">
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600">
+									<i><img src="{% static 'new_design/img/futr-icon-1.png'%}" title="" alt="" /></i>
+									<h3><b>Convenience</b></h3>
+									<p>No more screening and verifying service providers for qualifications; and a convenient and organized way to carry out your DD&amp;D projects while focusing on your core expertise </p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="900">
+									<i><img src="{% static 'new_design/img/futr-icon-2.png'%}" title="" alt="" /></i>
+									<h3><b>Security</b></h3>
+									<p>Confidential connection with the best, verified service providers through our highly secure web-based platform</p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="1200">
+									<i><img src="{% static 'new_design/img/futr-icon-3.png'%}" title="" alt="" /></i>
+									<h3><b>Productivity</b></h3>
+									<p>Accessibility to specialized experts to plan, guide, implement, and manage, or cross-validate your DD&amp;D projects</p>
+								</div>
+							</div>
+							</div>
+							<div class="clr">&nbsp;</div>
+							<div class="clr">&nbsp;</div>
+							<div class="row">
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="1200">
+									<i><img src="{% static 'new_design/img/futr-icon-4.png'%}" title="" alt="" /></i>
+									<h3><b>Innovation</b></h3>
+									<p>Stimulation of creativity through collaboration to empower drug discovery and development</p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="1200">
+									<i><img src="{% static 'new_design/img/futr-icon-5.png'%}" title="" alt="" /></i>
+									<h3><b>Profitability</b></h3>
+									<p>Time and workflow cost substantially reduced</p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="1200">
+									<i><img src="{% static 'new_design/img/futr-icon-6.png'%}" title="" alt="" /></i>
+									<h3><b>Community</b></h3>
+									<p>News about the latest scientific discoveries and technologies</p>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+								
+
+				<section class="section section-default expert-labs">
+					<div class="container">
+						<div class="srvcs-blk">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div data-appear-animation-delay="600" data-appear-animation="fadeInUp" class="counter appear-animation fadeInUp appear-animation-visible" style="animation-delay: 600ms;">
+									<div class="col-md-2"><i><img alt="" title="" src="{% static 'new_design/img/serv-img-1.png'%}" class="thumbnail"></i></div>
+									<div class="col-md-10">
+									<h3><b>Drug Discovery and Development Services</b></h3>
+									<p>Get support for your drug discovery and development (DD&amp;D) project needs, and cross-validation, whether a single or multi-faceted project, non-GLP-, GLP- and/or cGMP-compliant, or in a discovery stage. We have partnered with the best service providers, each with years of experience, and specialized expertise and equipment for any DD&amp;D study requirement. Through our expert consultations, we will plan, design, implement “by matching your requirements to the best qualified provider to provide you the service you need, quickly and efficiently,” and manage your DD&amp;D projects.  Our partners are the most trusted due to the excellence of their science, and the high quality of their work, and many of them offer expertise that cannot be found anywhere else, often helping you avoid costly mistakes.</p>
+									</div>									
+								</div>
+							</div>
+							<div class="clr">&nbsp;</div>
+							<div class="col-md-6 col-sm-6">
+								<div data-appear-animation-delay="600" data-appear-animation="fadeInUp" class="counter appear-animation fadeInUp appear-animation-visible" style="animation-delay: 600ms;">
+									<div class="col-md-4"><i><img alt="" title="" src="{% static 'new_design/img/serv-img-2.png'%}" class="thumbnail"></i></div>
+									<div class="col-md-8">
+									<h3><b>Professional Services</b></h3>
+									<p>Get the help you need to plan and design your project with the right sequence of the various DD&amp;D studies, and for clinical regulations, and IP assessment.</p>
+									</div>
+
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+								<div data-appear-animation-delay="600" data-appear-animation="fadeInUp" class="counter appear-animation fadeInUp appear-animation-visible" style="animation-delay: 600ms;">
+									<div class="col-md-4"><i><img alt="" title="" src="{% static 'new_design/img/serv-img-3.png'%}" class="thumbnail"></i></div>
+									<div class="col-md-8">
+										<h3><b>Core Services</b></h3>
+										<p>Select from our list of service providers offering a variety of specialized experimental procedures, and state-of-the-art techniques using specialized equipment.</p>
+									</div>
+									
+								</div>
+							</div>
+							
+						</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container expert-labs">
+					<div class="row mt-xl mb-xl">
+						<div class="col-md-3">
+							<img class="img-responsive mt-xl appear-animation" src="{% static 'new_design/img/cstmr-cnfdnc.jpg'%}" alt="" data-appear-animation="fadeInLeft">
+						</div>
+						<div class="col-md-9">
+							<h2 class="mt-xl">Collaborate <strong>with Confidence</strong></h2>
+							<p>IP and MTA agreements are available to protect your research Non-disclosure agreements guarantee your confidentiality Experiment information and the reliable results are always secure</p>
+							<div class="call-to-action-btn">
+									<a class="btn btn-primary btn-primary-scale-2 mr-md rigtr-btn" href="/signup/lab/">Apply Now to List Your Services or Expertise</a>
+								</div>
+						</div>
+					</div>
+				</div>
+
+
+				
+			</div>
+
+{% endblock %}

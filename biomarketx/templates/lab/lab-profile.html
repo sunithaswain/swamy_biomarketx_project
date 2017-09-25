@@ -1,0 +1,413 @@
+{% extends "lab/base-provider.html" %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}	
+
+<section role="main" class="content-body" style="height:1100px;">
+
+		<section class="panel">
+			<div class="panel-body">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						
+					</div>
+					
+				</div>
+				<div class="row">
+
+					<div class="col-md-4 lists" >
+						<ul style="list-style-type:None;">
+							<li><b>ProviderName :</b> {{lab_name}}</li>
+							<li><b>City :</b> {{city}}</li>
+							<li><b>State : </b>{{state}}</li>
+							<li><b>Country : </b>{{country}}</li>
+						</ul>
+						<br>
+						<!-- <a class="mt-xs mb-xs popup-with-move-anim btn btn-primary" href="#small-dialog" style="margin-left:27px;">Add Services</a> -->
+						<!-- <a href="#" class="btn btn-primary btn-icon req-quto pull-right" "javascript:void(0)" onclick = "document.getElementById('add-service').style.display='block';document.getElementById('add-service-fade').style.display='block'">Add Services</a> -->
+
+						<div id="small-dialog" class="dialog dialog-md zoom-anim-dialog mfp-hide" style="height:550px;">
+
+
+						<!-- Add Service  -->
+						<!-- <div class="white_content" id="add-service" style="width:800px;overflow:hidden;"> -->
+
+						<div class="" style="width: 600px;"	>
+
+						<div class="box-content" style="width: 535px;">
+	                        
+		                        <form action="/lab-services/"  method="post"
+		                        enctype="multipart/form-data" id="addProvider">
+		                        {% csrf_token %}
+		                        <h4 style="color:#0077B3;text-align:center;">ADD PROVIDER SERVICE</h4>
+		                          	<!-- <p class="errorlist">{{error_message}}</p> -->
+			                          	<div class="row">
+				                            <div class="form-group">
+				                              <div class="col-md-12">
+				                                <label>Name</label>
+				                                <input type="text"class="form-control input-lg" name="service_title" id="service_title" required>
+				                                <!-- {{form1.service_title}} -->
+				                                <!-- {% if form1.service_title.errors %}
+                                					{{form1.service_title|add_class:"error-div-style"}}
+                                					{{form1.service_title.errors}}
+                                				{%else%}
+                                					{{form1.service_title}}
+                                				{%endif%} -->
+
+				                                
+				                               <!--  {{form1}} -->
+				                            </div>
+			                            </div>
+		                          		</div>
+			                        <div class="row">
+			                            <div class="form-group">
+			                       	       <div class="col-md-12">
+			                                <label>Description</label>
+			                                <textarea rows="4" cols="50" class="form-control input-lg" name="service_desc" required></textarea>
+			                                <!-- <textarea name="service_desc" data-plugin-markdown-editor rows="5" cols="64" ></textarea> -->
+
+			                                <!-- {{form1.service_desc}} -->
+			                                
+			                              	
+			                              </div>
+			                            </div>
+		                          </div>
+
+		                          <div class="row">
+		                            
+		                              <!-- <div class="col-md-12"> -->
+		                              	<div class="col-md-3">
+		                              		<div class="form-group">
+		                              		<label>Price</label>
+		                                	<input type="number" class="form-control input-lg" name="service_price" required>
+		                                	<!-- {{form.service_price.errors}} -->
+		                                	</div>
+		                              	</div>
+		                              	<div class="col-md-5">
+		                              		<div class="form-group">
+		                              		<label>Currency</label>
+		                              		<select class="form-control input-lg" name="service_currency" required>    
+		                              			<option>Select Currency</option>  	
+			                                	<option>US-dollor</option>
+			                                	<option>UK-Pound</option>
+			                                	<option>UAE-Dirham</option>
+		                                	</select>
+		                                	</div>
+		                              	</div>
+		                              	<div class="col-md-4">
+		                              		<div class="form-group">
+		                              		<label> Pricing Unit </label>
+		                              		<select class="form-control input-lg" name="service_unit" required> 
+		                              			<option>Select Unit</option>  	
+			                                	<option>Unit-I</option>
+			                                	<option>Unit-II</option>
+			                                	<option>Unit-III</option>
+		                                	</select>
+		                                	</div>
+		                               	</div> 
+
+		                                
+
+		                              
+		                            <!-- </div> -->
+		                          </div>
+
+		                          	<!-- <div class="row">
+			                            <div class="form-group">
+			                              <div class="col-md-12">
+			                                <label>URL</label>
+			                                <input type="text" class="form-control input-lg" name="service_url" required>
+			                              </div>
+			                            </div>
+		                          	</div> -->
+		                          	<br>
+		                           	<div class="col-md-12">
+		                              	<input type="submit" value=" Add Service " class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..." id="providerSubmit">
+		                          	</div>
+		                        </form>
+	                        </div>
+
+	                        </div>
+	                        <!-- </div> -->
+						<!-- Add Service  -->
+
+
+							
+						</div>
+					</div>
+					<div class="col-md-4 center" >
+						{% if pic %}
+						<img src="../../static/media/{{pic}}" style="height: 80px;margin-top: 10px;">
+						{%else%}
+						<div class="lb-pic" id="lab_logo"><img src="../../static/img/research-1.jpg" title="" alt="image" /></div>	
+						{%endif%}
+						
+					</div>
+					<div class="col-md-4 pull-right">
+										
+						
+						<!-- <a href="#" style="width: 120px;margin-top: 56px;
+							margin-left: 86px;" class="btn btn-primary btn-icon edit-lab" "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Edit Profile</a>  -->
+							<div style="margin-top: 32px;">
+							<a class="mt-xs mb-xs popup-with-move-anim btn btn-primary" href="#small-dialog1" style="width:120px;margin-left: 86px;">Edit Profile</a></div>
+
+							<div id="small-dialog1" class="dialog dialog-md zoom-anim-dialog mfp-hide" style="height:780px;">
+
+
+							<!-- Edit Lab Profile -->
+
+
+
+							<div  style="margin-left: 20px;margin-right: 20px;">
+                      		<div class="box-content">
+                        
+	                        <form action="/edit-provider-profile/" method="post"  enctype="multipart/form-data">
+	                        {% csrf_token %}
+	                          <h4 class="" style="color:#0077B3;text-align:center;">EDIT PROFILE</h4>
+	                         <!--  <p class="errorlist">{{error_message}}</p> -->
+
+	                         <div class="row">
+	                            <div class="form-group">
+	                              <div class="col-md-12">
+	                                <label>Provider Name</label>
+	                                <input type="text" class="form-control input-lg"name="title"
+	                                value="{{lab_title}}" required>
+	                                
+	                              </div>
+	                            </div>
+	                          </div>
+	                          <div class="row">
+	                            <div class="form-group">
+	                              <div class="col-md-12">
+	                                <label>Name of Organization</label>
+	                                <input type="text"class="form-control input-lg" name="orgname" value="{{lab_name}}" required >
+	                               
+	                              </div>
+	                            </div>
+	                          </div>
+		                        <div class="row">
+	                            <div class="form-group">
+	                              <div class="col-md-12" >
+	                                <label>Description</label>                               
+	                              	<textarea name="desc" data-plugin-markdown-editor rows="5" cols="58"  required>{{lab_description}}</textarea>
+	                              </div>
+	                            </div>
+	                          </div>
+	                          
+
+	                          
+
+	                          <div class="row">
+	                            <div class="form-group">
+	                              <div class="col-md-12">
+	                                <label>Logo</label>
+	                                <div class="lb-pic" id="lab_logo"><img src="../../static/media/{{pic}}" title="" alt="image" style=" height: 80px;" /></div>	
+	                                <input type="file" name="model_pic">
+	                              </div>
+	                            </div>
+	                          </div>                         
+
+	                         <!-- New One --> 
+	                          <div id="size">Country </div>
+						        <select onchange="print_state('state',this.selectedIndex);" id="country" name ="country" class="form-control input-lg">
+						        <option value="{{country}}">{{country}}</option></select>
+								<br />
+								<div id="size">State </div>
+						        <select name ="state" id ="state" class="form-control input-lg">
+						        	<option value="{{state}}">{{state}}</option>
+						        	<!-- <option value="">Select State</option> -->
+						        </select>
+								<script language="javascript">print_country("country");</script>
+
+
+							<!-- New One -->
+
+
+	                          <div class="row">
+	                            <div class="form-group">
+	                              <div class="col-md-12">
+	                                <label>City</label>
+	                                <input type="text" class="form-control input-lg" name="city"
+	                                placeholder="city" required>
+	                                
+	                              </div>
+	                            </div>
+	                          </div>
+	                          
+	                          <br>
+	                          <div class="row">
+	                            
+	                            <div class="col-md-12">
+	                              <input type="submit" value=" Edit " class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+	                          	</div>
+	                          </div>
+	                        </form>
+                        </div>
+                      
+                        </div>
+
+
+							<!-- Edit Lab Profile -->
+					</div>
+
+					
+				</div>
+
+
+
+				<!-- Hello lightbox -->
+
+
+
+		</section>
+
+		<section class="">
+
+			<div class="panel-body">
+			
+				<div class="col-md-12" > 
+				<h6><b>Description : </b></h6>
+
+					{% if lab_description %} 
+							<p> 
+							<textarea readonly cols="120" rows="5">{{lab_description}}</textarea></p>
+							
+						{%else%}
+
+									
+
+									<p>Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality improvement. The developed products are intended to help translate target sequencing and genome sequencing data into clear and useful information for doctors and medical geneticists.</p>
+									<p>Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality improvement. The developed products are intended to help translate target sequencing and genome sequencing data into clear and useful information for doctors and medical geneticists.</p>
+									<p>The proliferation of individual genomic data has produced an increase demand for the development of new methods of genetic analysis and solutions to simplify the adaptation of the obtained information for healthcare. </p>
+									<p>Parseq Lab specializes in diagnostic assays for the analysis of hereditary diseases in humans, and comprehensive databases of the most significant genetic variants (mutations and polymorphisms resulting in severe malfunctions formation). The company also develops bioinformatic tools and software for sequencing data interpretation and further application for diagnostic purposes. </p>
+									{%endif%}
+					
+				</div>
+			</div>
+		</section>
+
+		<a class="mt-xs mb-xs popup-with-move-anim btn btn-primary pull-right" href="#small-dialog" style="margin-right: 20px;" >Add Services</a>
+		<br>&nbsp;
+
+		<!-- <section class="panel">
+			{% include "messages.html" %}
+			<div class="panel-body">
+				<a class="mt-xs mb-xs popup-with-move-anim btn btn-primary pull-right" href="#small-dialog" >Add Services</a>
+
+			</div>
+		</section> -->
+
+		<section class="panel">
+			<header class="panel-heading">
+				<div class="panel-actions">
+					<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+									<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+				</div>
+						
+				<h2 class="panel-title">Services Offered</h2>
+			</header>
+			<div class="panel-body">
+
+				
+				<div class="col-md-12" >
+				<!-- <h4><b>Services Offered </b></h4> -->
+
+					<!-- <table id="example" class="display " cellspacing="0" width="100%"> -->
+					<table class="table table-bordered table-striped mb-none" id="datatable-editable"
+						>
+
+						<thead>
+							<tr>
+				                <th>Service Name</th>
+				                <th>Price</th>
+				                <th>Action</th>
+				                <!-- <th>Edit</th>				                
+				                <th>Remove</th> -->			                
+            				</tr>							
+						</thead>
+						<tbody>
+						
+						
+
+						{% for service in services %}
+						<tr>
+							<td>{{service.title}}</td>
+							<!-- <td><a class="mt-xs mb-xs popup-with-move-anim" href="#small-dialog-service">{{service.title}}</a></td> -->
+							<!-- Sevice Details -->
+							<!-- <div id="small-dialog-service" class="dialog dialog-sm zoom-anim-dialog mfp-hide">
+
+								<p><b>Title :&nbsp;</b>{{service.title}}</p>
+								<p><b>Price :&nbsp;</b>{{service.price}}</p>
+								<p><b>Description :&nbsp;</b>{{service.desc}}</p>
+								<p><b>Currency :&nbsp;</b>{{service.currency}}</p>
+
+
+							</div> -->
+							<!-- Sevice Details -->
+
+							<td>{{service.price}}</td>
+							<td><a href="/provider/provider-service/edit/{{service.id}}" ><i class="fa fa-edit " id="{{service.id}}"></i></a><!-- </td>				
+							<td class="actions"> -->
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="#" class="on-default remove-row-lab-service"  id="{{service.id}}" ><i class="fa fa-trash-o" >
+							<!-- <a href="#"><i class="fa fa-trash-o"></i></a> -->
+							</td>
+							<div id="dialog" class="modal-block mfp-hide">
+								<section class="panel">
+									<header class="panel-heading">
+										<h2 class="panel-title"
+											style="text-align:center;">Delete Service ?</h2>
+									</header>
+								<div class="panel-body">
+									<div class="modal-wrapper">
+										<div class="modal-text">
+										<p>Do you want to delete this record?</p>
+										</div>
+									</div>
+								</div>
+								<footer class="panel-footer">
+									<div class="row">
+										<div class="col-md-12 text-right">								
+											<a href="/"  id="dialogConfirm" class="btn btn-primary" > Delete</a>
+																<!-- <button id="dialogConfirm" class="btn btn-primary">Confirm</button> -->
+											<button id="dialogCancel" class="btn btn-default">Cancel</button>
+										</div>
+									</div>
+								</footer>
+								</section>
+							</div>
+
+
+
+						</tr>
+
+						{% endfor %}
+
+
+						</tbody>
+
+
+					</table>
+
+
+
+					
+				</div>
+			</div>
+		</section>
+
+					
+
+		</section>
+
+
+
+
+
+
+{% endblock %}
+

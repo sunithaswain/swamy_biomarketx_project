@@ -1,0 +1,43 @@
+{% extends "./base.html" %}
+
+{% load i18n %}
+
+{% load widget_tweaks %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="background-page">
+ <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;height:500px">
+                      <div style="margin-top: 25px;">
+                        <h4>Login to BioMarketX</h4>
+                        <p><a href="{% url 'bioapp:signup_researcher' %}" style="float: right; margin-top: -23px;">Sign Up for an account?</a></p>
+                        </div>                    
+
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                        
+                        <form action=" " id="frmSignIn" method="post"  enctype="multipart/form-data">
+                        
+                        {{msg}}
+                        {% csrf_token %}
+                         <input type="file" name="model_pic">
+
+                          <button class="button_otp" type="submit">Submit</button>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+</div>
+{% endblock %}
+s

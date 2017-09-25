@@ -1,0 +1,152 @@
+/* Add here all your CSS customizations */
+html, body, img, span, p, h1, h2, h3, h4, h5, h6, ul, li, a{padding: 0;margin: 0;}
+.clr{clear: both;}
+img{max-width: 100%;}
+.sign-in-up li a{color: #fff!important;}
+.sign-in-up li .signup-btn{background: #009143!important;border-color: #009143;}
+.sign-in-up li .signup-btn:hover, .sign-in-up li .signup-btn:focus{background: #009143!important;}
+.sign-in-up li .login-btn:hover, .sign-in-up li .login-btn:focus{background: #1a73a0!important;}
+.sld-srch{width: 800px; max-width: 100%;margin: 80px auto;}
+.sld-srch-tbs li a{background-color: rgba(0, 0, 0, 0.3);border: none;color: #fff;font-weight: bold;}
+.sld-srch-tbs li a:hover, .sld-srch-tbs li a:focus{background-color: rgba(0, 0, 0, 0.3);border: none;}
+.sld-srch-tbs li.active a{background-color: rgba(0, 0, 0, 0.8);border: none;color: #fff;font-weight: bold;}
+.sld-srch-tbs li.active a:hover, .sld-srch-tbs li.active a:focus{background-color: rgba(0, 0, 0, 0.8);border: none;}
+.sld-srch .tab-content{padding: 0px!important;}
+.lab-srch{background: #fff;position: relative;}
+.lb-srch-br{width: 89%;border: none;padding: 10px 0px 10px 15px;outline: none;}
+.lb-srch-btn{background: #009143;border: none;color: #fff;float: right;padding: 11px;position: absolute;right: -6px;width: 10%;
+top: -1px;border-radius: 0px 5px 5px 0px;}
+/* 10-12-2015 start */
+.lab-signup{width: 100%;overflow: hidden;}
+.lab-signup ul{list-style: none;text-align: center;float: left;}
+.lab-signup li{display: inline-block;}
+.lab-signup li input{padding: 10px;border: none;width: 235px;max-width: 100%;outline: none;}
+.lab-signup li:nth-child(2) input{border-left: 1px solid #ddd;border-right: 1px solid #ddd;}
+.lb-join-btn{background: #009143;border: none;color: #fff;float: right;padding: 11px;position: absolute;right: -6px;width: 10%;
+top: 39px;border-radius: 0px 5px 5px 0px;}
+.tp-parallax-wrap{max-width: 100%; width: 800px;margin: 0px auto;left: 0!important;right: 0;}
+.why-bio{margin-bottom: 30px;overflow: hidden;}
+.why-bio h1{text-align: center;margin-bottom: 30px;font-size: 28px;font-weight: bold;}
+.why-bio .counter h3{margin: 15px 0px;}
+.find-lab{background-color: rgb(0, 136, 204)!important;background-size: 100%;padding: 0;}
+.find-lab .call-to-action {background: none!important;}
+.resrch-stores h3{text-align: center;margin-bottom: 30px;font-size: 28px;font-weight: bold;text-transform: none;margin: 15px 0px;}
+.resrch-stores ul{border-top: 1px solid #f7f7f7;margin-top: 15px!important;}
+.expert-labs p{margin: 15px 0px;}
+.expert-labs-img{margin: 0px!important;}
+.footer h4{margin-bottom: 10px;}
+
+/* labs list start */
+.labs-lst-bg{background: #f5f5f5;}
+.lb-cnt-tags{margin-top: 15px!important;}
+.lb-cnt-tags li ul li{background: #fff;border: 1px solid #d4d4d4;border-radius: 2px;color: #777777;cursor: default;display: inline-block;font-size: 11px;
+height: 20px;line-height: 15px;letter-spacing: 0.03em;margin: 0 0 5px;min-width: 75px;padding: 2px 5px 5px;position: relative;font-weight: bold;
+text-align: center;text-transform: none;}
+.lb-rsl-blk{background: #fff;border: 1px solid #d4d4d4;overflow: hidden;padding-top: 20px;}
+.lb-src-rslt p{margin-top: 15px!important;}
+.rst-title{font-size: 18px;color: #242424!important;font-weight: bold;text-decoration: none!important;}
+/* labs list end */
+
+/* 10-12-2015 end */
+
+/* 11-12-2015 start */
+/* labs list start */
+.stor-frnt{margin: 0px;}
+.req-quto{background: #009143!important;border-color: #009143!important;}
+.fltrs-blk{border-bottom: 1px solid #ddd;overflow: hidden;padding-bottom: 20px;}
+.equpmnts-blk{border-bottom: 0;}
+.fltrs-blk h4 a{font-size: 14px;font-weight: bold;color: #fff!important;}
+.fltrs-blk ul{list-style: none;}
+.fltrs-blk ul li input[type=checkbox]{margin-right: 5px;}
+.fltrs-blk ul li label{font-size: 13px;color: #338dc8;margin: 0;width: 200px;line-height: 1;}
+.fltrs-blk ul li span{font-size: 11px;color: #777;}
+.fltrs-blk ul li input[type=text]{width: 100%;margin: 5px auto;font-size: 12px;border: 1px solid #d4d4d4;padding: 3px 10px;border-radius: 3px;}
+.unvrsty-blk input[type=checkbox]{position: relative;top: -10px;}
+/* labs list end */
+/* lab details start */
+.lb-dtls{padding: 30px 0px;}
+.lb-title{font-size: 20px;font-weight: bold;color: #242424;text-transform: none;}
+.lb-title-sub{font-size: 13px;color: #777;margin-top: 10px;}
+.lb-phots{font-size: 12px;font-weight: bold;}
+.lb-dtls-tbs{margin-top: 20px;}
+.lb-dtls-tbs .nav-tabs{border-bottom: 1px solid #d4d4d4;margin-bottom: 30px;}
+.lb-dtls-tbs .nav-tabs li a{background: none;border: none;color: #338dc8;}
+.lb-dtls-tbs .nav-tabs li.active a, .lb-dtls-tbs .nav-tabs li:hover a, .lb-dtls-tbs .nav-tabs li.active a:focus{border-bottom: 2px solid #242424;color: #242424;
+background: none;border-top: none;box-shadow: none;border-left: none;border-right: none;}
+.lb-dtls-tbs .tab-content{padding: 0px;background: none;box-shadow: none;border: none;}
+.per-hor-pris{font-weight: bold;font-size: 18px;}
+.lb-tb-dtl{padding-left: 15px;margin: 15px 0px;}
+.lb-tab-rslt{background: #fff;border-color: #d4d4d4;}
+.lb-tab-rslt:hover{background: #fcfcfc;border-color: #777777;}
+/* lab details end */
+/* 11-12-2015 end */
+
+/* 28-12-2015 start */
+.lst-fltrs{background: #21262d;padding: 20px;}
+.lst-fltrs .panel{background: none!important;border: none!important;box-shadow: none;}
+.fltrs-blk .panel-heading{background: none!important;}
+.fltrs-blk h4 a:hover, .fltrs-blk h4 a:active, .fltrs-blk h4 a:focus{background: #14181e;}
+#fltrs-one h4 .collapseOne{display: none;}
+#fltrs-one h4:hover .collapseOne{display: block;top: 4%;}
+.hid-opion{background: #21262d none repea scroll 0 0 !important;position: absolute;right: -230px;z-index: 9999;
+box-shadow: 0px 0px 10px #000;padding: 10px;}
+#fltrs-two h4 .collapseTwo{display: none;}
+#fltrs-two h4:hover .collapseTwo{display: block;top: 19%;}
+#fltrs-three h4 .collapseThree{display: none;}
+#fltrs-three h4:hover .collapseThree{display: block;top: 32%;}
+#fltrs-four h4 .collapseFour{display: none;}
+#fltrs-four h4:hover .collapseFour{display: block;top: 47%;}
+#fltrs-five h4 .collapseFive{display: none;}
+#fltrs-five h4:hover .collapseFive{display: block;top: 47%;right: -228px}
+#fltrs-six h4 .collapseSix{display: none;}
+#fltrs-six h4:hover .collapseSix{display: block;top: 66%;}
+/* 28-12-2015 end */
+
+/* 29-12-2015 start */
+.sld-txt {left: 170px;margin: 0 auto;position: absolute;text-align: center;top: 220px;}
+.sld-txt h1{font-size: 38px;font-weight: bold; color: #fff;text-align: center;}
+.sld-txt h6{font-size: 16px;color: #fff;text-align: center;margin: 20px 0px;}
+.sld-txt a{ background: #67cf5f;height: 40px;border-radius: 2px;color: #fff;display: inline-block;font-size:14px;text-align: center;
+padding: 13px;text-transform: uppercase;line-height: 15px;font-weight: bold;}
+.what-labs h2{text-align: center;font-weight: bold;margin-bottom: 20px;font-size: 25px;}
+.tstmnls{padding: 20px;}
+.tstmnls-mid{border-left:1px solid #d4d4d4;border-right:1px solid #d4d4d4; }
+.good-comp{text-align: center;}
+.good-comp h2{text-align: center;font-weight: bold;margin-bottom: 20px;font-size: 25px;}
+.sld-txt-btm {left: 100px;margin: 0 auto;position: absolute;text-align: center;top: 220px;}
+.sld-txt-btm h1{font-size: 38px;font-weight: bold; color: #fff;text-align: center;}
+.sld-txt-btm h6{font-size: 16px;color: #fff;text-align: center;margin: 20px 0px;}
+.sld-txt-btm a{ background: #67cf5f;height: 40px;border-radius: 2px;color: #fff;display: inline-block;font-size:14px;text-align: center;
+padding: 13px;text-transform: uppercase;line-height: 15px;font-weight: bold;}
+.lab-profl h4{margin: 10px 0px;font-size: 14px;}
+.lab-profl a{margin-top: 12px;}
+.edit-lab{width: 100%;margin-bottom: 20px;}
+.sub-hdr .navbar-default{background: #fdfdfd;}
+.sub-hdr ul{text-align: center;}
+.sub-hdr ul li{display: inline-block;margin: 0px 8px;}
+.sub-hdr ul li a{color: #338dc8!important;font-size: 15px;font-weight: 600;}
+.sub-hdr ul li a:hover, .sub-hdr ul li.active a{border-bottom: 2px solid #242424;color: #242424!important;padding-bottom: 13px;
+background: none!important;}
+.resrchr{border-bottom: 1px solid #ddd;margin-bottom: 20px;}
+.expl-srcs{margin-bottom: 20px;float: right;font-weight: bold;font-size: 12px;padding: 10px 20px;}
+.resrchr-tabs ul{background:#f7f7f7;border: 1px solid #e3e3e3;margin-bottom: 0px!important;}
+.resrchr-tabs .nav-tabs li a{color: #444;font-size: 15px;font-weight: bold;}
+.resrchr-tabs .nav-tabs li.active a, .resrchr-tabs .nav-tabs li:hover a, .resrchr-tabs .nav-tabs li.active a:focus{color: #338cc8;background: #fff;
+border-bottom:1px solid #ddd;border-left: none;border-right: none;border-top: none;}
+.ordr-lst{width: 100%;}
+.ordr-lst ul{list-style: none;border-top: none;}
+.ordr-lst ul li{background: #fff;border-bottom: 1px solid #ebebeb;border-right: none;border-left: none;border-top: none;padding: 12px;overflow: hidden;}
+.ordr-lst ul li:nth-child(even){background: #f6f6f6;}
+.ordr-lst ul li p, .ordr-lst ul li p a{color: #999ba0!important;}
+.ordr-lst ul li p strong, .ordr-lst ul li p strong a{color: #444!important;}
+.resrchr-cncl{background: #777;padding: 3px 10px; border-radius: 5px;text-transform: uppercase;color: #fff;}
+.dash-blk-title{color: #707070;font-size: 17px;font-weight: bold;}
+.das-fltrs{background: #fff;width: 100%;border-radius: 5px;border: 1px solid #e3e3e3;}
+.dash-edt-pro{background: #f7f7f7;border-top: 1px solid #e3e3e3; padding: 10px;display: block; color: #444;text-align: center;}
+.da-prof{padding: 20px;}
+.da-prof p{color: #777;font-size: 12px;line-height: 18px}
+.beaker-base{width: 100%;text-align: center;padding: 10px 0px;}
+.da-prof a{margin: 10px 0px;display: block;}
+.da-prof a i{color: #999;font-size: 20px;vertical-align: -3px;}
+.da-prof a:hover i{color: #59b873;}
+/* 29-12-2015 end */

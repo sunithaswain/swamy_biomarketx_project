@@ -1,0 +1,709 @@
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<!-- Basic -->
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+		<title>BiomarketX</title>	
+
+		<meta name="keywords" content="HTML5 Template" />
+		<meta name="description" content="Porto - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'new_design/img/favicon.png' %}" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="{% static 'new_design/img/apple-touch-icon.png' %}">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Web Fonts  -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->		
+		<link rel="stylesheet" href="{% static 'new_design/vendor/bootstrap/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/font-awesome/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/simple-line-icons/css/simple-line-icons.min.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/owl.carousel/assets/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/owl.carousel/assets/owl.theme.default.min.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/magnific-popup/magnific-popup.min.css' %}">
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="{% static 'new_design/css/theme.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/css/theme-elements.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/css/theme-blog.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/css/theme-shop.css' %}">
+		<link rel="stylesheet" href="{% static 'new_design/css/theme-animate.css' %}">
+
+		<!-- Current Page CSS -->
+		<link rel="stylesheet" href="{% static 'new_design/vendor/rs-plugin/css/settings.css' %}" media="screen">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/rs-plugin/css/layers.css' %}" media="screen">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/rs-plugin/css/navigation.css' %}" media="screen">
+		<link rel="stylesheet" href="{% static 'new_design/vendor/circle-flip-slideshow/css/component.css' %}" media="screen">
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="{% static 'new_design/css/skins/default.css' %}">
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="{% static 'new_design/css/custom.css' %}">
+		<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+		<!-- Head Libs -->
+		<script src="{% static 'new_design/vendor/modernizr/modernizr.min.js' %}"></script>
+<style type="text/css">
+	.error-div-style{border-color: #DB5353}
+.errorlist
+{color:#DB5353;
+
+margin-left: 3px;
+list-style: none;
+}
+
+</style>
+
+	</head>
+	<body>
+		<div class="body">
+			<header id="header" style="min-height: 65px;">
+				<div class="header-body hdr-bdy">
+					<div class="header-container-fluid container-fluid">
+						<div class="col-md-12">
+							<div class="header-column">
+								<div class="header-logo">
+									<a href="index.html">
+										<img alt="Porto" data-sticky-width="82" data-sticky-height="40" data-sticky-top="33" src="{% static 'new_design/img/logo.png'%}">
+									</a>
+								</div>
+							</div>
+
+							<div class="header-column">
+								<form action="/search/" method="POST" >
+												{% csrf_token %}
+													
+								<div class="hdr-srch-blk">
+								<input type="text" placeholder="Search Services" id ="tags123" name="search_word"/>
+								<a href="#"><i class="glyphicon glyphicon-search" style="color:#1a237e;"></i></a>
+								</div>
+								</form>
+							</div>
+
+							<div class="header-column">
+								
+								<div class="header-row">
+									<div class="header-nav">
+										<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
+											<i class="fa fa-bars"></i>
+										</button>
+										
+										<div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse pull-right">
+											<nav class="tp-nav">
+												<ul class="nav nav-pills" id="mainNav">
+
+												{% if user.is_authenticated and not user.is_superuser %}
+
+											<!-- logged in users -->
+
+												{% if conformation_researcher %}
+
+													<li>
+													<a href="{% url 'bioapp:researcher_profile_page' %}">Dashboard</a></li>
+
+												{% elif conformation_lab %}
+													<li>
+													<a href="{% url 'bioapp:labdashboard' %}">Dashboard</a></li>
+
+												{% else %}
+												{% endif %}
+
+												{%if about %}
+													
+													<li id='about_active' class="active"><a href="{% url 'bioapp:about' %}" >About</a></li>
+													{%else%}
+
+													<li id='about_active'><a href="{% url 'bioapp:about' %}" >About</a></li>
+													{%endif%}
+
+													{%if project %}
+													<li class="active"><a href="{% url 'bioapp:new_projects' %}">Projects</a></li>
+
+													{%else%}
+													<li><a href="{% url 'bioapp:new_projects' %}">Projects</a></li>
+													{%endif%}
+
+													{%if services %}
+
+													<li class="active"><a 
+													href="/services/Bioimaging/">Services</a></li>
+
+													{%else%}
+
+													<li><a 
+													href="/services/Bioimaging/">Services</a></li>
+													{%endif%}
+												
+													{%if consult %}
+													<li class="active"><a href="{% url 'bioapp:new_consulting' %}">Consulting</a></li>
+													{%else%}
+
+													<li><a href="{% url 'bioapp:new_consulting' %}">Consulting</a></li>
+													{%endif%}
+
+												
+
+													<li ><a href="https://news.biomarketx.com" target="_blank">News</a></li>
+													{%if contact %}
+
+													<li class="active"><a href="{% url 'bioapp:support' %}">Support</a></li>
+													{%else%}
+													<li><a href="{% url 'bioapp:support' %}">Support</a></li>
+													{%endif%}		
+
+
+
+											<li class="hidden-xs">
+												<a href="/logout/" class="btn btn-primary-scale-2 mr-md sinin-btn">SIGN OUT</a>
+											</li>
+											<!--  logged in users  -->
+
+											
+
+											{% elif user.is_authenticated and user.is_superuser %}
+											<!-- If Admin logged in -->
+
+												<li>
+													<a href="{% url 'backend:admin_index' %}">Admin</a>
+												</li>
+
+
+												{%if about %}
+													
+													<li id='about_active' class="active"><a href="{% url 'bioapp:about' %}" >About</a></li>
+													{%else%}
+
+													<li id='about_active'><a href="{% url 'bioapp:about' %}" >About</a></li>
+													{%endif%}
+
+													{%if project %}
+													<li class="active"><a href="{% url 'bioapp:new_projects' %}">Projects</a></li>
+
+													{%else%}
+													<li><a href="{% url 'bioapp:new_projects' %}">Projects</a></li>
+													{%endif%}
+
+													{%if services %}
+
+													<li class="active"><a 
+													href="/services/Bioimaging/">Services</a></li>
+
+													{%else%}
+
+													<li><a 
+													href="/services/Bioimaging/">Services</a></li>
+													{%endif%}
+												
+													{%if consult %}
+													<li class="active"><a href="{% url 'bioapp:new_consulting' %}">Consulting</a></li>
+													{%else%}
+
+													<li><a href="{% url 'bioapp:new_consulting' %}">Consulting</a></li>
+													{%endif%}
+
+												
+
+													<li ><a href="https://news.biomarketx.com" target="_blank">News</a></li>
+													{%if contact %}
+
+													<li class="active"><a href="{% url 'bioapp:support' %}">Support</a></li>
+													{%else%}
+													<li><a href="{% url 'bioapp:support' %}">Support</a></li>
+													{%endif%}
+
+
+													<li class="hidden-xs">
+													<a href="/logout/" class="btn btn-primary-scale-2 mr-md sinin-btn">SIGN OUT</a>{{user.email}}
+													</li>
+
+
+											<!-- If Admin logged in   -->
+
+
+											{% else %}
+
+											<!-- not logged in users -->
+
+												{%if home %}
+													<li id='home_active' class="active"><a href="/" >Home</a></li>
+													{%else%}
+													<li id='home_active' ><a href="/" >Home</a></li>
+													{%endif%}
+
+
+											{%if about %}
+													
+													<li id='about_active' class="active"><a href="{% url 'bioapp:about' %}" >About</a></li>
+													{%else%}
+
+													<li id='about_active'><a href="{% url 'bioapp:about' %}" >About</a></li>
+													{%endif%}
+
+													{%if project %}
+													<li class="active"><a href="{% url 'bioapp:new_projects' %}">Projects</a></li>
+
+													{%else%}
+													<li><a href="{% url 'bioapp:new_projects' %}">Projects</a></li>
+													{%endif%}
+
+													{%if services %}
+
+													<li class="active"><a 
+													href="/services/Bioimaging/">Services</a></li>
+
+													{%else%}
+
+													<li><a 
+													href="/services/Bioimaging/">Services</a></li>
+													{%endif%}
+												
+													{%if consult %}
+													<li class="active"><a href="{% url 'bioapp:new_consulting' %}">Consulting</a></li>
+													{%else%}
+
+													<li><a href="{% url 'bioapp:new_consulting' %}">Consulting</a></li>
+													{%endif%}
+
+												
+
+													<li ><a href="https://news.biomarketx.com" target="_blank">News</a></li>
+													{%if contact %}
+
+													<li class="active"><a href="{% url 'bioapp:support' %}">Support</a></li>
+													{%else%}
+													<li><a href="{% url 'bioapp:support' %}">Support</a></li>
+													{%endif%}
+
+
+											<!--  not logged in users -->
+
+											<li class="hidden-xs">
+												<a href="{% url 'bioapp:signup' %}" class="btn btn-lg btn-primary mr-md rigtr-btn">SIGN UP</a>
+											</li>
+											<li class="hidden-xs">
+												<a href="{% url 'bioapp:login' %}" class="btn btn-primary-scale-2 mr-md sinin-btn">SIGN IN</a>
+											</li>	
+
+											{%endif%}
+												</ul>
+											</nav>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+
+			{% block content %}
+
+    		{%endblock%}
+
+			
+ 
+			<footer id="footer" class="footer">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-3">
+							<div class="contact-details">
+								<h4>Info</h4>
+								<ul class="contact">
+									<li><a href="#" title="">About</a></li>
+									<li><a href="#" title="">Team</a></li>
+									<li><a href="#" title="">Careers</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="contact-details">
+								<h4>Terms</h4>
+								<ul class="contact">
+									<li><a href="#" title="">Terms of Use</a></li>
+									<li><a href="#" title="">Privacy Policy</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="contact-details">
+								<h4>Support</h4>
+								<ul class="contact">
+									<li><a href="#" title="">FAQs</a></li>
+									<li><a href="#" title="">Contact Us</a></li>
+									<li><a href="#" title="">Email Support</a></li>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<h4>Follow Us</h4>
+							<ul class="contact">
+								<li><a href="#" title=""><i class="glyphicon glyphicon-earphone"></i>919-706-0147</a></li>
+								<li class="clr"></li>
+								<li><a href="#" title=""><i class="glyphicon glyphicon-envelope"></i>info@biomarket.com</a></li>
+							</ul>
+							<span>&nbsp;</span>
+							<ul class="social-icons">
+								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-2">
+								<a href="index.html" class="logo">
+									<img alt="Porto Website Template" class="img-responsive" src="{% static 'new_design/img/foter-logo.png'%}">
+								</a>
+							</div>
+							<div class="col-md-7 pull-right">
+								<p class="pull-right">© Copyright 2015. All Rights Reserved.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Vendor -->
+
+		<script src="{% static 'new_design/vendor/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.appear/jquery.appear.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery-cookie/jquery-cookie.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/common/common.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.validation/jquery.validation.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.stellar/jquery.stellar.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.gmap/jquery.gmap.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/jquery.lazyload/jquery.lazyload.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/isotope/jquery.isotope.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/vide/vide.min.js' %}"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="{% static 'new_design/js/theme.js' %}"></script>
+		
+		<!-- Current Page Vendor and Views -->
+		<script src="{% static 'new_design/vendor/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+		<script src="{% static 'new_design/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js' %}"></script>
+		<script src="{% static 'new_design/js/views/view.home.js' %}"></script>
+		
+		<!-- Theme Custom -->
+		<script src="{% static 'new_design/js/custom.js' %}"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="{% static 'new_design/js/theme.init.js' %}"></script>
+		
+		<script src="{% static 'js/jquery-ui.js' %}"></script>
+		<script src="{% static 'admin/assets/vendor/jquery-maskedinput/jquery.maskedinput.js' %}"></script>
+		<script type="text/javascript" src="../../static/admin/assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready( function() {
+
+		$("bioImage").click(function () 
+		{
+    		
+		});
+
+	});
+
+	</script>
+
+		  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+<script>
+$(document).ready( function() {
+var availableTags;
+  $(function() {
+
+  	 var data = {"salary":500};
+    $.ajax({
+    type: "GET",
+    url: "/searching",
+    data: data,
+    success: function(data) {
+              var availableTags = data.split('*');
+                console.log(availableTags);
+                $( "#tags123" ).autocomplete({
+      source: availableTags
+    });
+                },
+          });
+
+  	//console.log(availableTags);
+   
+    
+  });
+
+
+    $(function() {
+
+  	 var data = {"salary":500};
+    $.ajax({
+    type: "GET",
+    url: "/searching",
+    data: data,
+    success: function(data) {
+              var availableTags = data.split('*');
+                console.log(availableTags);
+                $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+                },
+          });
+
+  	//console.log(availableTags);
+   
+    
+  });
+
+	var rlabservices_list
+	var checked_list_country =[]; 
+    var checked_list_type =[]; 
+    var checked_list_country =[]; 
+    var checked_search_country=[];
+    var checked_search_labtype=[];
+    var checked_search_typeof=[]; 
+
+    $('#service-filters1 input[type="checkbox"]').click(function(){
+    	if($(this).prop('checked') === true){
+           /*alert("checked")*/
+           checked_list_country.push($(this).val());  
+           myFunction();  
+       	
+       //	console.log(checked_list_country)
+       }
+        else{
+        	/*alert("unchecked")*/
+        	//console.log($(this).val())
+        	
+        	var index = checked_list_country.indexOf($(this).val());
+        	checked_list_country.splice(index,1);
+        	console.log(checked_list_country)
+        	myFunction();
+        	//($(this).val()).remove();
+        	//checked_list.pop($(this).val());
+        	
+        }
+        
+});
+
+        
+    $('#service-filters2 input[type="checkbox"]').click(function(){
+    	
+    	if($(this).prop('checked') === true){
+           /*alert("checked")*/
+           checked_list_type.push($(this).val());    
+       	
+       	//console.log(checked_list_type)
+       	myFunction();
+       }
+        else{
+        	/*alert("unchecked")*/
+        	//console.log($(this).val())
+        	
+        	var index = checked_list_type.indexOf($(this).val());
+        	checked_list_type.splice(index,1);
+        	myFunction();
+        	
+        	//($(this).val()).remove();
+        	//checked_list.pop($(this).val());
+        	
+        }
+       }); 
+
+
+    $('#search_typeof_filter input[type="checkbox"]').click(function(){
+    	
+    	if($(this).prop('checked') === true){
+           checked_search_typeof.push($(this).val());    
+       	mysearchFunction();
+       }
+        else{
+        	var index = checked_search_typeof.indexOf($(this).val());
+        	checked_search_typeof.splice(index,1);
+        	mysearchFunction();
+        }
+       	
+       }); 
+
+    $('#search_country_filter input[type="checkbox"]').click(function(){
+    	
+    	if($(this).prop('checked') === true){
+           checked_search_country.push($(this).val());    
+       	mysearchFunction();
+       }
+        else{
+        	var index = checked_search_country.indexOf($(this).val());
+        	checked_search_country.splice(index,1);
+        	mysearchFunction();
+        }
+       	
+       }); 
+    $('#search_labtype_filter input[type="checkbox"]').click(function(){
+    	
+    	if($(this).prop('checked') === true){
+           checked_search_labtype.push($(this).val());    
+       	mysearchFunction();
+       }
+        else{
+        	var index = checked_search_labtype.indexOf($(this).val());
+        	checked_search_labtype.splice(index,1);
+        	mysearchFunction();
+        }
+       
+       }); 
+        //console.log(checked_list_type)
+
+
+
+		// $.ajax({
+		   
+		//    type: "GET",
+		//    data: {list1:checked_list_country,list2:checked_list_country},
+		//    url: "/service-filters/",
+		//    success: function(msg){
+		   
+		//    	/*$('#result').html(msg);*/
+		//    	labservices_list=msg;
+		// 	$(".service-filter").html(msg)
+		// 	/*console.log(labservices_list)		   	*/
+		//    	/*test_result = msg;*/
+		//    	// return labservices_list_1
+		   	
+		//      /*alert("success")*/
+		//      /*$('.answer').html(msg);*/
+		//    }
+		// });
+
+
+  //   });
+function myFunction()
+{
+	$.ajax({
+		   
+		   type: "GET",
+		   data: {list1:checked_list_country,list2:checked_list_type},
+		   url: "/service-filters/",
+		   success: function(msg){
+		   
+		   	/*$('#result').html(msg);*/
+		   	labservices_list=msg;
+			$(".service-filter").html(msg)
+			/*console.log(labservices_list)		   	*/
+		   	/*test_result = msg;*/
+		   	// return labservices_list_1
+		   	
+		     /*alert("success")*/
+		     /*$('.answer').html(msg);*/
+		   }
+		});
+}
+
+
+function mysearchFunction()
+{
+	$.ajax({
+		   
+		   type: "GET",
+		   data: {list1:checked_search_country,list2:checked_search_labtype,list3:checked_search_typeof},
+		   url: "/lab-search-filters/",
+		   success: function(msg){
+		   	labservices_list=msg;
+			$(".lab-search-result").html(msg)
+		   }
+		});
+}
+
+
+
+
+var breadcrumb
+$("#accordion a").bind("click", function() {
+var name=$(this).text();
+var breadcrumb=$.trim(name);
+console.log(breadcrumb)
+
+//window.location.href='/services/'+n;
+
+
+
+	$.ajax({
+		   
+		   type: "GET",
+		   data: breadcrumb,
+		   url: "/breadcroomb/",
+		   success: function(msg){
+		   
+		   	/*$('#result').html(msg);*/
+		   	labservices_list=msg;
+			$(".brd-crmb").html(msg)
+			/*console.log(labservices_list)		   	*/
+		   	/*test_result = msg;*/
+		   	// return labservices_list_1
+		   	
+		     /*alert("success")*/
+		     /*$('.answer').html(msg);*/
+		   }
+		});
+
+
+
+ 
+});
+
+var sort_name;
+
+$(function(){
+  $('.sort-by-name').click(function(){
+    sort_name=$(this).attr("name")
+   console.log(sort_name)
+  
+	$.ajax({
+		   
+		   type: "GET",
+		   data: sort_name,
+		   url: "/sort-by-value/",
+		   success: function(msg){
+		   	labservices_list=msg;
+			$(".sort-name").html(msg)
+		   }
+		});
+
+});
+});
+});
+</script>
+
+
+
+
+
+	</body>
+</html>

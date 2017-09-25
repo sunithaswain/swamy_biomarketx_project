@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+ <div class="background-page">
+ <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;height:500px">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                        <h4 style="text-align:center"class="">Your Registration is now completed.</h4>
+                      <div style="padding-top: 17px;">
+                      <a href="{% url 'bioapp:login' %}"><button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-lg btn-block"><span><i>Sign In to BiomarketX</i></span></button></a></div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+</div>
+{% endblock %}

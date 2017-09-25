@@ -1,0 +1,300 @@
+{% extends "admin/index.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Users</h2>
+					
+						<div class="right-wrapper customRight">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="#">
+										<i class="fa fa-home"></i>
+									</a>
+								</li>
+								<li><span>Users</span></li>
+								<li><span>Edit Lab User</span></li>
+							</ol>
+					
+							<!-- <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a> -->
+						</div>
+					</header>
+					{% include "messages.html" %}
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+										</div>
+						
+										<h2 class="panel-title">Provider Info</h2>
+									</header>
+
+
+									<div class="panel-body">
+										<form action = "{% url 'backend:edit_labusers' l_id=l_id %}" class="form-horizontal form-bordered" method="post">
+										{% csrf_token %}
+										<p class="errorlist">{{error_message}}</p>
+										<!-- {{form.errors}} -->
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Username</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="username" value="{{username}}">
+												</div>
+											</div>	 -->	
+											
+
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Email</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="email" value="{{email}}">
+												</div>
+												{% if form.email.errors %}
+                                
+                                				{{form.email}}
+                                				{{form.email.errors}}
+                                				{%else%}
+                                
+                                				{{form.email}}
+                                
+                                				{%endif%}
+											</div>	
+ -->	 <div style="width:700px;margin:0px auto">
+											<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10 label-height">
+                                <label class="form-lable">Email</label>
+
+                               {% if form.email.errors %}
+                                
+                                {{form.email|add_class:"error-div-style"}}
+                                {{form.email.errors}}
+                                {%else%}
+                               
+                                <input type="text"class="form-control input-lg " name="email" value="{{email}}">
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+							
+
+<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                <label class="form-lable">First Name</label>
+                                
+                                {% if form.first_name.errors %}
+                                {{form.first_name|add_class:"error-div-style"}}
+                                {{form.first_name.errors}}
+                                {%else%}
+                                
+                                <input type="text"class="form-control input-lg " name="first_name" value="{{f_name}}" >
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+
+											
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">First Name</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="first_name" value="{{f_name}}">
+												</div>
+												
+												
+											</div> -->
+										
+                           <!--  <div class="form-group">
+                              <div class="col-md-12">
+
+                                <label class="form-lable">First Name</label>
+                                {% if form.first_name.errors %}
+                                
+                                {{form.first_name}}
+                                {{form.first_name.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                                {{form.first_name}}
+                                
+                                {%endif%}
+                              </div>
+                            </div>
+                          </div> -->
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                <label class="form-lable">Last Name</label>
+                                
+                                {% if form.last_name.errors %}
+                                
+                                {{form.last_name|add_class:"error-div-style"}}
+                                {{form.last_name.errors}}
+                                {%else%}
+                                <input type="text"class="form-control input-lg " name="last_name" value="{{l_name}}" >
+                                
+                                {%endif%}
+                             </div>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                <label class="form-lable">Phone</label>
+                                
+
+                               {% if form.phone_number.errors %}
+                                
+                                {{form.phone_number|add_class:"error-div-style"}}
+                                {{form.phone_number.errors}}
+                                {%else%}
+                               
+                                <input type="text"class="form-control input-lg " name="phone_number" value="{{phone}}" >
+                                {%endif%}
+                                
+                              </div>
+                            </div>
+                          </div>
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Last Name</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="last_name" value="{{l_name}}">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Phone</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="phone_number" value="{{phone}}">
+												</div>
+											</div> -->
+											
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Know</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="how_bio" value="{{know}}">
+												</div>
+											</div> -->
+
+											<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                
+                               <label class="form-lable">Name of Organization</label>
+                               
+                               {% if form.name_org.errors %}
+                                
+                                {{form.name_org|add_class:"error-div-style"}}
+                                {{form.name_org.errors}}
+                                {%else%}
+                               
+                                <input type="text"class="form-control input-lg " name="name_org" value="{{name_org}}">
+                                {%endif%}
+ 
+                              </div>
+                            </div>
+                            </div>
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Name of Organization</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="name_org" value="{{name_org}}">
+												</div>
+											</div>
+ -->
+
+ 				<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                
+                               <label class="form-lable">Status</label>
+                               
+                               <select class="form-control" name="active_status">
+														{% if active_status ==  True %}
+														<option>Active</option>					
+														<option>De-Active</option>
+														{% else %}
+														<option>De-Active</option>
+														<option>Active</option>
+
+														{% endif %}
+														
+
+													</select>
+ 
+                              </div>
+                            </div>
+                            </div>
+
+
+<div class="row">
+	
+
+</div>
+<!-- 
+
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Status</label>
+												<div class="col-md-6">
+													<select class="form-control" name="active_status">
+														{% if active_status ==  True %}
+														<option>Active</option>					
+														<option>De-Active</option>
+														{% else %}
+														<option>De-Active</option>
+														<option>Active</option>
+
+														{% endif %}
+														
+
+													</select>
+													
+												</div>
+											</div> -->
+
+											<br>
+											<div class="row">
+											<div class="form-group">
+												<!-- <label class="col-md-3 control-label" for="inputDefault">Name of Organization</label> -->
+												<div class="col-md-6" >
+													<input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Update" style="float: right;">
+												</div>
+
+												<div class="col-md-6" >
+													<a href="/backend/providers/"><input type="button" class="btn btn-primary" id="inputDefault" name="submit" value="Cancel"></a>
+												</div>
+												
+											</div>
+											</div>
+											
+						</div>
+											
+										</form>
+									</div>
+								</section>
+						
+
+							</div>
+						</div>		
+					
+						
+						
+					<!-- end: page -->
+				</section>
+			</div>
+
+
+		</section>
+
+		
+{% endblock %}

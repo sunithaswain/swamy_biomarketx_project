@@ -1,0 +1,504 @@
+{% extends "admin/index.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Users</h2>
+					
+						<div class="right-wrapper customRight">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="#">
+										<i class="fa fa-home"></i>
+									</a>
+								</li>
+								<li><span>Users</span></li>
+								<li><span>Edit User</span></li>
+							</ol>
+					
+							<!-- <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a> -->
+						</div>
+					</header>
+					{% include "messages.html" %}
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+										</div>
+						
+										<h2 class="panel-title">User Info</h2>
+									</header>
+
+
+									<div class="panel-body">
+										<form action = "{% url 'backend:edit_users' u_id=u_id %}" class="form-horizontal form-bordered" method="post">
+										{% csrf_token %}
+										
+											<p class="errorlist">{{error_message}}</p>
+					<div style="width:700px;margin:0px auto">						
+
+											<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10 label-height">
+                                <label class="form-lable">Email</label>
+
+                               {% if form.email.errors %}
+                                
+                                {{form.email|add_class:"error-div-style"}}
+                                {{form.email.errors}}
+                                {%else%}
+                               
+                                <input type="text"class="form-control input-lg " name="email" value="{{email}}">
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+											<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                <label class="form-lable">First Name</label>
+                                
+                                {% if form.first_name.errors %}
+                                {{form.first_name|add_class:"error-div-style"}}
+                                {{form.first_name.errors}}
+                                {%else%}
+                                
+                                <input type="text"class="form-control input-lg " name="first_name" value="{{f_name}}" >
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+											 <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                <label class="form-lable">Last Name</label>
+                                
+                                {% if form.last_name.errors %}
+                                
+                                {{form.last_name|add_class:"error-div-style"}}
+                                {{form.last_name.errors}}
+                                {%else%}
+                                <input type="text"class="form-control input-lg " name="last_name" value="{{l_name}}" >
+                                
+                                {%endif%}
+                             </div>
+                            </div>
+                          </div>
+											
+											<div class="row">
+                            <div class="form-group">
+                              <div class="col-md-10">
+                                
+                               <label class="form-lable">Status</label>
+                               
+                               <select class="form-control" name="active_status">
+														{% if active_status ==  True %}
+														<option>Active</option>					
+														<option>De-Active</option>
+														{% else %}
+														<option>De-Active</option>
+														<option>Active</option>
+
+														{% endif %}
+														
+
+													</select>
+ 
+                              </div>
+                            </div>
+                            </div>
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Know</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="how_bio" value="{{know}}">
+												</div>
+											</div> -->
+											<!-- <div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Name of Organization</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault" name="name_org" value="{{org}}">
+												</div>
+											</div> -->
+											<br>
+											<div class="row">
+											<div class="form-group">
+												<!-- <label class="col-md-3 control-label" for="inputDefault">Name of Organization</label> -->
+												<div class="col-md-6" >
+													<input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Update" style="float: right;">
+												</div>
+
+												<div class="col-md-6" >
+													<a href="/backend/users/"><input type="button" class="btn btn-primary" id="inputDefault" name="submit" value="Cancel"></a>
+												</div>
+												
+											</div>	
+											</div>
+											
+						</div>
+											
+										</form>
+										<!-- <div class="form-group">
+											<div class="col-md-6" >
+												<input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Cancel">
+											</div>
+										</div> -->
+									</div>
+								</section>
+						
+								<!-- <section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Controls sizing</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Input sizing</label>
+												<div class="col-md-6">
+													<input class="form-control input-lg mb-md" type="text" placeholder=".input-lg">
+													<input class="form-control mb-md" type="text" placeholder="Default input">
+													<input class="form-control input-sm mb-md" type="text" placeholder=".input-sm">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Select sizing</label>
+												<div class="col-md-6">
+													<select class="form-control input-lg mb-md">
+														<option>Option 1</option>
+														<option>Option 2</option>
+														<option>Option 3</option>
+													</select>
+													<select class="form-control mb-md">
+														<option>Option 1</option>
+														<option>Option 2</option>
+														<option>Option 3</option>
+													</select>
+													<select class="form-control input-sm mb-md">
+														<option>Option 1</option>
+														<option>Option 2</option>
+														<option>Option 3</option>
+													</select>
+												</div>
+											</div>
+										</form>
+									</div>
+								</section> -->
+								<!-- <section class="panel">
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Checkboxes and radios</label>
+												<div class="col-md-6">
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" value="">
+															Option one is this and that—be sure to include why it's great
+														</label>
+													</div>
+						
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" value="">
+															Option one is this and that—be sure to include why it's great option one
+														</label>
+													</div>
+						
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+															Option one is this and that—be sure to include why it's great
+														</label>
+													</div>
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+															Option two can be something else and selecting it will deselect option one
+														</label>
+													</div>
+						
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Inline checkboxes</label>
+												<div class="col-md-6">
+													<label class="checkbox-inline">
+														<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+													</label>
+													<label class="checkbox-inline">
+														<input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+													</label>
+													<label class="checkbox-inline">
+														<input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+													</label>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Selects</label>
+												<div class="col-md-6">
+													<select class="form-control mb-md">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+						
+													<select multiple="" class="form-control">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</div>
+											</div>
+						
+										</form>
+									</div>
+								</section> -->
+						
+								<!-- <section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Input Groups</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label">Basic examples</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-addon btn-success">@</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+						
+													<div class="input-group mb-md">
+														<input type="text" class="form-control">
+														<span class="input-group-addon btn-warning">.00</span>
+													</div>
+						
+													<div class="input-group mb-md">
+														<span class="input-group-addon">$</span>
+														<input type="text" class="form-control">
+														<span class="input-group-addon ">.00</span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Sizing</label>
+												<div class="col-md-6">
+													<div class="input-group input-group-lg mb-md">
+														<span class="input-group-addon btn-danger">@</span>
+														<input type="text" class="form-control input-lg" placeholder="Username">
+													</div>
+						
+													<div class="input-group mb-md">
+														<span class="input-group-addon">@</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+						
+													<div class="input-group input-group-sm mb-md">
+														<span class="input-group-addon">@</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+						
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Iconic</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<i class="fa fa-user"></i>
+														</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<i class="fa fa-envelope"></i>
+														</span>
+														<input type="text" class="form-control" placeholder="Email">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Checkbox and radio</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<input type="checkbox">
+														</span>
+														<input type="text" class="form-control">
+													</div>
+						
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<input type="radio">
+														</span>
+														<input type="text" class="form-control">
+													</div>
+						
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Button addons</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-btn">
+															<button class="btn btn-danger" type="button">Go!</button>
+														</span>
+														<input type="text" class="form-control">
+													</div>
+						
+													<div class="input-group mb-md">
+														<input type="text" class="form-control">
+														<span class="input-group-btn">
+															<button class="btn btn-success" type="button">Go!</button>
+														</span>
+													</div>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Segmented buttons</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<div class="input-group-btn">
+															<button tabindex="-1" class="btn btn-primary" type="button">Action</button>
+															<button tabindex="-1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">
+																<span class="caret"></span>
+															</button>
+															<ul role="menu" class="dropdown-menu">
+																<li><a href="#">Action</a></li>
+																<li><a href="#">Another action</a></li>
+																<li><a href="#">Something else here</a></li>
+																<li class="divider"></li>
+																<li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+														<input type="text" class="form-control">
+													</div>
+						
+													<div class="input-group mb-md">
+														<input type="text" class="form-control">
+														<div class="input-group-btn">
+															<button tabindex="-1" class="btn btn-primary" type="button">Action</button>
+															<button tabindex="-1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">
+																<span class="caret"></span>
+															</button>
+															<ul role="menu" class="dropdown-menu pull-right">
+																<li><a href="#">Action</a></li>
+																<li><a href="#">Another action</a></li>
+																<li><a href="#">Something else here</a></li>
+																<li class="divider"></li>
+																<li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+						
+										</form>
+									</div>
+								</section>
+						 -->
+							</div>
+						</div>		
+					
+						
+						
+					<!-- end: page -->
+				</section>
+			</div>
+
+			<!-- <aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside> -->
+		</section>
+
+		
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "lab/base-provider.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+{% block content %}
+    <section class="body">
+      <div class="">
+        <section role="main" class="content-body">
+          <section class="panel">
+            <div class="panel-body">
+      <table id="" class="display table mb-none" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Provider</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+                </tr>             
+        </thead>
+                <tbody>
+                  
+                  {% for order in order_info%}
+                  <tr>
+                   <td>{{order.service_name}}</td>
+                   <td>{{order.created_at|date:"d/m/y"}}</td>
+                   <td>Test Lab</td>
+                   <td>{{order.price}}</td>
+                  {%if order.status_id == 1 %}
+                  <td>Order Active</td>
+                  {% elif order.status_id == 2 %}
+                  <td>Order Accepted Pending</td>
+                  {% elif order.status_id == 3 %}
+                  <td>Order Submitted</td>
+                  {% elif order.status_id == 4 %}
+                  <td>Order Completed</b></td>
+                  {% elif order.status_id == 5 %}
+                  <td>Order Closed Pending</b></td>
+                  {% elif order.status_id == 6 %}
+                  <td>Order Closed</b></td>
+                  {%else%}
+                  <td>------</td>
+                  {%endif%}
+                    
+                    <td><a class="mt-xs mb-xs popup-with-move-anim btn btn-default" href="#small-dialog">View Details</a></td>
+                  </tr>
+
+                  <div id="small-dialog" class="dialog dialog-sm zoom-anim-dialog mfp-hide">
+                    <h4>Order Details</h4>
+                      <p><b>Title :&nbsp;</b>{{order.service_name}}</p>
+                      <p><b>ID :&nbsp;</b>{{order.id}}</p>
+                      {%if order.status_id == 1 %}
+                      <p><b>Status :&nbsp;</b>Order Active</p>
+                      {% elif order.status_id == 2 %}
+                      <p><b>Status :&nbsp;</b>Order Accepted Pending</p>
+                      {% elif order.status_id == 3 %}
+                      <p><b>Status :&nbsp;</b>Order Submitted</p>
+                      {% elif info.status_id == 4 %}
+                      <p><b>Status :&nbsp;</b>Order Completed</b></p>
+                      {% elif info.status_id == 5 %}
+                      <p><b>Status :&nbsp;</b>Order Closed Pending</b></p>
+                      {% elif info.status_id == 6 %}
+                      <p><b>Status :&nbsp;</b>Order Closed</b></p>
+                      {%else%}
+                      <p><b>Status :&nbsp;</b>------</9>
+                      {%endif%}
+                      <p><b>Requestor :&nbsp;</b>{{order.researcher_name}}</p>
+                      <p><b>Source : &nbsp; </b> ---</p>
+                      <p><b>Requested Date :&nbsp;</b>{{order.created_at|date:"d/m/y"}}</p>
+                      <p><b>Sid :&nbsp;</b>{{order.sid}}</p>
+                      <p><b>Notes :&nbsp;</b> ---</p>
+
+
+                  </div>
+              {%endfor%}
+
+            </tbody>
+            </table>
+  <div class="col-md-12"> 
+  <br><br><br>
+  </div>
+            {%for work in workroom_info %}
+            <div class="row lb-rsl-blk">
+            <div class="col-md-2">
+
+              <div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
+                <div>
+                  <span class="img-thumbnail">
+                    
+                  {%if work.user_role == "researcher" %}
+                    <img alt="" class="img-responsive" src="{% static 'img/research-1.jpg'%}">
+                    {%else%}
+                    <img alt="" class="img-responsive" src="{% static 'img/laboratory.png'%}">
+                    {%endif%}
+
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10" style="border-bottom:solid 1px">
+            <div class="lb-src-rslt">
+              <div class="portfolio-info stor-frnt">
+                <div class="row">
+                  <div class="col-md-12 center">
+                    {%if work.user_role == "lab" %}
+                    <a href="#" class="btn btn-primary btn-icon" style="float:right">Edit</a> 
+                    {%endif%}
+                  </div>
+                </div>
+              </div>
+
+              <b>{{work.name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;{{work.created_at}}&nbsp;&nbsp;&nbsp;&nbsp;
+              {%if work.user_role == "researcher" %}
+              <b>Type:</b>&nbsp;Buyer
+              {%else%}
+              <b>Type:</b>&nbsp;Provider
+              {%endif%}
+              <p style="margin-top:60px">{{work.description|safe}} </p>
+              {%for wrkfile in workroomfile %}
+              {%if work.id == wrkfile.workroom_id %}
+              <p><a href="/static/media/{{wrkfile.filename}}">{{wrkfile.filename}}</a></p>
+              {%endif%}
+              {%endfor%}
+            </div>
+            </div>
+          </div>
+           {%endfor%}
+
+  <div class="col-md-12">
+  <br><br><br>
+  </div>
+    <div class="col-md-12">
+        <form action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <textarea rows="8" cols="100" name="description" id="summernote_work"></textarea>
+                </div>
+            </div>
+        </div>
+              <div class="form-group" style="padding: 15px;">
+              <div class="col-md-12">
+              <label for="qutUplad"><b>Attach File(s)</b></label>
+              <input type="file" name="send_file[]" class="multi with-preview"/>
+              <!-- <input id="fileupload" type="file" name="files[]" multiple=""> -->
+              </div>
+              </div>
+        <input type="submit" value="Add This comment" class="btn-primary">
+    </form>
+  </div>
+          </section>
+
+        </section>
+      </div>
+
+</section>
+
+{% endblock %}

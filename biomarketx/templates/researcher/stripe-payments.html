@@ -1,0 +1,62 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load pagination_tags %}
+{% block content %}
+
+
+<section class="body">
+	<div class="">
+
+		<section role="main" class="content-body">
+		<p><a href="/quote-accept/{{qut_id}}/"><b>Back to Quote Order</b></a></p>
+			<section class="panel">
+				<div class="panel-body">
+
+					<form action="" method="POST" id="payment-form"> 
+					{% csrf_token %}
+						<span class="payment-errors" style="color:red"></span>
+
+						<div class="row">
+							<div class="form-group">
+						  		<div class="col-md-12">
+						    		<label class="form-lable">Card Number</label>
+						      		<input type="text" size="20" data-stripe="number" class="form-control input-lg" placeholder="4242424242424242"/>
+							  </div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-6">
+						    		<label class="form-lable">CVC</label>
+						    		<input type="text" size="4" data-stripe="cvc" class="form-control input-lg" placeholder="123"/>
+						    	</div>
+								<div class="col-md-3">
+						    		<label class="form-lable">Expiration: MM</label>
+						    		
+						    		<input type="text" size="2" data-stripe="exp-month" class="form-control input-lg" placeholder="03"/>
+						    	</div>
+						    	<div class="col-md-3">
+						    		<span>YYYY</span>
+						    		<input type="text" size="4" data-stripe="exp-year" class="form-control input-lg" style="margin-top:4px" placeholder="2020"/>
+						    	</div>
+						   </div>
+						</div>
+
+
+					<div class="col-md-12 ">
+					    <button class="btn btn-primary rigtr-btn pull-right" type="submit" style="
+					    margin-top: 23px;">Submit Payment</button>
+					</div>
+
+					</form>
+				</section>
+			</div>
+		</section>
+	</section>
+	</div>
+
+{%endblock%}

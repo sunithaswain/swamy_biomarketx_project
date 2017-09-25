@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+<div style="background-color:rgb(245,245,245)">
+
+<p style="text-align:center;font-weight:bold">List Your Provider on BioMarketX</p>
+<p style="text-align:center">Apply here to join the BioMarketX Service Provider Network.</p>
+
+<div class="container">
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                        
+                        <form action="{% url 'bioapp:signup_lab' %}" id="frmSignIn" method="post">
+                        {% csrf_token %}
+                        
+                          <p class="errorlist">{{error_message}}</p>
+                         <input type=hidden name="check_user" value="lab">
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+
+                                <label class="form-lable">First Name</label>
+                                {% if form.first_name.errors %}
+                                
+                                {{form.first_name|add_class:"error-div-style"}}
+                                {{form.first_name.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                                {{form.first_name}}
+                                
+                                {%endif%}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Last Name</label>
+                                {% if form.last_name.errors %}
+                                {{form.last_name|add_class:"error-div-style"}}
+                                {{form.last_name.errors}}
+                                
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                                {{form.last_name}}
+                                
+                                {%endif%}
+
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Position or Title</label>
+                                {% if form.title.errors %}
+                                {{form.title|add_class:"error-div-style"}}
+                                 {{form.title.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                                {{form.title}}
+                                
+                                {%endif%}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Email</label>
+
+                                {% if form.email.errors %}
+                                
+                                {{form.email|add_class:"error-div-style"}}
+                                {{form.email.errors}}
+                                {%else%}
+                                
+                                {{form.email}}
+                                
+                                {%endif%}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                
+                              <label class="form-lable">Password</label>
+                                {% if form.password.errors %}
+                                
+                                {{form.password|add_class:"error-div-style"}}
+                                {{form.password.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                                {{form.password}}
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                 <label class="form-lable ">Phone</label>
+                                {% if form.phone_number.errors %}
+                                
+                                {{form.phone_number|add_class:"error-div-style"}}
+                               {{form.phone_number.errors}}
+                                {%else%}
+                               
+                                {{form.phone_number}}
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Name of Organization/Institution</label>
+                                {% if form.orgname.errors %}
+                                {{form.orgname|add_class:"error-div-style"}}
+                                {{form.orgname.errors}}
+                                {%else%}
+                               <p class="form-message">Must be 3 characters or longer.</p>
+                               {{form.orgname}}
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <input type="radio" name="company" value="Company"checked>
+                                <label class="form-lable">A Company</label>
+
+                                <input type="radio" name="company" value="University">
+                                <label class="form-lable">A University</label>
+
+                                <input type="radio" name="company" value="A Non-profit (Non-academic)">
+                                <label class="form-lable">A Non-profit (Non-academic)</label>
+
+                              </div>
+                            </div>
+                            </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Core facility name (if applicable)</label>
+ 
+                                {% if form.facility.errors %}
+                                
+                                {{form.facility|add_class:"error-div-style"}}
+                                {{form.facility.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                               {{form.facility}}
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Please briefly describe your service capabilities</label>
+                                {% if form.service_cap.errors %}
+                                
+                                {{form.service_cap|add_class:"error-div-style"}}
+                                {{form.service_cap.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                               {{form.service_cap}}
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">How did you hear about BioMarketX?</label>
+                               {% if form.how_bio.errors %}
+                                
+                                {{form.how_bio|add_class:"error-div-style"}}
+                                {{form.how_bio.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters or longer.</p>
+                               {{form.how_bio}}
+                                {%endif%}
+
+
+                              </div>
+                            </div>
+                            </div>
+                             <div class="row">
+                             <div class="form-group">
+                             <div class="col-md-12">
+                            <input type="checkbox" checked="" id="exampleCheckbox1">
+                            <label for="exampleCheckbox1">Do you agree to the BioMarketX <a herf="#">Terms of Use?</a></label>
+                            </div>
+                            </div>
+                          <div class="row">
+                            
+                            <div class="col-md-12">
+                              <input type="submit" value="Join" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                            </div>
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+</div>
+
+{%endblock%}
+

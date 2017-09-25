@@ -1,0 +1,19 @@
+{% block content %}
+
+<form class="signup" id="signup_form" method="post" action="/register/">
+  {% csrf_token %}
+  {{ form.as_p }}
+Type of Organization/Institution*
+<select>
+  <option>Company</option>
+  <option>University</option>
+  <option>Non-profit(Non-academic)</option>
+</select>
+
+  <div class="form-actions">
+  <button type="submit" class="btn btn-success">Sign Up</button>
+  </div>
+  <p></p>
+</form>
+
+{%endblock%}

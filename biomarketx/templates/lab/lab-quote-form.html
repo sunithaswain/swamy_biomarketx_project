@@ -1,0 +1,191 @@
+{% extends "lab/base-provider.html" %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+{% block content %}
+			<div role="main" class="main">
+				<div class="container">
+         <div class="col-md-3"></div>
+          <div class="col-md-9 table-responsive">
+
+              <table id="" class="display table mb-none" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Buyer</th>
+                        <th>View Details</th>
+                        <!-- <th>Salary</th> -->
+                    </tr>             
+                </thead>
+                <tbody>
+                  
+                  {% for quote in quote_info%}
+                  <tr>
+
+                    <td>{{quote.service_name}}</td>
+                    <td>{{quote.created_at|date:"d/m/y"}}</td>
+                    <td>{{quote.researcher_name}}</td>
+                    
+                    <td><a class="mt-xs mb-xs popup-with-move-anim btn btn-default" href="#small-dialog">View Details</a></td>
+                  </tr>
+
+                  <div id="small-dialog" class="dialog dialog-sm zoom-anim-dialog mfp-hide">
+                    <h4>Quote Information</h4>
+                    
+                      <p><b>Title :&nbsp;</b>{{quote.service_name}}</p>
+                      <p><b>ID :&nbsp;</b>{{quote.id}}</p>
+                      <p><b>Status :&nbsp;</b>Pending</p>
+                      <p><b>Requestor :&nbsp;</b>{{quote.researcher_name}}</p>
+                      <p><b>Source : &nbsp; </b> ---</p>
+                      <p><b>Requested Date :&nbsp;</b>{{date|date:"d/m/y"}}</p>
+                      <p><b>Sid :&nbsp;</b>{{quote.sid}}</p>
+                      <p><b>Notes :&nbsp;</b> ---</p>
+
+
+                  </div>
+              {%endfor%}
+
+            </tbody>
+            </table>
+
+
+  				<div class="row mt-xl">
+						<div class="counters-text-dark prof-srvcs">
+            <div class="col-md-3">
+            <a href="/provider/quotes/">Back To Quote List</a>
+            </div>
+            <div class="col-md-12">
+            {% include "messages.html" %}
+						<h3><b>Provider Quote</b></h3>
+						<div class="spsl-rqst">					
+						<form action="#" id="frmSignIn" method="post"class="form-background"
+            enctype="multipart/form-data" action>
+            				{% csrf_token %}
+            			<p style="color:red">{{error_message}}</p>
+                          
+                            <div class="form-group" style="padding: 15px;">
+                              <div class="col-md-6">
+                                <label class="form-lable"><b>Price</b></label>
+<!--                                 {% if form.service_price.errors %}
+                                {{form.service_price|add_class:"error-div-style"}}
+                                {{form.service_price.errors}}
+                                {%else%}
+                                {{form.service_price}}
+                                {%endif%}
+   -->                              <div class="input-group">
+                                    <span class="input-group-addon">
+                                      $
+                                      </span>
+                                      <input type="number" class="form-control" placeholder="Price" name="service_price"/>
+                                      </div>
+                                      {{form.service_price.errors}}
+                                 </div>
+                          
+                        
+                        
+                                  
+                                  <div class="col-md-6">
+                                  <label class="form-lable"><b>Duration</b></label>  
+                                    <div class="input-group">
+                                      <span class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                      </span>
+                                      <input type="text" data-plugin-datepicker class="form-control" name="duration">
+                                    </div>
+                                    {{form.duration.errors}}
+                                  </div>
+                                </div>
+                         
+                          
+                            <div class="form-group" style="padding: 15px;">
+                              <div class="col-md-12">
+                                <label class="form-lable"><b>Description</b></label>
+                                <p class="form-message">Must be minimum 10 characters.</p>
+                               {% if form.notes.errors %}
+                                <textarea class="" rows="9" name="notes" id="summernote"></textarea>
+
+                                <!-- <textarea name="summernote" id="summernote" cols="30" rows="10"></textarea> -->
+
+                                 {{form.notes.errors}}
+
+                                {%else%}
+                               <textarea class="" rows="9" name="notes" id="summernote"></textarea>
+                               <!-- <textarea name="summernote" id="summernote" cols="30" rows="10"></textarea>
+                                {%endif%} -->
+                              
+                              </div>
+                            </div>
+                           
+                            
+							<div class="form-group" style="padding: 15px;">
+              <div class="col-md-12">
+							<label for="qutUplad"><b>Attach File(s)</b></label>
+							<input type="file" id="qutUplad" name="send_file" class="form-control input-lg multi with-preview"/>
+              <!-- <input id="fileupload" type="file" name="files[]" multiple=""> -->
+              
+
+							</div>
+              </div>
+              
+ <!--  <div class="form-group">
+                        <label class="col-md-3 control-label">File Upload</label>
+                        <div class="col-md-6">
+                          <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                              <div class="uneditable-input">
+                                <i class="fa fa-file fileupload-exists"></i>
+                                <span class="fileupload-preview"></span>
+                              </div>
+                              <span class="btn btn-default btn-file">
+                                <span class="fileupload-exists">Change</span>
+                                <span class="fileupload-new">Select file</span>
+                                <input type="file" />
+                              </span>
+                              <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+ -->
+
+              <div class="col-md-12 ">
+              <button class="btn btn-default rigtr-btn pull-right" type="submit" >Submit</button>
+              </div>
+              </div>
+							</form>
+						</div>
+						</div>						
+						</div>
+
+				</div>
+				</div>				
+			</div>
+
+
+      <!--  -->
+
+      <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                 <h3 id="myModalLabel3">Submit Confirmation</h3>
+
+            </div>
+            <div class="modal-body">
+                <p>Are you sure thw quote amount is correct? proceeding</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn-primary btn" id="SubForm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <!--  -->
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "./base.html" %}
+
+{% load i18n %}
+
+
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+ <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;height:500px">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                        <h4 class="heading-primary text-uppercase mb-md">Lab-Review</h4>
+                        <form action="/lab-reviews/" id="frmSignIn" method="post">
+                        {% csrf_token %}
+                          <p class="errorlist">{{error_message}}</p>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Review</label>
+                                {{form.Desc}}
+                                {{form.Desc.errors}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                          <div class="row">
+                            
+                            <div class="col-md-12">
+                              <input type="submit" value="Add-Review" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                            </div>
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+</div>
+
+ 
+ {% endblock %}

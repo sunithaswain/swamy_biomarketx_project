@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+			<div role="main" class="main">
+				<div class="slider-container rev_slider_wrapper" style="height: 420px;">
+					<div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"gridwidth": 800, "gridheight": 420}'>
+						<ul>
+							<li data-transition="fade">
+								<img src="{% static 'img/slide-one.jpg' %}"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+
+								<div class="tp-caption"
+									data-x="center" data-hoffset="-150"
+									data-y="center" data-voffset="-95"
+									data-start="1000"
+									style="z-index: 5"
+									data-transform_in="x:[-300%];opacity:0;s:500;">
+										
+										<div class="sld-srch">
+										<!-- Nav tabs -->
+										<ul class="nav nav-tabs sld-srch-tbs" role="tablist">
+										<li role="presentation" class="active"><a href="#srh-lab" aria-controls="srh-lab" role="tab" data-toggle="tab">Search Labs</a></li>
+										<li role="presentation"><a href="#lab-lst" aria-controls="lab-lst" role="tab" data-toggle="tab">List your Lab</a></li>
+										</ul>
+
+										<!-- Tab panes -->
+										<div class="tab-content">
+										<div role="tabpanel" class="tab-pane active" id="srh-lab">
+
+
+
+
+												<!-- labs search start -->
+												<form action="/search/" method="POST" >
+												{% csrf_token %}
+												<div class="lab-srch">
+
+												<input type="text" class="lb-srch-br" name="search_word" placeholder="Search for experiments, labs, etc..." id ="tags123"/>
+
+
+												<button class="lb-srch-btn" type="submit"><i class="glyphicon glyphicon-search"></i></button></div>
+												<!-- labs search start -->
+												</form>
+
+
+
+										</div>
+										
+
+										<div role="tabpanel" class="tab-pane" id="lab-lst">
+											<!-- labs signup start -->
+											<div class="lab-signup">
+												<ul>
+													<li><input type="text" placeholder="Name" /></li>
+													<li><input type="text" placeholder="Email" /></li>
+													<li><input type="password" placeholder="Password" /></li>
+													<li><button class="lb-join-btn">Join</button></li>
+												</ul>
+											</div>
+											<!-- labs signup end -->
+										</div>
+										</div>
+
+										</div>
+									
+									</div>
+							</li>
+						</ul>
+					
+					</div>
+				</div>
+<!-- 											<div class="ui-widget">
+												  <label for="tags"></label>
+												  <input id="tags12345">
+												</div>
+ -->				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters counters-text-dark why-bio">
+						<h1>Why BiomarketX?</h1>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600">
+									<i><img src="{% static 'img/access-icon.png' %}" title="" alt="" /></i>
+									<h3><b>Access</b></h3>
+									<p>Get access to expertise and specialized equipment from the world’s best academic and contract labs</p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="900">
+									<i><img src="{% static 'img/efficiency-icon.png' %}" title="" alt="" /></i>
+									<h3><b>Efficiency</b></h3>
+									<p>Easily search, compare, order, and pay for experiments from our network of verified labs.</p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="1200">
+									<i><img src="{% static 'img/support-icon.png' %}" title="" alt="" /></i>
+									<h3><b>Support</b></h3>
+									<p>Get help obtaining quotes and completing orders. Confidentiality and IP agreements are available.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="parallax section section-text-light section-parallax section-center mt-xl mb-none find-lab" data-stellar-background-ratio="0.5" style="background-image: url(../static/img/find-lab.png);">
+				<section class="call-to-action call-to-action-primary mb-none">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="call-to-action-content align-left pb-md mb-xl ml-none">
+									<h2 class="text-color-light mb-none mt-xl">Need Help <strong>Finding a Lab?</strong></h2>
+									<span>&nbsp;</span>
+									<p class="lead mb-xl">Let our Ph.D. and Masters-trained scientists find the best qualified CRO or research lab for your next project. We do the sourcing, so you can make the decision.</p>
+								</div>
+								<div class="call-to-action-btn">
+									<a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="btn btn-lg btn-primary btn-primary-scale-2 mr-md">Try Our Sourcing Service</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				</div>
+
+				<section class="section section-primary section-primary-scale-2 section-center section-no-border mt-none p-sm resrch-stores" id="demos">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+							<h3><strong>Researcher Stories</strong></h3>
+							<p>Learn how scientists and research organizations are using BioMarketX to accelerate their work.</p>
+								<ul class="nav nav-pills sort-source sort-source-style-2" data-sort-id="portfolio" data-option-key="filter">
+									<li data-option-value="*" class="active"><a href="#">SHOW ALL</a></li>
+									<li data-option-value=".classic"><a href="#">CLASSIC</a></li>
+									<li data-option-value=".corporate"><a href="#">CORPORATE</a></li>
+									<li data-option-value=".one-page"><a href="#">ONE PAGE</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+				<ul class="portfolio-list sort-destination full-width-spaced mb-xl" data-sort-id="portfolio" id="homeOverview">
+					<li class="col-md-3 col-sm-6 col-xs-12 isotope-item classic">
+						<div class="portfolio-item center">
+							<a href="index-classic.html" class="text-decoration-none block-link pt-md">
+								<span class="thumb-info thumb-info-preview thumb-info-preview-long mb-md">
+									<span class="thumb-info-wrapper">
+										<span class="thumb-info-image" data-original="{% static 'img/research-1.jpg' %}" data-plugin-lazyload></span>
+									</span>
+								</span>
+								<h5 class="mb-xs">Researcher Name</h5>
+								<p class="font-size-xs line-height-xs">Lab Name</p>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-6 col-xs-12 isotope-item classic">
+						<div class="portfolio-item center">
+							<a href="index-classic-color.html" class="text-decoration-none block-link pt-md">
+								<span class="thumb-info thumb-info-preview thumb-info-preview-long mb-md">
+									<span class="thumb-info-wrapper">
+										<span class="thumb-info-image" data-original="{% static 'img/research-2.jpg' %}" data-plugin-lazyload></span>
+									</span>
+								</span>
+								<h5 class="mb-xs">Researcher Name</h5>
+								<p class="font-size-xs line-height-xs">Lab Name</p>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-6 col-xs-12 isotope-item one-page">
+						<div class="portfolio-item center">
+							<a href="index-classic-light.html" class="text-decoration-none block-link pt-md">
+								<span class="thumb-info thumb-info-preview thumb-info-preview-long mb-md">
+									<span class="thumb-info-wrapper">
+										<span class="thumb-info-image" data-original="{% static 'img/research-1.jpg' %}" data-plugin-lazyload></span>
+									</span>
+								</span>
+								<h5 class="mb-xs">Researcher Name</h5>
+								<p class="font-size-xs line-height-xs">Lab Name</p>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-6 col-xs-12 isotope-item corporate">
+						<div class="portfolio-item center">
+							<a href="index-classic-video.html" class="text-decoration-none block-link pt-md">
+								<span class="thumb-info thumb-info-preview thumb-info-preview-long mb-md">
+									<span class="thumb-info-wrapper">
+										<span class="thumb-info-image" data-original="{% static 'img/research-2.jpg' %}" data-plugin-lazyload></span>
+									</span>
+								</span>
+								<h5 class="mb-xs">Researcher Name</h5>
+								<p class="font-size-xs line-height-xs">Lab Name</p>
+							</a>
+						</div>
+					</li>
+
+				</ul>
+
+				<section class="section section-default expert-labs">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-9">
+								<h2>Access verified, <strong>expert labs</strong></h2>
+								<p>Our unique business model attracts the world’s best academic, government, and commercial labs. Our verified network contains labs from 75 of the top 100 U.S. universities, as well as hundreds of contract labs from around the world.</p>
+								<div class="call-to-action-btn">
+									<a class="btn btn-primary btn-primary-scale-2 mr-md" href="#">Browse Labs</a>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<img class="hidden-xs img-responsive appear-animation expert-labs-img" style="margin-top: -100px;" src="{% static 'img/expert-labs.jpg' %}" alt="" data-appear-animation="fadeInRight">
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container expert-labs">
+					<div class="row mt-xl mb-xl">
+						<div class="col-md-3">
+							<img class="img-responsive mt-xl appear-animation" src="{% static 'img/results-verified.jpg' %}" alt="" data-appear-animation="fadeInLeft">
+						</div>
+						<div class="col-md-9">
+							<h2 class="mt-xl">Get Results <strong>Validated</strong></h2>
+							<p>A new initiative to help researchers, funders, publishers, and investors identify high-quality research and reagents through replication of key experimental results by independent, expert labs.</p>
+							<div class="call-to-action-btn">
+									<a class="btn btn-primary btn-primary-scale-2 mr-md" href="#">Learn More</a>
+								</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+{%endblock%}

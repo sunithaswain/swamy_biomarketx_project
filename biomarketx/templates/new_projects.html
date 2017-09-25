@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+
+{% block content %}
+			<div role="main" class="main">
+				
+{% if user.is_authenticated and user.is_superuser %}
+<div class="form-group" id="projects_id">
+											<div class="col-md-8" >
+												<a href="{% url 'bioapp:projects_edit' %}"><input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Edit" style="margin-left: 1117px;width: 112px;margin-top: 21px"></a>
+											</div>
+										</div>
+{% else %}
+{% endif %}
+
+<div id="project-static">
+
+{% if project_result %}
+
+		{{project_result|safe}}
+{% else %}	
+				<div class="container">
+
+					<div class="row mt-xl projt-blk">
+						<div class="counters-text-dark">
+
+
+
+
+						<!-- <h1>What we do</h1> -->		
+						<div class="col-md-8">
+						<p>Whether the objective is to bring a compound to out-licensing stages, expand the therapeutic potential of already approved therapies, or progress a compound to clinical trial phases, we can help take your project from basic research to phase I clinical stage. We have verified each service provider, and partnered with the best. Through our expert consultations, we will provide professional services to help plan, design, implement “by matching your in vitro and in vivo requirements to the best qualified service providers, to provide support for your project, quickly and efficiently,” and manage your drug discovery and development projects. We specialize in research related to Oncology, Neuroscience, and Infectious Diseases.</p>
+
+						<div class="row">
+						<div class="col-md-3"><img class="thumbnail" src="{% static 'new_design/img/projt-1.jpg' %}"></div>
+						<div class="col-md-3"><img class="thumbnail" src="{% static 'new_design/img/projt-2.jpg' %}"></div>
+						<div class="col-md-3"><img class="thumbnail" src="{% static 'new_design/img/projt-3.jpg' %}"></div>
+						<div class="col-md-3"><img class="thumbnail" src="{% static 'new_design/img/projt-4.png' %}"></div>
+						</div>
+
+						<p>We have partnered with experts in laboratory research services, specializing in drug discovery and development studies whether Good Laboratory Practice (GLP)-compliant, cGMP-compliant, or in Discovery-stage, analytical studies, as well as in identification/validation and cross-validation of potential novel pharmacological targets, and discovery and development of new drugs, vaccines and biologic products that effectively interact with these targets. </p>
+						<p>All studies can be tailored on the customer’s request. Experiments will be designed to maximize the amount of data.</p>
+						<p>If you have specific needs or requests, we are confident that we can find the best qualified labs for your program.</p>
+
+						</div>
+						<div class="col-md-4">
+						<h3><b>Special Request</b></h3>
+						<div class="clr"></div>
+						<div class="spsl-rqst">
+						{% include "messages.html" %}					
+							<form action="#" method="post">
+							{% csrf_token %}
+							<p class="errorlist">{{error_message}}</p>
+
+							
+							<div class="form-group">
+
+                            {% if form.name.errors %}
+                            {{form.name|add_class:"error-div-style"}}
+                            {{form.name.errors}}
+                            {%else%}
+                            <p class="form-message">Must be 3 characters or longer.</p>
+                            {{form.name}}
+                                
+                            {%endif%}
+							</div>
+							<div class="form-group">
+
+                            {% if form.university.errors %}
+                            {{form.university|add_class:"error-div-style"}}
+                            {{form.university.errors}}
+                            {%else%}
+                            <p class="form-message">Must be 3 characters or longer.</p>
+                            {{form.university}}
+                                
+                            {%endif%}
+							</div>
+							<div class="form-group">
+
+                            {% if form.email.errors %}
+                            {{form.email|add_class:"error-div-style"}}
+                            {{form.email.errors}}
+                            {%else%}
+                            {{form.email}}
+                                
+                            {%endif%}
+
+							</div>
+							<div class="form-group">
+
+                            {% if form.phone_number.errors %}
+                            {{form.phone_number|add_class:"error-div-style"}}
+                            {{form.phone_number.errors}}
+                            {%else%}
+                            {{form.phone_number}}
+                                
+                            {%endif%}
+							</div>
+							<div class="form-group">
+
+                            {% if form.desc.errors %}
+                            {{form.desc|add_class:"error-div-style"}}
+                            {{form.desc.errors}}
+                            {%else%}
+                            <p class="form-message">Must be 3 characters or longer.</p>
+                            {{form.desc}}
+                                
+                            {%endif%}
+							</div>
+							
+							
+							
+							<button type="submit" class="btn btn-default rigtr-btn pull-right">Submit</button>
+							</form>
+						</div>
+						</div>
+
+					</div>
+
+				</div>
+				</div>
+								
+
+				<section class="section section-default" style="margin-bottom:0px;">
+					<div class="container">
+						<div class="drug-dscvry">
+						<div class="row">
+							<div class="col-md-6 col-sm-6">
+							<h3>Target/Drug Discovery and Development</h3>
+							
+								<h5>Target and Drug Discovery and Validation: To list few of the studies</h5>
+								<ul>
+								<li>Novel Target Identification and Assay Development</li>
+								<li>Full Analytical Chemistry, Bioanalytical, and Analysis Services</li>
+								<li>State-of-the-Art Imaging Capabilities</li>
+								<li>Contaminants and Foreign Material Identification</li>
+								<li>Lead Series Optimization to Identify a Clinical Candidate</li>
+								<li>Ion Channel Drug Discovery</li>
+								<li>Evaluation of Immunosuppression or Immunogenicity Properties of Compounds</li>
+								<li>Development of Immunoassays for Pharmacokinetic Evaluation</li>
+								<li>In vitro and In Vivo Pharmacology and non-GLP and IND Enabling Toxicology</li>
+								<li>Cardiac Risk Assessment</li>
+								<li>Biochemistry and Enzymology Studies</li>
+								</ul>	
+								<h5>Drug Development </h5>
+								<ul>
+								<li>Assay Development, and Phenotyptic and non-phenotypic Screening</li>
+								<li>Drug Stability and Metabolism</li>
+								<li>Pharmaceutical Sciences and Formulation (Screening, Development, Characterization)</li>
+								<li>cGMP Analytical Method Development, Validation, Transfer</li>
+								<li>Biophysics</li>
+								</ul>
+	
+								<h5>Development of Biologics and Vaccines</h5>
+
+								<h5>Biomarker Discovery and Validation</h5>	
+							</div>
+							<div class="col-md-6 col-sm-6">
+							<h3>Speciality Tailored Services</h3>
+							
+								<h5>Surgical Services</h5>
+								<p>Surgical services personnel undergo rigorous training and evaluation prior to performing surgery, and surgical skills are continuously monitored. BioMarketX in collaboration with CRO and academic labs, provides a wide range of surgical services.</p>
+								<h5>Analytical Services</h5>
+								<p>Comprehensive range of endpoint analyses including, but not limited to, IHC, imaging, FACS, multiplex and gene expression.</p>
+								<h5>Bionalytical Services</h5>
+								<p>We provide our Customers with a flexible solution with the possibility to order bioanalytical services and pharmacokinetic calculations, or to limit your study design to dosing and sample collection only.</p>
+								<ul>
+								<li>Bioanalytical method set-up and validation, for both small (HPLC) and large (ELISA) molecules</li>
+								<li>Quantitative bioanalysis (matrices: plasma, serum, urine, tissue homogenate, formulation)</li>
+								<li>Metabolite identification and profiling (subcontracted)</li>
+								<li>Pharmacokinetic parameters: AUC, t1/2, Cl, V, Tmax, Cmax, Bioavailability</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+
+		{% endif %}
+				</div>
+			
+			</div>
+ 
+{% endblock %}

@@ -1,0 +1,232 @@
+{% extends "new_base1.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+
+<div role="main" class="main">
+
+	<div class="clr">&nbsp;</div>
+
+		<div class="container">
+				
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb pull-left brd-crmb">
+					  <li><a href="/services/Bioimaging/">Services</a></li>
+					  <li class="active">Category</li>
+					</ol>
+
+				<div class="srt-by pull-right">
+					<a href="#" title="" class="sort-by-name" name="Name*{{p_id}}">Name</a>
+					<a href="#" title="" class="sort-by-name" name="Location*{{p_id}}">Location</a>
+					<a href="#" title="">Popular</a>
+
+				</div>
+				<div class="pull-right">
+					<h6 class="srt-by-titl">Sort By: </h6>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+					<!-- filters start -->
+				<div class="col-md-4">
+					<div class="brws-lft">
+					<form>
+					<!-- form start -->
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+						<div class="panel panel-default fltrs-blk" id="fltrs-two">
+							<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Experiment</a></h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+							<div class="panel-body" id="service-filters3">
+								<ul>
+								<li>
+								<input type="checkbox" value="ELISA" />
+								<label>ELISA</label>
+								<span class="pull-right">(38)</span>
+								</li>
+								<li>
+								<input type="checkbox" value="IHC" />
+								<label>IHC</label>
+								<span class="pull-right">(36)</span>
+								</li>
+								<li>
+								<input type="checkbox"  value="Flow Cytometry" />
+								<label>Flow Cytometry</label>
+								<span class="pull-right">(31)</span>
+								</li>
+								<li>
+								<input type="checkbox" value="Western Blot" />
+								<label>Western Blot</label>
+								<span class="pull-right">(29)</span>
+								</li>
+								<li>
+								<input type="checkbox" value="QPCR" />
+								<label>QPCR</label>
+								<span class="pull-right">(28)</span>
+								</li>
+								</ul>
+							</div>
+							</div>
+						</div>
+					<div class="panel panel-default fltrs-blk" id="fltrs-three">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Country</a></h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+							<div class="panel-body" id="service-filters1">
+							<ul>
+							{% for con in country_set_1 %}
+							<li>
+								<input type="checkbox" value="{{con}}" />
+								<label>{{con}}</label>
+								<span class="pull-right">(1135)</span>
+							</li>
+						
+		 					{%endfor%}
+		 					</ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default fltrs-blk" id="fltrs-four">
+					<div class="panel-heading" role="tab" id="headingFour">
+					<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Lab Type</a></h4>
+					</div>
+					<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+					<div class="panel-body" id="service-filters2">
+
+						<ul>
+						<li>
+						<input type="checkbox" value="All-labs"/>
+						<label>All</label>
+						</li>
+						<li>
+						<input type="checkbox" value="Academic" />
+						<label>Academic</label>
+						
+						</li>
+						<li>
+						<input type="checkbox" value="Commercial"/>
+						<label>Commercial</label>
+						
+						</li>
+						</ul>
+					</div>
+					</div>
+					</div>
+
+					</div>
+					<!-- form end -->
+					</form>
+					</div>
+					</div>
+					<!-- filters end -->
+
+
+					<!-- result start -->
+					<div class="col-md-8 service-filter sort-name">
+
+						<div class="message-wrapper">
+						{% if messages %}
+						{% for message in messages %}
+						<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						{{message|linebreaksbr}}
+						</div>
+						{% endfor %}
+						{% endif %}
+						</div>
+						<!-- block one start -->
+					<form action="/multi-quote/{{p_id}}/" method="post">
+						{% csrf_token %}
+					<div class="row">
+						<div class="portfolio-info stor-frnt col-md-6">
+							<input type="submit" value="Get Quote " class="btn btn-primary btn-icon pull-center rigtr-btn" style="margin-bottom: 20px;margin-left: -45px;">
+						</div>
+					</div>
+						
+					{% for lab in all_labs %}
+					<div class="lb-rsl-blk">
+
+						<div class="col-md-12">
+						<!--  -->
+							<div class="lb-src-rslt lab-prof-rslt">
+							<div class="row">
+								<div class="col-md-4">
+								<a class="rst-title" href="#">{{lab.title}}</a>
+								<!-- <h6>Anatomical Force Microscopy</h6> -->
+								<!-- <h6>{{lab.id}}</h6> -->
+								<h6>{{lab.country}} </h6>
+								</div>
+								<div class="col-md-6"><ul class="portfolio-details lb-cnt-tags">
+								<li>
+								<ul class="list list-inline list-icons chips">
+								<li>20% Reviews</li>
+								<li>30 of orders completed</li>
+								</ul>
+								</li>
+								</ul>
+								</div>
+								<div class="col-md-2">
+
+								<span class="img-thumbnail pull-right">
+								<img alt="" class="img-responsive" src="{% static 'new_design/img/comp-1.jpg'%}">
+								</span>
+
+
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-12">
+								<p class="mt-xlg">{{lab.desc}}</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="clr">&nbsp;</div>
+								<div class="col-md-8 pull-right">
+									<div class="col-md-6">
+										
+											<input type="checkbox" class="pull-left" name="multiquote" value="{{lab.id}}" />
+									
+									<span class="pull-left">&nbsp;&nbsp;Select For Multipul Quotes</span>
+									</div>
+									<div class="portfolio-info stor-frnt col-md-6">
+									<a href="/send-quote/{{p_id}}/{{lab.id}}/" class="btn btn-primary btn-icon pull-right rigtr-btn">Request Quote</a> 
+									</div>
+								</div>
+							</div>
+
+							</div>
+								<div class="clr">&nbsp;</div>
+
+						<!--  -->
+						</div>
+					</div>
+					{% endfor %}
+					
+					
+					</form>
+						<!-- block one end -->
+						
+						</div>
+						
+						<!-- result end -->
+					</div>
+
+
+				</div>
+
+			</div>
+
+
+{% endblock %}	

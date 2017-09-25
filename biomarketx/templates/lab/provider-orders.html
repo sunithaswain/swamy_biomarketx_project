@@ -1,0 +1,93 @@
+{% extends "lab/base-provider.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% block content %}	
+
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+<!-- <lable><b>Filter By Quote Status:</b></lable> -->
+<!-- <select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select> -->
+{% include "messages.html" %}
+
+</section>
+	<section class="panel">
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display " cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Service</th>
+				                <th>Date</th>
+				                <th>Buyer</th>
+				                <th>Price</th>
+				                <th>Status</th>
+				                <th>Action</th>
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+
+            				{% for order in display_orders %}
+								<tr>
+
+									<td>{{order.service_name}}</td>
+									<td>{{order.created_at|date:"d/m/y"}}</td>
+									<td>{{order.researcher_name}}</td>
+									<td>{{order.price}}</td>
+									{%if order.status_id == 1 %}
+									
+									<td>Order Active</td>
+									{% elif order.status_id == 2 %}
+									<td>Order Accepted Pending</td>
+									{% elif order.status_id == 3 %}
+									<td>Order Submitted</td>
+									{% elif order.status_id == 4 %}
+									<td>Order Completed</b></td>
+
+									{% elif order.status_id == 5 %}
+									<td>Order Closed Pending</b></td>
+									{% elif order.status_id == 6 %}
+									<td>Order Closed</b></td>
+
+									{%else%}
+									<td>------</td>
+									{%endif%}
+										<td ><a href="/provider/order/{{order.id}}">View Details</a>&nbsp;&nbsp;&nbsp;
+
+										{% if order.status_id == 1 %}
+										<a href="/provider/workroom/{{order.id}}/">Work Room</a>&nbsp;&nbsp;&nbsp;
+										{%endif%}
+	
+										</td>
+									
+									
+								</tr>
+						{%endfor%}
+						</tbody>
+
+
+					</table>
+					
+				
+				</div>
+			</div>
+	</section>
+	
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+{% block content %}
+
+	
+			<div role="main" class="main">
+				
+				
+				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters-text-dark">
+						<h1>Contact us</h1>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-12">
+						<p>We are here to answer any questions you may have about BioMarketX. Reach out to us and we’ll respond as soon as we can.</p>
+						<p>If there is a service you can’t find on BioMarketX, let us know and we promise we’ll find a provider of the service.</p>
+						</div>
+						<div class="clr">&nbsp;</div>
+						 {% include "messages.html" %}
+						<div class="col-md-9">
+						<div class="spsl-rqst">					
+							<form action="#" method="post">
+							{% csrf_token %}
+							<p class="errorlist">{{error_message}}</p>
+							
+							<div class="form-group">
+							<label><b>Name</b></label>
+
+                            {% if form.name.errors %}
+                            {{form.name|add_class:"error-div-style"}}
+                            {{form.name.errors}}
+                            {%else%}
+                            <p class="form-message">Must be 3 characters or longer.</p>
+                            {{form.name}}
+                                
+                            {%endif%}
+							</div>
+							<div class="form-group">
+							<label><b>Email</b></label>
+
+                            {% if form.email.errors %}
+                            {{form.email|add_class:"error-div-style"}}
+                            {{form.email.errors}}
+                            {%else%}
+                            
+                            {{form.email}}
+                                
+                            {%endif%}
+
+							</div>
+							<div class="form-group">
+							<label><b>Subject</b></label>
+
+                            {% if form.subject.errors %}
+                            {{form.subject|add_class:"error-div-style"}}
+                            {{form.subject.errors}}
+                            {%else%}
+                            <p class="form-message">Must be 3 characters or longer.</p>
+                            {{form.subject}}
+                                
+                            {%endif%}
+
+							</div>
+							<div class="form-group">
+							<label><b>Message</b></label>
+                            {% if form.message.errors %}
+                            {{form.message|add_class:"error-div-style"}}
+                            {{form.message.errors}}
+                            {%else%}
+                            <p class="form-message">Must be 3 characters or longer.</p>
+                            {{form.message}}
+                                
+                            {%endif%}
+
+
+
+							</div>
+							
+							
+							
+							<button class="btn btn-default rigtr-btn pull-right" type="submit">Submit</button>
+							</form>
+						</div>
+						</div>
+						<div class="col-md-3">
+							<h6><b>EMAIL</b></h6>
+							<p>support@biomarketx.com</p>
+							<div class="clr">&nbsp;</div>
+							<h6><b>TELEPHONE</b></h6>
+							<p>919-706-0147</p>
+							<div class="clr">&nbsp;</div>
+							<p>BioMarketX Inc.</p>
+							<div class="clr">&nbsp;</div>
+							<p>2 Davis Drive<br />
+							Research Triangle Park, NC 27709</p>
+						</div>
+						
+
+					</div>
+
+				</div>
+				</div>
+
+			</div>
+ 
+			
+		</div>
+
+		<!-- Vendor -->
+		
+
+		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+			ga('create', 'UA-12345678-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+		 -->
+
+{% endblock %}

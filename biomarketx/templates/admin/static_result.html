@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="{% url 'backend:addservices' %}" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											
+										</div>
+						
+									
+									</header>
+
+
+{{lab_name}}
+
+
+
+{% endblock %}

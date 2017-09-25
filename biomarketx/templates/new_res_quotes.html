@@ -1,0 +1,173 @@
+{% extends "dash_index.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+
+<section role="main" class="content-body">
+<!-- <section class="panel"> 
+
+<lable><b>Filter By Quote Status:</b></lable>
+<select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select> -->
+{% include "messages.html" %}
+
+</section>
+	<section class="panel">
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Name</th>
+				                <th>Date</th>
+				                <th>LabName</th>
+				                <th>Price</th>			                
+				                <th>Action</th>
+				                <!-- <th>Accept Quote</th> -->
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+							<!-- <tr>04032485680
+				                <td>Tiger Nixon</td>
+				                <td>System Architect</td>
+				                <td>Edinburgh</td>
+				                <td>61</td>
+				                <td>2011/04/25</td>
+				                <td>$320,800</td>
+            				</tr> -->
+            				{% for quote in display_quotes %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>--</td>
+									<td>{{quote.price}}</td>
+									<td><a href="/desc/{{quote.id}}">View Details</a>&nbsp;
+									 <a title="Delete" data-target="#confirm-delete" data-toggle="modal" data-href="/edit/employment/delete/{{educ.id}}" href="#"><i class="glyphicon glyphicon-trash"></i></a>
+									<a href="#">Accept/Reject Quote</a></td>
+								</tr>
+							{%endfor%}
+            				<!-- <tr>
+				                <td>Tiger Nixon</td>
+				                <td>System Architect</td>
+				                <td>Edinburgh</td>
+				                <td>61</td>
+				                <td>2011/04/25</td>
+				                <td>$320,800</td>
+            				</tr>
+            				<tr>
+				                <td>Tiger Nixon</td>
+				                <td>System Architect</td>
+				                <td>Edinburgh</td>
+				                <td>61</td>
+				                <td>2011/04/25</td>
+				                <td>$320,800</td>
+            				</tr>
+            				<tr>
+				                <td>Michael Silva</td>
+				                <td>Marketing Designer</td>
+				                <td>London</td>
+				                <td>66</td>
+				                <td>2012/11/27</td>
+				                <td>$198,500</td>
+            				</tr> -->
+						</tbody>
+
+
+					</table>
+					<!-- <table class="quts-tble">
+						<thead>
+						<tr>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Client</th>
+							<th>View Details</th>
+							<th>Submit Quote</th>
+							</tr>
+						</thead>
+						{% for quote in display_quotes %}
+						<tr>
+
+							<td>{{quote.service_name}}</td>
+							<td>{{quote.created_at|date:"d/m/y"}}</td>
+							<td>{{quote.researcher_name}}</td>
+							<td><a href="/desc/{{quote.id}}">Details</a></td>
+							<td><a href="/lab-quote/{{quote.id}}">Submit</a></td>
+						</tr>
+						{%endfor%}
+					</table>
+					<div class="pagination col-md-12">
+					    <span class="step-links">
+					        {% if display_quotes.has_previous %}
+					            <a href="?page={{ display_quotes.previous_page_number }}" style="float:right">&nbsp&nbsp Previous</a>
+					        {% endif %}
+
+					        <span class="current">
+					            Page {{ display_quotes.number }} of {{ display_quotes.paginator.num_pages }}.
+					        </span>
+
+					        {% if display_quotes.has_next %}
+					            <a href="?page={{ display_quotes.next_page_number }}" style="float:right">Next</a>
+					        {% endif %}
+					    </span>
+					</div>	 -->					
+
+				
+				</div>
+			</div>
+	</section>
+
+<!-- 	<section>
+		
+			<div class="row qot-dtls">
+				<div class="col-md-6 qot-dtls-lft">
+				<div class="panel-body">
+					Title
+				</div>
+				</div>
+				<div class="col-md-6 qot-dtls-rgt">
+				<div class="panel-body">
+					
+					<div class="col-md-12">
+					<h5><b>Description</b></h5>
+					<p>{{quote_desription}}</p>
+
+				</div>
+					<div class="clr">&nbsp;</div>
+
+					<div class="col-md-12">
+						<h5><b>Message</b></h5>
+						<textarea placeholder="Message"></textarea>
+					</div>
+					<div class="clr">&nbsp;</div>
+					<div class="col-md-12">
+						<h5><b>Private Notes</b></h5>
+						<textarea placeholder="Private Notes"></textarea>
+					</div>
+
+				</div>
+				</div>
+			</div>
+
+
+
+	</section> -->
+
+					
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

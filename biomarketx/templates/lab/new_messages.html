@@ -1,0 +1,122 @@
+{% extends "lab/base-provider.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}	
+
+<section role="main" class="content-body">
+
+<section class="panel">
+<h3>Messages</h3>
+			<div class="panel-body">
+
+				<div class="col-md-12">
+				<table class="quts-tble">
+					<thead>
+					<tr>
+						<th>Quote Name</th>
+						<th>Subject</th>
+						<th>Date</th>
+						<!-- <th>View Details</th>
+						<th>Submit Quote</th> -->
+						</tr>
+					</thead>
+					<tr>
+						<td>#####</td>
+						<td><a href="{% url 'bioapp:compose' %}">Testing</a> </td>
+						<td>10/02/2016</td>
+
+						<!-- <td><a href="#" >Details</a></td>
+						<td><a href="#">Submit</a></td> -->
+					</tr>
+				</table>
+				
+				</div>
+			</div>
+	</section>
+
+
+	
+
+<!-- 	<section class="panel">
+			<div class="panel-body">
+				<div class="col-md-12">
+				<table class="quts-tble">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Client</th>
+						<th>View Details</th>
+						<th>Submit Quote</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>Joe</td>
+						<td>03/02/2016</td>
+						<td>Mike</td>
+						<td><a href="#" >Details</a></td>
+						<td><a href="#">Submit</a></td>
+					</tr>
+				</table>
+				
+				</div>
+			</div>
+	</section>
+
+
+	<section>
+		
+			<div class="row qot-dtls">
+				<div class="col-md-6 qot-dtls-lft">
+				<div class="panel-body">
+					Title
+				</div>
+				</div>
+				<div class="col-md-6 qot-dtls-rgt">
+				<div class="panel-body">
+					
+					<div class="col-md-12">
+					<h5><b>Description</b></h5>
+					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections...</p>
+					</div>
+					<div class="clr">&nbsp;</div>
+
+					<div class="col-md-12">
+						<h5><b>Message</b></h5>
+						<textarea placeholder="Message"></textarea>
+
+						<table class="quts-tble" style="border:1px solid">
+							<thead>
+							<tr>
+								<th>Sender</th>
+								<th>Message</th>
+								<th>Reply</th>
+								
+								</tr>
+							</thead>
+							<tr>
+								<td>Joe</td>						
+								<td><a href="#">message</a></td>
+								<td><a href="#">reply</a></td>
+							</tr>
+						</table>
+					</div>
+					<div class="clr">&nbsp;</div>
+					<div class="col-md-12">
+						<h5><b>Private Notes</b></h5>
+						<textarea placeholder="Private Notes"></textarea>
+					</div>
+
+				</div>
+				</div>
+			</div>
+	
+	</section>
+				 -->	
+					
+				
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+			<div role="main" class="main">
+				
+				
+				<div class="container">
+					<div class="row mt-xl">
+						<div class="counters-text-dark">
+{% if user.is_authenticated and user.is_superuser %}
+<div class="form-group" id="click_id">
+											<div class="col-md-8" >
+												<a href="{% url 'bioapp:admin_edit_static' %}"><input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Edit" style="margin-left: 1117px;width: 112px;margin-top: 21px"></a>
+											</div>
+										</div>
+<!-- 
+<div class="form-group">
+											<div class="col-md-8" >
+												<a href="{% url 'bioapp:admin_edit_staticdata_display' %}"><input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Display" style="margin-left: 1117px;width: 112px;margin-top: 21px"></a>
+											</div>
+										</div> -->
+<!-- <div class="form-group" >
+											<div class="col-md-8" >
+												<a href=" "><input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="static" style="margin-left: 1117px;width: 112px;margin-top: 21px"></a>
+											</div>
+										</div>
+
+ -->
+
+{% else %}
+{% endif %}
+
+
+
+
+
+<div id="static_about">
+
+{% if information %}
+
+	{{information|safe}}
+
+
+{% else %}
+
+
+			<h1>What we do</h1>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-6"><img src="{% static 'new_design/img/what-we-do.png' %}" class="thumbnail" /></div>
+						<div class="col-md-6"><p>BioMarketX provides scientific collaborative capabilities aimed at empowering and advancing drug discovery and development.  BioMarketX addresses the growing demand for new partnerships due to the critical mass of specialized expertise and resources, by harnessing the true interdisciplinary nature that can not only solve highly complex challenges of drug discovery and development, but also ensure that scientific breakthroughs are exploited to benefit patients and society.</p>
+						</div>
+						<div class="clr"></div>
+						<div class="col-md-12"><p>BioMarketX also facilitates identification of potential partnerships to initiate strategic relationships to drive clinical research forward.  In addition, through News, BioMarketX provides the latest discoveries and technologies to keep you well-informed.</p>
+						</div>
+
+
+
+
+<section class="section section-default">
+					<div class="container">
+						<div class="srvcs-blk">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div data-appear-animation-delay="600" data-appear-animation="fadeInUp" class="counter appear-animation fadeInUp appear-animation-visible" style="animation-delay: 600ms;">
+								<h1>Our Mission</h1>
+								<div class="clr">&nbsp;</div>	
+								<div class="col-md-7"><p>BioMarketX provides scientific collaborative capabilities aimed at empowering and advancing drug discovery and development.  BioMarketX addresses the growing demand for new partnerships due to the critical mass of specialized expertise and resources, by harnessing the true interdisciplinary nature that can not only solve highly complex challenges of drug discovery and development, but also ensure that scientific breakthroughs are exploited to benefit patients and society.</p>
+								</div>	
+								<div class="col-md-5"><img src="{% static 'new_design/img/our-mission.jpg' %}" class="thumbnail" style="margin-top:15px;" /></div>		
+								<div class="clr">&nbsp;</div>
+								<div class="col-md-12"><p>BioMarketX also facilitates identification of potential partnerships to initiate strategic relationships to drive clinical research forward.  In addition, through News, BioMarketX provides the latest discoveries and technologies to keep you well-informed.</p>	
+								</div>	
+								</div>						
+						</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+
+				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters-text-dark">
+						<h1>How we create value</h1>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-2"><img src="{% static 'new_design/img/solutions.jpg'%}" class="thumbnail" /></div>
+						<div class="col-md-10"><p>Our success depends on our ability to accelerate your drug discovery and development studies and stimulate creativity for medical research innovation in a secure and confidential way.</p>
+						<p>We put our extensive experience and expertise in drug discovery and development, and our broad system of lab partners to work for you to convey new drugs to clinical trials. We join forces with you to develop and manage the most relevant, cost-effective studies for your program.</p>
+						
+						</div>
+						<div class="clr"></div>
+						<div class="col-md-12"><p>We have partnered with the most trusted and qualified service providers, each with years of experience and specialized expertise for any drug discovery and development study requirement. Many of these service providers offer unique expertise that cannot be found anywhere else and specialized equipment, often helping you avoid costly mistakes. </p>
+						</div>
+
+					</div>
+					<div class="clr">&nbsp;</div>
+					<div class="col-md-7">
+						<h5>Allowing You to Focus on Your Core Expertise</h5>
+						<ul>
+						<div class="clr">&nbsp;</div>
+						<li>Elevates the burden of screening for the best qualified service providers</li>
+						<li>Expands capabilities by providing access to specialized labs some of them with unique expertise, and state of the art techniques and equipment</li>
+						<li>Provides insights of experts to guide and manage your project</li>
+						<li>Substantially saves time and workflow cost</li>
+						<li>Provides a private communication with the experts</li>
+						<li>Provides a fast, convenient, organized, and affordable way to carry out your drug discovery and development projects</li>
+						<li>Provides one highly secure, simple and easy to use portal to handle, and track all projects</li>
+						</ul>
+					</div>
+					<div class="col-md-4 pull-right">
+						<div class="row">
+							<h5>Bringing the Scientific Community Together</h5>
+						<ul>
+						<div class="clr">&nbsp;</div>
+							<li>Through News, have the latest discoveries at your fingertips</li>
+
+						</ul>
+						</div>
+						<div class="clr">&nbsp;</div>
+						<div class="row">
+							<h5>Collaborate with Confidence</h5>
+						<ul>
+						<div class="clr">&nbsp;</div>
+							<li>IP and MTA agreements are available to protect your research</li>
+							<li>Non-disclosure agreements guarantee your confidentiality</li>
+							<li>Experiment information and reliable results are always secure</li>
+
+						</ul>
+						</div>
+
+					</div>
+
+				</div>
+				</div>
+
+
+
+
+
+
+{% endif %}
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+				</div>
+								
+</div>
+				
+				
+				
+			</div>
+ 
+{% endblock %}		

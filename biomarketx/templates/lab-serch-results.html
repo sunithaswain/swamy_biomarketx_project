@@ -1,0 +1,58 @@
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+						{% if lab_results_dsply %}
+						
+						{% for search in lab_results_dsply %}
+						<div class="lb-rsl-blk">
+
+						<div class="col-md-12 lazy">
+						<div class="lb-src-rslt lab-prof-rslt">
+						<div class="row">
+						<div class="col-md-4">
+						<a class="rst-title" href="#">{{search.title}}</a>
+						<h6>{{search.desc}}</h6>
+						<!-- <h6>Roztoky, Czech Republic </h6> -->
+						</div>
+						<div class="col-md-6"><ul class="portfolio-details lb-cnt-tags">
+						<li>
+						<ul class="list list-inline list-icons chips">
+						<li>20% Reviews</li>
+						<li>30 of orders completed</li>
+						</ul>
+						</li>
+						</ul></div>
+						<div class="col-md-2">
+
+						<span class="img-thumbnail pull-right">
+						<img alt="" class="img-responsive" src="{% static 'img/comp-lb-img-1.jpg'%}">
+						</span>
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-md-12">
+						<!-- <p class="mt-xlg">Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality. Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality</p> -->
+						</div>
+						</div>
+
+						<div class="row">
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-8 pull-right">
+						<div class="col-md-6"><input type="checkbox" class="pull-left" /><span class="pull-left">&nbsp;&nbsp;Select For Multipul Quotes</span></div>
+						<div class="portfolio-info stor-frnt col-md-6">
+						<a href="#" class="btn btn-primary btn-icon pull-right rigtr-btn">Request Quote</a> 
+						</div>
+						</div>
+						</div>
+						</div>
+						<div class="clr">&nbsp;</div>
+						</div>
+						</div>
+						{% endfor %}
+						{%else%}
+
+						<h4 style="text-align:center">Sorry No Labs Are Available</h4>
+						{%endif%}
+{% endblock %}

@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load pagination_tags %}
+{% block content %}
+			<div role="main" class="main">
+
+				<section class="page-header">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<h1>Labs List</h1>
+								
+
+							
+							</div>
+						
+						</div>
+					</div>
+				</section>
+
+				<div class="container-fluid">
+					<div class="row">
+						<!-- filters start -->
+						<div class="col-md-3">
+							<div class="lst-fltrs">
+							<form>
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							  <div class="panel panel-default fltrs-blk" id="fltrs-one">
+							    <div class="panel-heading" role="tab" id="headingOne">
+							      <h4 class="panel-title">
+							        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							          Type of Result
+							        </a>
+							        <ul class="collapseOne hid-opion">
+										<li>
+											<input type="checkbox" />
+											<label><a href="#">Service</a></label>
+											<!-- <span class="pull-right">(1080)</span> -->
+										</li>
+										<li>
+											<input type="checkbox" />
+											<label>Labs</label>
+											<!-- <span class="pull-right">(323)</span> -->
+										</li>
+									</ul>
+							      </h4>
+							    </div>
+							    {{ labservices_list_1 }}
+							    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							      <div class="panel-body">
+									<ul>
+										
+										<li>
+											<input type="checkbox" value="all-services" />
+											<label>Services</label>
+											<!-- <span class="pull-right">(1080)</span> -->
+										</li>
+										<li>
+											<input type="checkbox" value="all-labs"/>
+											<label>Labs</label>
+											<!-- <span class="pull-right">(323)</span> -->
+										</li>
+									
+									</ul>
+							
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default fltrs-blk" id="fltrs-two">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Service
+        </a>
+			<ul class="collapseTwo hid-opion">
+			
+			{% for exp in expfilter %}
+			<li>
+				<input type="checkbox" value="{{exp}}" class="myCheck"/>
+				<label>{{exp}}</label>
+				<!-- <span class="pull-right">(38)</span> -->
+			</li>
+			{%endfor%}
+
+			</ul>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <ul>
+								
+			{% for exp in expfilter %}
+			<li>
+				<input type="checkbox" value="{{exp}}"/>
+				<label>{{exp}}</label>
+				<!-- <span class="pull-right">(38)</span> -->
+			</li>
+			{%endfor%}
+
+		</ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default fltrs-blk" id="fltrs-three">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Country
+        </a>
+        <ul class="collapseThree hid-opion">
+					{%for city in city_filter_list %}
+					<li>
+						<input type="checkbox" value="{{city}}" />
+						<label>{{city}}</label>
+						<!-- <span class="pull-right">(1135)</span> -->
+					</li>
+					{%endfor%}
+				</ul>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+				<ul>
+					{%for city in city_filter_list %}
+					<li>
+						<input type="checkbox" value="{{city}}"/>
+						<label>{{city}}</label>
+						<!-- <span class="pull-right">(1135)</span> -->
+					</li>
+					{%endfor%}
+	
+
+<!-- 					<li>
+						<input type="text" placeholder="Start typing to see more..." />
+					</li>
+ -->				</ul>
+      </div>
+    </div>
+  </div>
+   <div class="panel panel-default fltrs-blk" id="fltrs-four">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Lab
+        </a>
+			<ul class="collapseFour hid-opion">
+
+
+				{%for name in lab_name_filter %}
+				<li>
+					<a href="#"><input type="checkbox" value="{{name}}"/></a>
+					<label>{{name}}</label>
+					<!-- <span class="pull-right">(1418)</span> -->
+				</li>
+				{%endfor%}
+
+<!-- 				<li>
+					<input type="checkbox" />
+					<label>Unverified</label>
+					<span class="pull-right">(9)</span>
+				</li>
+				<li>
+					<input type="checkbox" />
+					<label>Verified</label>
+					<span class="pull-right">(1)</span>
+				</li>
+ -->
+
+
+			</ul>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+			<ul>
+				
+				{%for name in lab_name_filter %}
+				<li>
+					<input type="checkbox" value="{{name}}"/>
+					<label>{{name}}</label>
+											<!-- <span class="pull-right">(1418)</span> -->
+				</li>
+				{%endfor%}
+			</ul>
+      </div>
+    </div>
+  </div>
+</div>
+							</form>
+							</div>
+						</div>
+						<!-- filters end -->
+						<!-- result start -->
+						<div class="col-md-9 bb">
+						{% if not lab_final_list %}
+						<p>No Result Found</p>
+						{% endif %}
+				<!-- block one start -->
+{% for search in lab_final_list %}
+
+					<div class="lb-rsl-blk">
+						<!-- <div class="col-md-2">
+
+							<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
+								<div>
+									<span class="img-thumbnail">
+										<img alt="" class="img-responsive" src="img/comp-1.jpg">
+									</span>
+								</div>
+							</div>
+
+						</div> -->
+
+						<div class="col-md-12">
+						<div class="lb-src-rslt">
+
+							<div class="portfolio-info stor-frnt">
+								<div class="row">
+									<div class="col-md-12 center">
+										<a href="/store-font/{{search.2}}/" class="btn btn-primary btn-icon">Details</a> 
+									</div>
+								</div>
+							</div>
+
+							<a class="rst-title" href="#">{{search.0}}</a>
+							<p class="mt-xlg">{{search.1}}</p>
+
+
+							<ul class="portfolio-details lb-cnt-tags">
+								<li>
+									
+								</li>
+							</ul>
+
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- block one end -->
+
+
+
+					<!-- block five start -->
+				
+{% for lab  in labservices_list %}
+					<div class="lb-rsl-blk">
+						<!-- <div class="col-md-2">
+
+							<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
+								<div>
+									<span class="img-thumbnail">
+										<img alt="" class="img-responsive" src="img/comp-5.jpg">
+									</span>
+								</div>
+							</div>
+
+						</div> -->
+
+						<div class="col-md-12">
+						<div class="lb-src-rslt">
+
+							<div class="portfolio-info stor-frnt">
+								<div class="row">
+									<div class="col-md-12 center">
+										<a href="#" class="btn btn-primary btn-icon req-quto">Request Quote</a> 
+									</div>
+								</div>
+							</div>
+							<a class="rst-title" href="#">{{lab.0}}</a>
+							<p class="mt-xlg">{{lab.1}}</p>
+							<ul class="portfolio-details lb-cnt-tags">
+								<li>
+								</li>
+							</ul>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- block five end -->
+				</div>
+						<!-- result end -->
+					</div>
+				</div>
+
+{%endblock%}

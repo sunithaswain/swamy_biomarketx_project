@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://thesweetestdeal.com/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/accounts/login/</loc>
+  <lastmod>2015-09-03T06:24:18+00:00</lastmod>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/emailCapture/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/about_us/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/membership/buyers/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/membership/sellers/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/faq/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/contact_us/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/privacy/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/tos/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/accounts/register/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/accounts/password/reset/</loc>
+</url>
+<url>
+  <loc>http://thesweetestdeal.com/emailCapture/index.html</loc>
+</url>
+</urlset>

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+<div style="text-align:center;color:green;font-weight:bold">    
+{{success_message}}</div>
+			<div role="main" class="main">
+				<div class="slider-container rev_slider_wrapper" style="height: 420px;">
+					<div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"gridwidth": 800, "gridheight": 420}'>
+						<ul>
+							<li data-transition="fade">
+								
+								<img src="{% static 'img/slide-one.jpg' %}"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+
+								<div class="tp-caption"
+									data-x="center" data-hoffset="-150"
+									data-y="center" data-voffset="-95"
+									data-start="1000"
+									style="z-index: 5"
+									data-transform_in="x:[-300%];opacity:0;s:500;">
+									<div class="sld-txt"><h1>Become a BiomarketX Lab</h1>
+									<h6>Join our network of thousands of labs</h6>
+									<a href="{% url 'bioapp:signup_lab' %}" title="APPLY TODAY">APPLY TODAY</a>
+									</div>									
+									</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="container expert-labs">
+					<div class="row mt-xl mb-xl">
+						<div class="col-md-5">
+							<img class="img-responsive mt-xl appear-animation" src="{% static 'img/paid.jpg' %}" alt="" data-appear-animation="fadeInLeft">
+						</div>
+						<div class="col-md-7">
+							<h2 class="mt-xl">Get Paid  <strong>Promptly</strong></h2>
+							<p>Science Exchange handles all invoicing and payment processing. No additional setup required to work with new researchers. Guaranteed payment from Science Exchange within 30 days of order completion. </p>
+							
+						</div>
+					</div>
+				</div>
+
+				<section class="section section-default expert-labs">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-7">
+								<h2>Get Access to Exclusive  <strong>Projects</strong></h2>
+								<p>Get the exclusive opportunity to collaborate on the Reproducibility Initiative and other validation projects that are only available to Science Exchange Labs.</p>
+
+							</div>
+							<div class="col-md-5">
+								<img class="hidden-xs img-responsive appear-animation expert-labs-img" style="margin-top: -100px;" src="{% static 'img/exclusive_projects.jpg' %}" alt="" data-appear-animation="fadeInRight">
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container expert-labs">
+					<div class="row mt-xl mb-xl">
+						<div class="col-md-5">
+							<img class="img-responsive mt-xl appear-animation" src="{% static 'img/workflow.jpg' %}" alt="" data-appear-animation="fadeInLeft">
+						</div>
+						<div class="col-md-7">
+							<h2 class="mt-xl">Streamline Your  <strong>Workflow</strong></h2>
+							<p>Our comprehensive order management tools help you manage your communication with researchers and keep track of your orders, making your lab more efficient. </p>
+							
+						</div>
+					</div>
+				</div>
+
+				<section class="section section-default expert-labs">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-7">
+								<h2>Build Lab <strong>Presence</strong></h2>
+								<p>Strengthen your online presence and showcase your lab’s expertise to researchers around the world by listing services and capabilities on your Science Exchange Storefront.</p>
+
+							</div>
+							<div class="col-md-5">
+								<img class="hidden-xs img-responsive appear-animation expert-labs-img" style="margin-top: -100px;" src="{% static 'img/build_lab_presence.jpg' %}" alt="" data-appear-animation="fadeInRight">
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container expert-labs">
+					<div class="row mt-xl mb-xl">
+						<div class="col-md-5">
+							<img class="img-responsive mt-xl appear-animation" src="{% static 'img/customer_marketing.jpg' %}" alt="" data-appear-animation="fadeInLeft">
+						</div>
+						<div class="col-md-7">
+							<h2 class="mt-xl">Marketing &amp; <strong>Customer Support</strong></h2>
+							<p>Our Customer Experience team is available by phone or email to follow up on leads, quotes and orders. Our Marketing team can help increase your exposure to prospective customers. </p>
+							
+						</div>
+					</div>
+				</div>
+
+				<section class="section section-default expert-labs what-labs">
+					<div class="container">
+						<div class="row">
+							<h2>What Labs Are Saying</h2>
+							<div class="col-md-4">
+							<div class="tstmnls">
+								<div class="row">
+									<div class="col-md-3"><a href="#" title=""><img src="{% static 'img/prof-pic.jpg' %}" /></a></div>
+									<div class="col-md-9"><h5>Deborah Berry</h5><a href="#" title="">Histopathology and Tissued Shared Resource - Georgetown University</a></div>
+								</div>
+								<p>"As a provider, the storefront provides me with real time metrics about my facility and our work combined with the ability to easily and rapidly update my storefront.</p>
+								<p>I can quickly respond to trends and changes, positioning me to better serve researcher's needs."</p>
+							</div>
+							</div>
+							<div class="col-md-4">
+							<div class="tstmnls tstmnls-mid">
+								<div class="row">
+									<div class="col-md-3"><a href="#" title=""><img src="{% static 'img/prof-pic.jpg' %}" /></a></div>
+									<div class="col-md-9"><h5>Deborah Berry</h5><a href="#" title="">Histopathology and Tissued Shared Resource - Georgetown University</a></div>
+								</div>
+								<p>"As a provider, the storefront provides me with real time metrics about my facility and our work combined with the ability to easily and rapidly update my storefront.</p>
+								<p>I can quickly respond to trends and changes, positioning me to better serve researcher's needs."</p>
+							</div>
+							</div>
+														<div class="col-md-4">
+							<div class="tstmnls">
+								<div class="row">
+									<div class="col-md-3"><a href="#" title=""><img src="{% static 'img/prof-pic.jpg' %}" /></a></div>
+									<div class="col-md-9"><h5>Deborah Berry</h5><a href="#" title="">Histopathology and Tissued Shared Resource - Georgetown University</a></div>
+								</div>
+								<p>"As a provider, the storefront provides me with real time metrics about my facility and our work combined with the ability to easily and rapidly update my storefront.</p>
+								<p>I can quickly respond to trends and changes, positioning me to better serve researcher's needs."</p>
+							</div>
+							</div>
+
+
+						</div>
+					</div>
+				</section>
+
+
+				<div class="container expert-labs good-comp">
+					<div class="row mt-xl mb-xl">
+						<div class="col-md-12">
+							<h2>You'll be in good company </h2>
+							<a href="#" title=""><img src="{% static 'img/good_company.jpg' %}" title="" alt="" /></a>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="slider-container rev_slider_wrapper" style="height: 420px;">
+					<div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"gridwidth": 800, "gridheight": 420}'>
+						<ul>
+							<li data-transition="fade">
+								<img src="{% static 'img/list_your.jpg' %}"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+
+								<div class="tp-caption"
+									data-x="center" data-hoffset="-150"
+									data-y="center" data-voffset="-95"
+									data-start="1000"
+									style="z-index: 5"
+									data-transform_in="x:[-300%];opacity:0;s:500;">
+									<div class="sld-txt-btm"><h1>Apply to Become a BiomarketX Lab</h1>
+									<h6>Join our network of thousands of labs</h6>
+									<a href="{% url 'bioapp:signup_lab' %}" title="APPLY TODAY">APPLY TODAY</a>
+									</div>									
+									</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				
+			</div>
+ 
+{%endblock%}

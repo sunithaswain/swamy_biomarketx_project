@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+
+<div role="main" class="main">
+
+	<div class="clr">&nbsp;</div>
+
+					<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>Access experts and equipment from the world’s best academic labs and CROs. Easily collaborate and manage your project online. We simplify the payment process for you. Help is available at every step. Confidentiality and IP agreements are available.</h4>
+	<div class="clr">&nbsp;</div>										
+
+						</div>
+				</div>
+				
+
+					<div class="row">
+						<!-- filters start -->
+						<div class="col-md-4">
+							<div class="brws-lft">
+							<form>
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							{% for i in main_list %}
+								
+							  <div class="panel panel-default fltrs-blk" id="fltrs-one">
+							    <div class="panel-heading" role="tab" id="heading{{i.1}}">
+							      <h4 class="panel-title">
+							        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i.1}}" aria-expanded="true" aria-controls="collapse{{i.1}}"  >
+							        <span >{{i.0}}</span></a>
+							        
+							    </div>
+							    {% if ser_name == i.0 %}
+							    <div id="collapse{{i.1}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{i.1}}">
+							      <div class="panel-body">
+							      {% for j in i.2 %}
+							      	<ul>
+							      		<li>{{j}}</li>
+							      	</ul>
+							      {% endfor %}
+							      </div>
+							    </div>
+							     {% else %}
+							     <div id="collapse{{i.1}}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="heading{{i.1}}">
+							      <div class="panel-body">
+							      {% for j in i.2 %}
+							      	<ul>
+							      		<li>{{j}}</li>
+							      	</ul>
+							      {% endfor %}
+							      </div>
+							     </div>
+							     {% endif %}
+									
+									
+      							
+    							
+  </div>
+  {% endfor %}
+
+
+
+
+
+</div>
+
+</form>
+</div>
+</div>
+<!-- filters end -->
+
+
+						<!-- result start -->
+						{% for i in par_ser_list%}
+						<div class="col-md-8">
+						
+							<!-- service main title start -->
+								<div class="lb-inr-rslt srvs-min-titl">
+								<h1>{{i.0}}</h1>
+								<!-- <div class="bb"></div> -->
+								</div>
+						<!-- service main title end -->
+						<!-- service description start -->
+						
+							<div class="lb-inr-rslt srvs-min-titl">
+								<p>We're adding so many new services everyday it's hard to keep up. If you'd like to suggest a description for this service, please contact us.We're adding so many new services everyday it's hard to keep up. If you'd like to suggest a description for this service, please contact us.</p>
+								</div>
+						<!-- service description end -->
+							<h5 class="ctgry-rslt-titl"><b>80 Labs Available to Service this Category</b></h5>
+
+						
+							{% for j in i.1%}
+
+							<div>
+								
+						<!-- block one start -->
+
+								<a href="/services/sub/{{j.0}}/" class="lb-inr-rslt">
+									
+									<div class="col-md-6">
+										<h5><b>{{j.1}}</b></h5>
+									</div>
+									
+									<div class="col-md-3">
+										<h6><b>Starting:</b> $50.00<h6>
+									</div>
+									<div class="col-md-3">
+										<h6><b>Labs:</b> 10</h6>
+									</div>
+								</a>
+						<!-- block one end -->
+
+	
+							</div>
+							{% endfor %}
+							
+						<!-- result end -->					
+
+						</div>
+						{% endfor %}
+						</div>
+				<!-- row end -->
+				</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}	
+			
+
+
+			

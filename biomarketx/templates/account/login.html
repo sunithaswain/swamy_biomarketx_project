@@ -1,0 +1,64 @@
+{% extends "./base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;height:500px">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                        <h4 class="heading-primary text-uppercase mb-md">Login</h4>
+                        <form action="{% url 'account_login' %}" id="frmSignIn" method="post">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        <p>Your username and password didn't match, please try again.</p>
+                          {% endif %}             
+      <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Email</label>
+                                <input type="text" value="" class="form-control input-lg" name="login">
+                                {{form.login.errors}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <a class="pull-right" href="{% url 'account_reset_password' %}">(Lost Password?)</a>
+                                <label>Password</label>
+                                <input type="password" value="" class="form-control input-lg"
+                                name="password">
+                                {{form.password.errors}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <span class="remember-box checkbox">
+                                <label for="rememberme">
+                                  <input type="checkbox" id="rememberme" name="rememberme">Remember Me
+                                </label>
+                              </span>
+                            </div>
+                            <div class="col-md-6">
+                              <input type="submit" value="Login" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+
+{%endblock%}

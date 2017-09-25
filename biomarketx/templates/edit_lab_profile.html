@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="background-page">
+ <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;">
+                    <div class="featured-box featured-box-primary align-left mt-xlg" style="
+    					margin-left: 50px;">
+                      <div class="box-content">
+                        <h4 class="heading-primary text-uppercase mb-md">Lab-Services</h4>
+                        {{form}}
+                        <form action="/lab-services/" id="frmSignIn" method="post">
+                        {% csrf_token %}
+                          <!-- <p class="errorlist">{{error_message}}</p> -->
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Name of Organization</label>
+                                <input type="text"class="form-control input-lg" name="orgname" required>
+                                {{form.orgname.errors}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Please briefly describe your service capabilities</label>
+                                <textarea rows="4" cols="50" class="form-control input-lg">
+                                
+                              	</textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Caption</label>
+                                <input type="text" class="form-control input-lg"name="title"
+                                >
+                                {{form.title.errors}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <input type="submit" value="Add-Service" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+</div>
+
+
+{%endblock%}

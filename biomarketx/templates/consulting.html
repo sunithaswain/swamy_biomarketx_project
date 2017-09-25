@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+
+{% block content %}
+
+	
+
+			<div role="main" class="main">
+				
+				
+
+{% if user.is_authenticated and user.is_superuser %}
+<div class="form-group" id="consult_id">
+											<div class="col-md-8" >
+												<a href="{% url 'bioapp:consulting_static' %}"><input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Edit" style="margin-left: 1117px;width: 112px;margin-top: 21px"></a>
+											</div>
+										</div>
+{% else %}
+{% endif %}
+
+<div id="consult-static">
+{% if consult_result %}
+
+	
+	{{consult_result|safe}}
+
+{% else %}
+
+				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters-text-dark prof-srvcs">
+						<h1>Professional Services</h1>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-3"><img src="{% static 'img/prof-servs.png'%}" class="thumbnail" /></div>
+						<div class="col-md-9"><p>Unique compounds are discovered every day, that work through a variety of mechanisms, in models –and ultimately, patients- which present unique pathophysiological profiles. A compound’s efficacy or safety in a standard, healthy animal study could be mis-translated into disastrous clinical predictions.</p>
+						<p>Hence the need to customize every assay thoroughly, for discovery-phase investigations, or within the limits imposed by current guidelines for GLP- and cGMP-compliant studies, in order to maximize the predictivity of the studies. Ranges in concentrations, varied formulations, special cells and animal models, adapted routes of administration (or co-administration), stability, specific functional endpoints, are all elements of a successful study which deserve consideration, for each compound, all the time. The outcome can be turned from “Inconclusive” to a resounding conclusion when team members are willing to go the extra mile, think outside the standard protocol.</p>
+						<p>BioMarketX offers not only the highest expertise in drug discovery and development, but acts as an extension of your research and development laboratories.</p>
+						</div>
+						<div class="clr"></div>
+						<div class="col-md-12"><p>Our specialists at BioMarketX have decades of experience in drug discovery and development specifically in cancer, neuroscience and aging research, that allow them to act as your expert chief scientific officer to assist you with:</p></div>
+						<div class="col-md-12">
+						<ul>
+						<li>Planing, Designing, and Implementing drug discovery and development projects</li>
+						<li>Solving challenges and complicated problems related to new target/drug discovery and development</li>
+						<li>Timelines and cost estimates for drug discovery and development programs</li>
+						<li>The creation of critical, unbiased reviews of data and scientific programs</li>
+						<li>Regulatory Affairs Consulting</li>
+						</ul>
+						<a class="btn btn-primary btn-icon pull-right rigtr-btn" href="#">Apply</a>
+						</div>
+
+					</div>
+
+				</div>
+				</div>
+								
+
+				<section class="section section-default">
+					<div class="container">
+						<div class="srvcs-blk">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div data-appear-animation-delay="600" data-appear-animation="fadeInUp" class="counter appear-animation fadeInUp appear-animation-visible" style="animation-delay: 600ms;">
+								<h1>Grant and Contract Writing</h1>
+								<div class="clr">&nbsp;</div>	
+								<div class="col-md-9">
+								<p>BioMarketX provides support for grant writing and legal advice. </p>
+								<p>Our grant writer experts have successfully help scientists compete for grant funding from the National Institutes of Health (NIH) through Small Business Innovative Research (SBIR) award programs (Phase 1 and Phase 2 grants), as well as other targeted funding opportunities.</p>
+								<p>We understand that no matter how good the research idea or product, the preparation of the grant is the key to success. Thus, grant writers will work with you to develop the best documents necessary by understanding your preliminary data, developing testable hypotheses, and defining the appropriate research.</p>
+								</div>	
+								<div class="col-md-3"><img src="{% static 'img/grants.png'%}" class="thumbnail" style="margin-top:15px;" /></div>
+								</div>						
+						</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters-text-dark">
+						<h1>Intellectual Property Assessment </h1>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-3"><img src="{% static 'img/intellectual.jpg' %}" class="thumbnail" /></div>
+						<div class="col-md-9">
+						<h5>Due Diligence:</h5>
+						<p>Evaluate the Intellectual Property landscape around a small molecule asset to verify the suitability to prosecute a chemical series or in-license a compound class.</p>
+						<div class="clr">&nbsp;</div>
+						<h5>Patentability and Freedom to Operate:</h5>
+						<p>Together with a qualified Patent Agent, or Patent Attorney, Innovation Pathways can establish the freedom to operate and patentability of an invention, particularly as it relates to small molecule pharmaceutical development of a specific target.</p>
+						<div class="clr">&nbsp;</div>
+						<h5>Patent Writing:</h5>
+						<p>Once a lead series has been identified a provisional patent needs to be filed. Innovation Pathways has extensive experience writing patents for pharmaceutically active small molecules.</p>
+						
+						
+						</div>
+
+						
+
+					</div>
+						
+
+				</div>
+				</div>
+
+				<!-- <div class="parallax section section-text-light section-parallax section-center mt-xl mb-none find-lab" data-stellar-background-ratio="0.5" style="background-image: url(img/find-lab.png);">
+				<section class="call-to-action call-to-action-primary mb-none">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="call-to-action-content align-left pb-md mb-xl ml-none">
+									<h2 class="text-color-light mb-none mt-xl">Need Help <strong>Finding a Lab?</strong></h2>
+									<span>&nbsp;</span>
+									<p class="lead mb-xl">Let our Ph.D. and Masters-trained scientists find the best qualified CRO or research lab for your next project. We do the sourcing, so you can make the decision.</p>
+								</div>
+								<div class="call-to-action-btn">
+									<a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="btn btn-lg btn-primary btn-primary-scale-2 mr-md">Try Our Sourcing Service</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				</div> -->
+				
+			</div>
+ {% endif %}
+ 		</div>
+
+
+
+		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+			ga('create', 'UA-12345678-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+		 -->
+
+{% endblock %}

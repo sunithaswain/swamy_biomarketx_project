@@ -1,0 +1,157 @@
+{% extends "lab/base-provider.html" %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}	
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+
+</section>
+	<section class="panel">
+			<header class="panel-heading">
+				<div class="panel-actions">
+					<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+									<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+				</div>
+						
+				<h2 class="panel-title">Quotes</h2>
+			</header>
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+					<!-- <h4><b>Quotes </b></h4> -->
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Service</th>
+				                <th>Date</th>
+				                <th>Buyer</th>
+				                <th>Quote Status</th>
+				                <th>Action</th>
+				                
+
+            				</tr>							
+						</thead>
+						<tbody>
+							
+            				{% for quote in display_quotes %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>{{quote.researcher_name}}</td>
+									{%if quote.status_id == 1 %}
+									
+									<td>Pending</td>
+									{% elif quote.status_id == 2 %}
+									<td><b style="color:red">Declined</b></td>
+									{% elif quote.status_id == 3 %}
+									<td>Active-Pending</td>
+									{% elif quote.status_id == 4 %}
+									<td>Active</td>
+									{%else%}
+									<td>------</td>
+									{%endif%}
+									<!-- <td>Quote Status</td> -->
+									<td><a href="/provider/desc/{{quote.id}}">View Details</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									{%if quote.sent_by%}
+									<span style="color:green">Submitted</span></td>
+									{%else%}
+									<a href="/provider-quote/{{quote.id}}">Submit Quote</a></td>
+									
+									{%endif%}
+								</tr>
+							{%endfor%}
+            				
+						</tbody>
+
+
+					</table>
+							
+
+				
+				</div>
+			</div>
+	</section>
+
+
+	<section>
+		
+			<div class="row qot-dtls">
+				<div class="col-md-6 qot-dtls-lft" style="border: 1px solid;    position: relative;height: 547px;">
+					<div class="panel-body">
+
+						<p><b><h4>Title :</b>&nbsp;{{title}}</h4></p>
+						<br>
+						<p><b>ID :&nbsp;</b>{{quote_id}}</p>
+						<p><b>Status :&nbsp;</b>{{status_name}}</p>
+						<p><b>Requestor :&nbsp;</b>{{name}}</p>
+						<p><b>Source : &nbsp; </b> ---</p>
+						<p><b>Requested Date :&nbsp;</b>{{date}}</p>
+						<p><b>SID :&nbsp;</b>{{sid}}</p>
+						<p><b>Notes :&nbsp;</b> ---</p>
+
+						{%if download_file %}
+						<p><b>Documents :&nbsp;</b>
+						{{download_file}}&nbsp&nbsp<a href="/static/media/quotes/{{download_file}}"><i class="glyphicon glyphicon-download-alt"></i></a></p>
+						{%else%}
+						
+						<p><b>Documents:&nbsp;</b>No Documents Available</p>
+						{%endif%}
+					</div>
+
+				</div>
+				<div class="col-md-6 qot-dtls-rgt" style="border: 1px solid;">
+					<div class="panel-body">
+						
+						<div class="col-md-12">
+						<h5><b>Description</b></h5>
+						<p><textarea readonly>{{quote_desription}}</textarea></p>
+						</div>
+						<div class="clr">&nbsp;</div>
+
+						<div class="col-md-12" >
+							<h5><b>Messages</b></h5>
+														
+							<table class="table table-bordered table-striped mb-none">
+								<thead>
+									<tr>
+										<th>Sender</th>
+										<th>Subject</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for message in message_list|slice:":3" %}
+									<tr>
+										<td>{{message.sender}}</td>
+										<td>{{message.subject}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+										
+							</table>
+							<div class="clr">&nbsp;</div>
+							<a href="/provider/messages/inbox/" style="margin-left: 180px; font-weight: bolder; float: right;"> View More</a>								
+							<!-- <textarea placeholder="Message"></textarea> -->
+						</div>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-12" >
+							<h5><b>Private Notes</b></h5>
+							<textarea placeholder="Private Notes"></textarea>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	
+	</section>
+					
+					
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

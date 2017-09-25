@@ -1,0 +1,176 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}	
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+<!-- <lable><b>Filter By Quote Status:</b></lable>
+<select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select>
+ -->
+</section>
+	<section class="panel">
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Service</th>
+				                <th>Date</th>
+				                <th>Provider</th>
+				                <th>Price</th>
+				                <th>Status</th>
+				                <th>Action</th>
+				                <!-- <th>Accept Quote</th> -->
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+							
+            				{% for order in buyer_orders %}
+								<tr>
+
+									<td>{{order.service_name}}</td>
+									<td>{{order.created_at|date:"d/m/y"}}</td>
+									<td>{{order.researcher_name}}</td>
+									<td>{{order.price}}</td>
+									{%if order.status_id == 1 %}
+									
+									<td>Order Active</td>
+									{% elif order.status_id == 2 %}
+									<td>Order Accepted Pending</td>
+									{% elif order.status_id == 3 %}
+									<td>Order Submitted</td>
+									{% elif order.status_id == 4 %}
+									<td>Order Completed</b></td>
+
+									{% elif order.status_id == 5 %}
+									<td>Order Closed Pending</b></td>
+									{% elif order.status_id == 6 %}
+									<td>Order Closed</b></td>
+
+									{%else%}
+									<td>------</td>
+									{%endif%}
+										<td ><a href="/buyer/order/{{order.id}}">View Details</a>&nbsp;&nbsp;&nbsp;
+										{% if order.status_id == 1 %}
+										<a href="/buyer/workroom/{{order.id}}/">Work Room</a>&nbsp;&nbsp;&nbsp;
+										{%endif%}
+
+										</td>
+									
+										
+								</tr>
+							
+					{%endfor%}
+            				
+						</tbody>
+					</table>
+	
+				</div>
+			</div>
+	</section>
+	<section>
+		
+			<div class="row qot-dtls">
+				<div class="col-md-6 qot-dtls-lft">
+					<div class="panel-body">
+					{%for info in order_info%}
+						<p><b>Title :&nbsp;</b>{{info.service_name}}</p>
+						<p><b>ID :&nbsp;</b>{{info.id}}</p>
+						
+						{%if info.status_id == 1 %}
+						<p><b>Status :&nbsp;</b>Order Active</p>
+						{% elif info.status_id == 2 %}
+						<p><b>Status :&nbsp;</b>Order Accepted Pending</p>
+						{% elif info.status_id == 3 %}
+						<p><b>Status :&nbsp;</b>Order Submitted</p>
+						{% elif info.status_id == 4 %}
+						<p><b>Status :&nbsp;</b>Order Completed</b></p>
+						{% elif info.status_id == 5 %}
+						<p><b>Status :&nbsp;</b>Order Closed Pending</b></p>
+						{% elif info.status_id == 6 %}
+						<p><b>Status :&nbsp;</b>Order Closed</b></p>
+						{%else%}
+						<p><b>Status :&nbsp;</b>------</9>
+						{%endif%}
+						<p><b>Requestor :&nbsp;</b>{{info.researcher_name}}</p>
+						<p><b>Lab :&nbsp;</b>{{lab_name}}</p>
+						<p><b>Source : &nbsp; </b> ---</p>
+						<p><b>Requested Date :&nbsp;</b>{{info.created_at|date:"d/m/y"}}</p>
+						<p><b>Sid :&nbsp;</b>{{info.sid}}</p>
+						<p><b>Notes :&nbsp;</b> ---</p>
+						<p><b>Price :&nbsp;</b> {{info.price}}</p>
+						<p><b>Duration :&nbsp;</b>{{info.duration}}</p>
+<!-- 						{%if download_file %}
+						<p><b>Documents :&nbsp;</b>
+						{{download_file}}&nbsp&nbsp<a href="/static/media/quotes/{{download_file}}"><i class="glyphicon glyphicon-download-alt"></i></a></p>
+						{%else%}
+						
+						<p><b>Documents:&nbsp;</b>No Documents Available</p>
+						{%endif%}
+ -->					{%endfor%}
+ 						{%if download_file %}
+
+ 						{% if lenght_download > 1 %}
+ 						<p><b>Documents:&nbsp;</b></p>
+ 						 <select class="form-control" id="file_download">
+ 							<option value="select">Select File</option>
+ 							{%for dwnld in download_file %}
+ 							<option value="/static/media/quotes/{{dwnld}}/">{{dwnld}}</option>
+ 							{%endfor%}
+ 						</select>
+ 						
+ 						{%else%}
+						<p><b>Documents :&nbsp;</b>
+						{%for dwnld in download_file %}
+						{{dwnld}}&nbsp&nbsp<a href="/static/media/quotes/{{dwnld}}"><i class="glyphicon glyphicon-download-alt"></i></a></p>
+						{%endfor%}
+ 						{%endif%}
+ 						{%else%}
+ 						<p><b>Documents:&nbsp;</b>No Documents Available</p>
+ 						{%endif%}
+ 						</div>
+
+
+				</div>
+				<div class="col-md-6 qot-dtls-rgt">
+					<div class="panel-body">
+						
+						<div class="col-md-12">
+						<h5><b>Description</b></h5>
+						<p>{{quote_desription}}</p>
+						</div>
+						<div class="clr">&nbsp;</div>
+
+						<div class="col-md-12">
+							<h5><b>Message</b></h5>
+							<textarea placeholder="Message"></textarea>
+						</div>
+						<div class="clr">&nbsp;</div>
+						<div class="col-md-12">
+							<h5><b>Private Notes</b></h5>
+							<textarea placeholder="Private Notes"></textarea>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	
+	</section>
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

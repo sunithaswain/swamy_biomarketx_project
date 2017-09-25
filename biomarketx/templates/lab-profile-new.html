@@ -1,0 +1,742 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load pagination_tags %}
+{% block content %}
+
+<div class="sub-hdr">
+			<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Activities</a></li>
+        <li class="active"><a href="#">Storefront</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Marketing</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+    
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+	{% include "messages.html" %}
+
+			<div role="main" class="main">
+
+				<div class="container lb-dtls">
+
+					<div class="row">
+						<!-- filters start -->
+						<div class="col-md-3 lab-border">
+							<div class="lab-profl">
+
+							
+								
+								<div class="fltrs-blk">
+									{% if pic %}
+									<div class="lb-pic" id="lab_logo"><img src="../static/media/{{pic}}" title="" alt="image" /></div>									
+									{%else%}
+									<div class="lb-pic" id="lab_logo"><img src="../static/img/research-1.jpg" title="" alt="image" /></div>	
+									{%endif%}
+								
+
+								
+									<br>
+
+									<div id="lab_details">
+										<ul>
+											<li style="color:#1d2127;"><b>Lab Name : </b>{{lab_title}}<br></li>
+											<li style="color:#1d2127;"><b>City : </b>{{city}}<br></li>
+											<li style="color:#1d2127;"><b>State : </b>{{state}}<br></li>
+											<li style="color:#1d2127;"><b>Country : </b>{{country}}</li>
+										</ul>
+									</div>
+									<br>
+									<div class="col-md-12">
+										<a href="#" class="btn btn-primary btn-icon edit-lab" "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Edit Lab</a> 
+									</div>	
+								</div>	
+								
+
+
+							<div class="fltrs-blk">
+									<h4 class=""><strong>Lab Members : </strong></h4>
+						
+									<div class="clr"></div>
+									<div class="row">
+										<div class="col-md-3"><img src="{% static 'img/member-1.png' %}" /></div>
+										<div class="col-md-9">
+											<a href="#" title="">Roman Shutov</a>
+											<br />
+											<span>Grant Manager</span>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+								
+								<div class="clr"></div>
+
+								<div class="fltrs-blk">
+									<h4 class=""><strong>Public Files : </strong></h4>
+									
+									<h4 class="">File One</h4>
+									<h4 class="">File Two </h4>
+									<h4 class="">File Three</h4>
+									
+								</div>
+
+								<div class="fltrs-blk">
+									<h4 class="pull-left"><strong>Lab Photos : </strong></h4>
+									<!-- <a href="#" class="pull-right lb-phots">Manage</a> -->
+								
+
+									<!-- images -->
+									<section class="panel">
+										<header class="panel-heading">
+											<div class="panel-actions">
+												<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+												<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+											</div>
+
+											<!-- <h2 class="panel-title">Zoom Gallery</h2>
+											<p class="panel-subtitle">Zoom effect works only with images.</p> -->
+										</header>
+										<div class="panel-body">
+											<div class="zoom-gallery">
+												<a class="pull-left mb-xs mr-xs" href="{% static 'img/comp-lb-img-1.jpg' %}" title="Project 1"><img class="img-responsive" src="{% static 'img/comp-lb-img-1.jpg' %}" width="275"></a>
+												<a class="pull-left mb-xs mr-xs" href="{% static 'img/comp-lb-img-1.jpg' %}" title="Project 2"></a>
+												<a class="pull-left mb-xs mr-xs" href="{% static 'img/comp-lb-img-1.jpg' %}" title="Project 1"></a>
+											</div>
+										</div>
+									</section>
+
+									<!-- images -->
+
+
+								</div>
+
+								
+								
+								
+								
+							</div>
+						<!-- filters end -->
+						</div>
+						
+						
+						<!-- result start -->
+
+
+						<div class="col-md-9" >
+				
+							<div class="lb-dtl-blk">
+								<div class="row">
+									
+									<div class="col-md-12" style="text-align:center;">
+										<h1 class="lb-title">{{lab_name|upper}}</h1>
+										
+									</div>
+								</div>	
+								<div class="clr">&nbsp;</div>
+								<div class="row">
+								<div class="col-md-12 lb-rsl-blk  lb-tab-rslt" style="background-color:#ECEDF0;width: 96%;margin-left: 15px;">
+									{% if lab_description %} 
+									<p>{{ lab_description }}</p>
+									{%else%}
+
+									
+
+									<p>Parseq Lab was founded in 2012 for the development of unique molecular genetics applications for personalized medicine quality improvement. The developed products are intended to help translate target sequencing and genome sequencing data into clear and useful information for doctors and medical geneticists.</p>
+									<p>The proliferation of individual genomic data has produced an increase demand for the development of new methods of genetic analysis and solutions to simplify the adaptation of the obtained information for healthcare. </p>
+									<p>Parseq Lab specializes in diagnostic assays for the analysis of hereditary diseases in humans, and comprehensive databases of the most significant genetic variants (mutations and polymorphisms resulting in severe malfunctions formation). The company also develops bioinformatic tools and software for sequencing data interpretation and further application for diagnostic purposes. </p>
+									{%endif%}
+								</div>
+
+								</div>	
+								<!-- lab detail block end -->			
+							</div>
+							
+
+							<!-- lab detail tabs start -->
+							<div class="lb-dtls-tbs">
+								<div>
+
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active">
+									<a href="#services" aria-controls="Services" role="tab" data-toggle="tab">Services</a></li>
+									<li role="presentation"><a href="#reviews" aria-controls="Reviews" role="tab" data-toggle="tab">Reviews</a></li>
+									<li role="presentation"><a href="#endorse" aria-controls="Endorse" role="tab" data-toggle="tab">Endorsements</a></li>
+									<!-- <a href="#" class="btn btn-primary btn-icon req-quto pull-right">ADD SERVICES</a> -->
+									<a href="#" class="btn btn-primary btn-icon req-quto pull-right
+									" "javascript:void(0)" onclick = "document.getElementById('add-service').style.display='block';document.getElementById('add-service-fade').style.display='block'">Add Services</a>
+								</ul>
+
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<!-- Services  Start-->
+									<div role="tabpanel" class="tab-pane active" id="services">
+
+									{% if not lab_service_info %}
+
+									<div role="tabpanel" class="tab-pane" id="services">
+										<div class="col-md-12 lb-rsl-blk  lb-tab-rslt">
+											<p style="text-align:center;">No Results Found ........</p>
+											<br>
+										</div>
+									
+									</div>
+
+									
+
+									{% endif %}
+									
+										<!-- block one start -->
+										{% for service in lab_service_info %}
+										<div class="lb-rsl-blk  lb-tab-rslt">
+										
+											<div class="col-md-12">
+												
+												<div class="lb-src-rslt">
+													
+													<div class="portfolio-info stor-frnt">
+														<div class="row">
+															<div class="col-md-12 center">
+																<h4 class="per-hor-pris">$ {{service.price}} USD per Hour</h4>
+															</div>
+														</div>
+													</div>
+													
+													<h4 class="rst-title">{{service.title}}</h4>
+													
+													<ul class="lb-tb-dtl">
+														<li>{{service.desc}}</li>				
+														<li>					URL : <br>
+														<a href="#" title="">{{service.url}}</a>
+														</li>
+													</ul>
+													
+													<div class="row">
+														<div class="col-md-12 center">
+														<a class="btn btn-primary btn-icon req-quto pull-right" 
+														href="#"
+														"javascript:void(0)" onclick = "document.getElementById('{{service.id}}').style.display='block';document.getElementById('edit-service-fade').style.display='block'">Edit Services</a> 
+														</div>
+													</div>
+													
+													<div class="clr">&nbsp;</div>
+												</div>
+												<!-- {{service.id}} -->
+
+											</div>
+										</div>
+
+<!-- Edit service-->
+
+<div class="white_content_labservice edit-service-close" style="margin-left:none;width:700px;" id="{{service.id}}">
+			<div>
+				<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('{{service.id}}').style.display='none';document.getElementById('edit-service-fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+
+			</div>
+				<div class="" style="width:600px"	>
+	                <div class="" style="
+	    					margin-left: 50px;">
+				<div class="box-content">
+ 					<div>
+                        <form action="/edit_lab_services/"  method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                        	<h4 style="color:#0077B3;text-align:center;">EDIT LAB SERVICE</h4>
+                          <input type="hidden"class="form-control input-lg" name="service_id" value="{{service.id}}" required>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Name</label>
+                                <input type="text"class="form-control input-lg" name="service_title" value="{{service.title}}" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Description</label>
+                               
+                              	<textarea rows ="4"cols="64" name="service_desc" data-plugin-markdown-editor required>{{service.desc}}</textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                        
+
+                          <div class="row">
+		                            
+		                              <!-- <div class="col-md-12"> -->
+		                              	<div class="col-md-3">
+		                              		<div class="form-group">
+		                              		<label>Price</label>
+		                                	<input type="number" class="form-control input-lg" name="service_price" value="{{service.price}}"  required>
+		                                	{{form.service_price.errors}}
+		                                	</div>
+		                              	</div>
+		                              	<div class="col-md-5">
+		                              		<div class="form-group">
+		                              		<label>Currency</label>
+		                              		<select class="form-control input-lg" name="service_currency">    
+		                              			<option>{{service.currency}}</option>  	
+			                                	<option>US-dollor</option>
+			                                	<option>UK-Pound</option>
+			                                	<option>UAE-Dirham</option>
+		                                	</select>
+		                                	</div>
+		                              	</div>
+		                              	<div class="col-md-4">
+		                              		<div class="form-group">
+		                              		<label> Pricing Unit </label>
+		                              		<select class="form-control input-lg" name="service_unit" value="{{service_unit}}"> 
+		                              			<option>{{service.unit}}</option>  	
+			                                	<option>Unit-I</option>
+			                                	<option>Unit-II</option>
+			                                	<option>Unit-III</option>
+		                                	</select>
+		                                	</div>
+		                               	</div> 
+
+		                                
+
+		                              
+		                            <!-- </div> -->
+		                          </div>
+
+
+
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>URL</label>
+                                <input type="text" class="form-control input-lg"name="service_url" value="{{service.url}}" required>
+                              </div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                              <input type="submit" value=" Edit Service " class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+                        
+</div>
+
+<!--Edit service -->
+
+										{%endfor%}
+										<!-- </div> -->
+										<!--Pagination start -->
+										<div class="pagination">
+										    <span class="step-links">
+										        
+										        {% if contacts %}
+										        <span class="current">
+										            <b>Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.</b>
+										        </span>
+										        {% endif %}
+
+										        {% if contacts.has_previous %}
+										            <a href="?page={{ contacts.previous_page_number }}" style="margin-left: 660px;"><b>Previous</b></a>
+										        {% endif %}
+										        &nbsp &nbsp
+										        {% if contacts.has_next %}
+										            <a href="?page={{ contacts.next_page_number }}" id="next " style="float:right;"><b>Next</b></a>
+										        {% endif %}
+										        
+										    </span>
+										</div>
+
+										<!--Pagination end -->
+										<!-- block one end -->							
+									<!-- Services  end-->	
+									</div>
+									<!-- Reviews start -->
+									<div role="tabpanel" class="tab-pane" id="reviews">
+										<div class="col-md-12 lb-rsl-blk  lb-tab-rslt">
+											<p style="text-align:center;">Awesome data will coming soon ...</p>
+											<br>
+										</div>
+									<!-- Reviews end-->
+									</div>
+								
+									<!-- Endorsements start -->
+									<div role="tabpanel" class="tab-pane" id="endorse"> 
+										<div class="col-md-12 lb-rsl-blk  lb-tab-rslt">
+											
+											<!-- <div class="portfolio-info stor-frnt"> -->
+												<div class="row">
+													<div class="col-md-12 pull-left">
+														<p style="text-align:center;">Coming soon .....</p>
+													</div>
+													
+													<br>
+												</div>
+											<!-- </div> -->
+										</div> 
+									<!-- Endrosements end -->
+									</div>
+								<!-- Tab panes  end-->
+								</div>
+								
+
+								 
+								</div>
+
+							<!-- lab detail tabs end -->
+							</div>
+							
+						<!-- result end -->
+
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+
+<!-- edit service fade -->
+
+<!-- <div id="edit-service-fade" class="black_overlay"></div> -->
+
+<div class="white_content" id="edit-service" >
+	<div>
+		<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('edit-service').style.display='none';document.getElementById('edit-service-fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+
+	</div>
+ <div class="container ">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px"	>
+                    <div class="" style="
+    					margin-left: 50px;">
+                      <div class="box-content">
+                        
+                        <form action="/lab-services/"  method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                         
+                          <!-- <p class="errorlist">{{error_message}}</p> -->
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Name</label>
+                                <input type="text"class="form-control input-lg" name="service_title" value="{{service.title}}" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Description</label>
+                                <textarea rows="4" cols="50" class="form-control input-lg"name="service_desc" >
+                                
+                              	</textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Price</label>
+                                <input type="text" class="form-control input-lg"name="service_price" required>
+                                {{form.service_price.errors}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>URL</label>
+                                <input type="text" class="form-control input-lg"name="service_url">
+                              </div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                              <input type="submit" value="Add Lab" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          </div>
+                        </form>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+</div>
+<div id="edit-service-fade" class="black_overlay"></div>
+
+<!-- edit service fade -->
+
+
+<!-- fade start -->
+
+<div class="white_content" id="light" style="overflow: hidden;">
+<div>
+	<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+</div>
+ <div class="container ">
+         <!--  <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row"> -->
+                  <div class="" style="width:600px"	>
+                    <div  style="margin-left: 50px;">
+                      <div class="box-content">
+                        
+                        <form action="/edit-lab-profile/" id="frmSignIn" method="post"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                          <h4 class="" style="color:#0077B3;text-align:center;">EDIT LAB</h4>
+                         <!--  <p class="errorlist">{{error_message}}</p> -->
+
+                         <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Lab Name</label>
+                                <input type="text" class="form-control input-lg"name="title"
+                                value="{{lab_title}}" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Name of Organization</label>
+                                <input type="text"class="form-control input-lg" name="orgname" value="{{lab_name}}" required >
+                               
+                              </div>
+                            </div>
+                          </div>
+	                        <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Description</label>
+                                <!-- <textarea rows="5" cols="50" class="form-control input-lg"name="desc" >
+                                {{lab_description}}
+                              	</textarea> -->
+                              	<!-- <textarea class="form-control" rows="5" data-plugin-maxlength maxlength="140" name="desc">{{lab_description}}</textarea
+                              	> -->
+                              	<textarea name="desc" data-plugin-markdown-editor rows="5" cols="64"  required>{{lab_description}}</textarea>
+                              </div>
+                            </div>
+                          </div>
+                          
+
+                          
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>Logo</label>
+                                <div class="lb-pic" id="lab_logo"><img src="../static/media/{{pic}}" title="" alt="image" style="width:50%" /></div>	
+                                <input type="file" name="model_pic">
+                              </div>
+                            </div>
+                          </div>                         
+
+                         <!-- New One --> 
+                          <div id="size">Country </div>
+					        <select onchange="print_state('state',this.selectedIndex);" id="country" name ="country" class="form-control input-lg"><!-- <option value="{{country}}">{{country}}</option> --></select>
+							<br />
+							<div id="size">State </div>
+					        <select name ="state" id ="state" class="form-control input-lg">
+					        	<!-- <option value="{{state}}">{{state}}</option> -->
+					        	<option value="">Select State</option>
+					        </select>
+							<script language="javascript">print_country("country");</script>
+
+
+						<!-- New One -->
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label>City</label>
+                                <input type="text" class="form-control input-lg" name="city"
+                                placeholder="city" required>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                          </div>
+                          <div class="row">
+                            
+                            <div class="col-md-12">
+                              <input type="submit" value=" Edit " class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                          	</div>
+                          </div>
+                        </form>
+                        </div>
+                      
+                        </div>
+                        </div>
+                       <!--  </div>
+                        </div>
+                        </div>
+                        </div> -->
+</div>
+
+<!-- fade end -->
+</div>
+                        
+<div id="fade" class="black_overlay"></div>
+<!-- add service fade start -->  
+<div class="white_content" id="add-service" style="width:700px;overflow:hidden;">
+
+	<div>
+		<a class="light-box-close" href = "javascript:void(0)" onclick = "document.getElementById('add-service').style.display='none';document.getElementById('add-service-fade').style.display='none'"><i class="glyphicon glyphicon-remove"></i></a>
+
+	</div>
+	<!--container start -->
+	<div class="container ">
+	          <!-- <div class="row"> -->
+	            <!-- <div class="col-md-12">
+	              <div class="featured-boxes"> -->
+	                <!-- <div class="row"> -->
+	                  <div class="" style="width:600px"	>
+	                    <div class="" style="
+	    					margin-left: 50px;">
+	                      	<div class="box-content">
+	                        
+		                        <form action="/lab-services/"  method="post"
+		                        enctype="multipart/form-data">
+		                        {% csrf_token %}
+		                        <h4 style="color:#0077B3;text-align:center;">ADD LAB SERVICE</h4>
+		                          	<!-- <p class="errorlist">{{error_message}}</p> -->
+			                          	<div class="row">
+				                            <div class="form-group">
+				                              <div class="col-md-12">
+				                                <label>Name</label>
+				                                <input type="text"class="form-control input-lg" name="service_title" required>
+				                                
+				                            </div>
+			                            </div>
+		                          		</div>
+			                        <div class="row">
+			                            <div class="form-group">
+			                       	       <div class="col-md-12">
+			                                <label>Description</label>
+			                                <!-- <textarea rows="4" cols="50" class="form-control input-lg"name="service_desc" > -->
+			                                <textarea name="service_desc" data-plugin-markdown-editor rows="5" cols="64" ></textarea>
+			                                
+			                              	</textarea>
+			                              </div>
+			                            </div>
+		                          </div>
+
+		                          <div class="row">
+		                            
+		                              <!-- <div class="col-md-12"> -->
+		                              	<div class="col-md-3">
+		                              		<div class="form-group">
+		                              		<label>Price</label>
+		                                	<input type="number" class="form-control input-lg" name="service_price" required>
+		                                	{{form.service_price.errors}}
+		                                	</div>
+		                              	</div>
+		                              	<div class="col-md-5">
+		                              		<div class="form-group">
+		                              		<label>Currency</label>
+		                              		<select class="form-control input-lg" name="service_currency">    
+		                              			<option>Select Currency</option>  	
+			                                	<option>US-dollor</option>
+			                                	<option>UK-Pound</option>
+			                                	<option>UAE-Dirham</option>
+		                                	</select>
+		                                	</div>
+		                              	</div>
+		                              	<div class="col-md-4">
+		                              		<div class="form-group">
+		                              		<label> Pricing Unit </label>
+		                              		<select class="form-control input-lg" name="service_unit"> 
+		                              			<option>Select Unit</option>  	
+			                                	<option>Unit-I</option>
+			                                	<option>Unit-II</option>
+			                                	<option>Unit-III</option>
+		                                	</select>
+		                                	</div>
+		                               	</div> 
+
+		                                
+
+		                              
+		                            <!-- </div> -->
+		                          </div>
+
+		                          	<div class="row">
+			                            <div class="form-group">
+			                              <div class="col-md-12">
+			                                <label>URL</label>
+			                                <input type="text" class="form-control input-lg" name="service_url" required>
+			                              </div>
+			                            </div>
+		                          	</div>
+		                           	<div class="col-md-12">
+		                              	<input type="submit" value=" Add Service " class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+		                          	</div>
+		                        </form>
+	                        </div>
+	                        
+	                        </div>
+	                        </div>
+	                  <!--       </div>
+	                        </div> -->
+	          <!--               </div> -->
+	                       <!--  </div> -->
+	                    <!--container end -->
+	</div>
+<!-- add service fade end -->        
+</div>
+<!-- </div> -->
+<div id="add-service-fade" class="black_overlay"></div>
+
+
+
+
+
+
+{%endblock%}
+

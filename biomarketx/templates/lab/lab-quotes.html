@@ -1,0 +1,95 @@
+{% extends "lab/base-provider.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% block content %}	
+
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+<!-- <lable><b>Filter By Quote Status:</b></lable> -->
+<!-- <select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select> -->
+{% include "messages.html" %}
+
+</section>
+	<section class="panel">
+			<header class="panel-heading">
+				<div class="panel-actions">
+					<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+									<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+				</div>
+						
+				<h2 class="panel-title">Quotes</h2>
+			</header>
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+					<!-- <h4><b>Quotes </b></h4> -->
+
+					<table id="example" class="display " cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Service</th>
+				                <th>Date</th>
+				                <th>Buyer</th>
+				                <th>Quote Status</th>
+				                <th>Action</th>
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+
+            				{% for quote in display_quotes %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>{{quote.researcher_name}}</td>
+									{%if quote.status_id == 1 %}
+									
+									<td>Pending</td>
+									{% elif quote.status_id == 2 %}
+									<td><b style="color:red">Declined</b></td>
+									{% elif quote.status_id == 3 %}
+									<td>Active-Pending</td>
+									{% elif quote.status_id == 4 %}
+									<td>Active</td>
+									{%else%}
+									<td>------</td>
+									{%endif%}
+									<!-- <td>Quote status</td> -->
+									<td><a href="/provider/desc/{{quote.id}}">View Details</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									{%if quote.sent_by%}
+									<span style="color:green">Submitted</span></td>
+									{%else%}
+									<a href="/provider-quote/{{quote.id}}">Submit Quote</a></td>
+									
+									{%endif%}
+								</tr>
+							{%endfor%}
+
+						</tbody>
+
+
+					</table>
+					
+				
+				</div>
+			</div>
+	</section>
+
+		
+					<!-- end: page -->
+				</section>
+				
+
+{% endblock %}

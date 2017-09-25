@@ -1,0 +1,38 @@
+<table class="quts-tble">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Client</th>
+						<th>View Details</th>
+						<th>Submit Quote</th>
+						</tr>
+					</thead>
+					{% for quote in quote_filters %}
+					<tr>
+
+						<td>{{quote.service_name}}</td>
+						<td>{{quote.created_at|date:"d/m/y"}}</td>
+						<td>{{quote.researcher_name}}</td>
+						<td><a href="/desc/{{quote.id}}">Details</a></td>
+						<td><a href="/provider-quote/{{quote.id}}">Submit</a></td>
+					</tr>
+					{%endfor%}
+				</table>
+
+
+<div class="pagination col-md-12">
+    <span class="step-links">
+        {% if quote_filters.has_previous %}
+            <a href="?page={{ quote_filters.previous_page_number }}" style="float:right"> &nbsp&nbspPrevious</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ quote_filters.number }} of {{ quote_filters.paginator.num_pages }}.
+        </span>
+
+        {% if quote_filters.has_next %}
+            <a href="?page={{ quote_filters.next_page_number }}" style="float:right">Next</a>
+        {% endif %}
+    </span>
+</div>						

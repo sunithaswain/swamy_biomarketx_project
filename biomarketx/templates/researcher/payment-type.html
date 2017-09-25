@@ -1,0 +1,45 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load pagination_tags %}
+{% block content %}
+
+<section class="body">
+	<div class="">
+		<section role="main" class="content-body">
+		<p><a href="/quote-accept/{{qut_id}}/"><b>Back to Quote Order</b></a></p>
+			<section class="panel">
+				<div class="panel-body">
+
+					<form action="" method="POST" id="payment-form"> 
+						<span class="payment-errors" style="color:red"></span>
+
+						<div class="row">
+							<div class="form-group">
+						  		<div class="col-md-12">
+
+						    		<label class="form-lable">Select Type Of Payment</label>
+						    		<select class="form-control input-lg" id="payment_type">
+						    			<option value="select">Select</option>
+						    			<option value="/buyer/quote-accept/wire-transfer/{{qut_id}}">Wire Transfer</option>
+						    			<option value="/buyer/quote-accept/credit-card/{{qut_id}}">Credit Card</option>
+						    		</select>
+
+							  </div>
+							</div>
+						</div>
+					</form>
+					</div>
+				</section>
+			</div>
+		</section>
+
+
+	</section>
+	</div>
+
+
+
+{%endblock%}

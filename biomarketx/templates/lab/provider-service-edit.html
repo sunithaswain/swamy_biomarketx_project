@@ -1,0 +1,166 @@
+{% extends "lab/base-provider.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+<section role="main" class="content-body" >
+
+	<div class="row">
+		<div class="col-lg-12">
+			<section class="panel">
+				<header class="panel-heading">
+					<div class="panel-actions">
+						<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+								<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+					</div>
+						
+					<h2 class="panel-title">Provider Service Info</h2>
+				</header>
+
+
+				<div class="panel-body">
+					<form action = "" class="form-horizontal form-bordered" method="post">
+							{% csrf_token %}
+										
+						<p class="errorlist">{{error_message}}</p>
+						<div style="width:700px;margin:0px auto">						
+						<input type="hidden"class="form-control input-lg" name="service_id" value="{{service_id}}" >
+							
+	                        <div class="row">
+								<div class="form-group">
+									<div class="col-md-10 label-height">
+									    <label class="form-lable">Name</label>
+									    {% if form.service_title.errors %}
+										    <input type="text"class="form-control input-lg" name="service_title" value="" >
+										    {{form.service_title.errors}}
+									    {% else %}
+									    	<input type="text"class="form-control input-lg" name="service_title" value="{{service_title}}" >
+									    {% endif %}								                                
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-10 label-height">
+									    <label class="form-lable">Description</label>
+									    {% if form.service_desc.errors %}
+									    	<textarea rows ="4"cols="59" name="service_desc" class="form-control input-lg" data-plugin-markdown-editor ></textarea>
+									    	{{form.service_desc.errors}}  
+									    {% else %}
+									    	<textarea rows ="4"cols="59" name="service_desc" class="form-control input-lg" data-plugin-markdown-editor >{{service_desc}}</textarea>
+									    {% endif %}	
+									                          
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-3 label-height">
+									    <label class="form-lable">Price</label>
+									    {% if form.service_price.errors %}
+									    	<input type="number" class="form-control input-lg" name="service_price" value=""  >
+									    	{{form.service_price.errors}}
+									    {% else %}
+									    	<input type="number" class="form-control input-lg" name="service_price" value="{{service_price}}"  >
+									    {% endif %}	
+									    
+									                                
+									</div>
+									<div class="col-md-4 label-height">
+									    <label class="form-lable">Currency</label>
+									    <select class="form-control input-lg" name="service_currency"> 		
+
+											<option>{{service_currency}}</option>
+											{% for c in currency %}
+												{% if c == service_currency %}													
+												{%else%}
+													<option>{{c}}</option>
+												{%endif%}
+											{% endfor %}
+
+										</select>
+										{{form.service_currency.errors}}
+									                                
+									</div>
+									<div class="col-md-3 label-height">
+									    <label class="form-lable">Pricing Unit</label>
+									    <select class="form-control input-lg" name="service_unit" value="{{service_unit}}"> 
+											 <option>{{service_unit}}</option> 	
+											 {% for u in unit %}
+												{% if u == service_unit %}													
+												{%else%}
+													<option>{{u}}</option>
+												{%endif%}
+											{% endfor %}
+											
+										</select>
+									    {{form.service_unit.errors}}                   
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-10 label-height">
+									    <label class="form-lable">URL</label>
+									    {% if form.service_url.errors %}
+									    	<input type="text" class="form-control input-lg"name="service_url" value="" >
+									    	{{form.service_url.errors}} 
+									    {% else %}
+									    	<input type="text" class="form-control input-lg"name="service_url" value="{{service_url}}" >
+									    {% endif %}								                           
+									</div>
+								</div>
+							</div>
+
+
+										<br>
+												
+							<div class="row">
+								<div class="form-group">
+													
+									<div class="col-md-6" >
+										<input type="submit" class="btn btn-primary" id="inputDefault" name="submit" value="Update" style="float: right;">
+									</div>
+
+									<div class="col-md-6" >
+										<a href="/provider/profile/"><input type="button" class="btn btn-primary" id="inputDefault" name="submit" value="Cancel"></a>
+									</div>
+													
+								</div>	
+							</div>
+												
+						</div>
+											
+					</form>
+
+				</div>
+			</section>
+
+		</div>
+	</div>	
+
+
+			<!--  -->
+
+				
+				
+					
+	<!-- 	
+			</div> -->
+<!-- 		</section> -->
+
+					
+
+		</section>
+
+
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,47 @@
+We have completed the following tasks ,
+
+1.) Home Page 
+2.) SignUp / SignIn
+3.)
+
+
+
+Buyer:
+
+1.) Searching
+
+2.) Filtering
+
+3.) Request Quote Functionality
+
+4.) Sending Multi quote Functionality.
+
+5.) Displaying list of quotes in dashboard pages.
+
+6.) Accept Quote functionality with credit card payments.
+
+7.) Reject Quote functionality.
+
+8.) Messaging
+
+
+
+
+Provider :
+
+1.) Displaying List of quotes.
+
+2.) Quotes submission
+
+3.) Messaging
+
+4.) Adding Lab Services Provider Profile.
+
+
+
+Admin:
+
+
+1.)Users Management(Basic Crud operations).
+
+2.)Service Management.

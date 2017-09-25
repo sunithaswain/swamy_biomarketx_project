@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+ <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="" style="width:600px;margin:0px auto;height:500px">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                      <div style="padding-top: 17px;">
+                      <a href="{% url 'bioapp:signup_researcher' %}"><button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-lg btn-block"><i class="fa fa-flask"><span><i> Buyer SignUp </i></span></i></button></a></div>
+                      <div style="padding-top: 50px; padding-bottom: 50px;">
+                      <a href="{% url 'bioapp:signup_lab' %}"><button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-lg btn-block"><i class="fa fa-flask"><span><i> Provider SignUp </i></span></i></button></a></div>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+
+{% endblock %}

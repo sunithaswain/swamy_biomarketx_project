@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+<style type="text/css">
+	.error input, .error select {
+    border: 2px red solid;
+}
+</style>
+
+{% block content %}
+
+<div class="background-page">
+<div class="container" style="width:800px;margin:0px auto">
+  <h2>Registration</h2>
+
+  <ul class="nav nav-tabs">
+    <li class="active" id ="tab_1"><a href="/signup/" style="width:384px">Researcher</a></li>
+    <li style="width:384px"><a href="/signup_lab/">Lab</a></li>
+    
+  </ul>
+  <div class="tab-content">
+    <div id="form_research" class="tab-pane fade in active">
+       
+      <h3>Researcher</h3>
+      <p class="errorlist">{{ error_message }}</p>
+      <div></div>
+      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+    
+      												<form action="/edit_profile/" id="frmSignUp" method="post">
+													 
+													  {% csrf_token %}
+													  
+
+												<input type=hidden name="check_user" value="researcher">
+
+													<div class="row" >
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>{{form.first_name.label}}</label><br>
+																<input type="text" class="form-control input-lg" name="first_name" value="{{name1}}">
+																{{form.first_name.errors}}
+															</div>
+															<div class="col-md-6">
+																<label>{{form.last_name.label}}</label><br>
+																<input type="text" class="form-control input-lg" name="last_name" value="{{name2}}">
+																{{form.last_name.errors}}
+															</div>
+															
+														</div>
+													
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>E-mail Address</label><br>
+																<input type="text" class="form-control input-lg" name="email" value="{{email}}">
+																{{form.email.errors}}	
+															</div>
+															
+														</div>
+														
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>Phone*</label><br>
+																<input type="text" class="form-control input-lg" name="phone_number" value="{{phone_num}}">
+																{{form.phone_number.errors}}
+															</div>
+															
+														
+														</div>
+
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>Name of Organization/Institution*</label><br>
+																<input type="text" class="form-control input-lg" name="name_org" value="name_org">
+																{{form.name_org.errors}}
+															</div>
+															
+														</div>
+													</div>
+
+														<div class="form-group">
+															<div class="col-md-13">
+																<label>How did you hear about BioMarketX*?
+																</label><br>
+																<input type="text" class="form-control input-lg" name="how_bio">
+																{{form.how_bio.errors}}
+															</div>
+															
+														</div>
+
+													<div class="row">
+
+														
+														<div class="col-md-12">
+															<input type="submit" value="Register" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+														</div>
+													</div>
+												</form>
+    </div>
+   </div>
+</div>
+{%endblock%}
+

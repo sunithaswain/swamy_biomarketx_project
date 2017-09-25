@@ -1,0 +1,97 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}	
+
+
+<section role="main" class="content-body">
+<section class="panel"> 
+
+<!-- <lable><b>Filter By Quote Status:</b></lable> -->
+<!-- <select class="quote-status" name="quotestatus">
+
+	<option value="All">All</option>
+	<option value="Quote Pending" >Quote Pending</option>
+	<option value="Quote Declined" >Quote Declined</option>
+	<option value="Quote Active-Pending" >Quote Active-Pending</option>
+	<option value="Quote Active" >Quote Active</option>
+
+</select> -->
+
+
+</section>
+	<section class="panel">
+		{% include "messages.html" %}
+			<header class="panel-heading">
+				<div class="panel-actions">
+					<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+									<!-- <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a> -->
+				</div>
+						
+				<h2 class="panel-title">Quotes</h2>
+			</header>
+			<div class="panel-body quote_data">
+				<div class="col-md-12">
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Service</th>
+				                <th>Date</th>
+				                <th>Provider</th>
+				                <th>Price</th>
+				                <th>Quote Status</th>
+				                <th>Action</th>
+            				</tr>							
+						</thead>
+						<tbody>
+            				{% for quote in display_quotes %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>{{quote.researcher_name}}</td>
+									<td class="manage1">{{quote.price}}</td>
+									{%if quote.status_id == 1 %}
+									
+									<td>Pending</td>
+									{% elif quote.status_id == 2 %}
+									<td style="color:rgb(210,49,45)">Declined</td>
+									{% elif quote.status_id == 3 %}
+									<td>Active-Pending</td>
+									{% elif quote.status_id == 4 %}
+									<td style="color:green">Active</b></td>
+									{%else%}
+									<td>------</td>
+									{%endif%}
+										<td ><a href="/buyer/desc/{{quote.id}}">View Details</a>&nbsp;&nbsp;&nbsp;
+									
+									{% if quote.status_id == 2 %}
+									
+									<b style="color:rgb(210,49,45)">Canceled</b>
+									{% elif quote.status_id == 4 %}
+									<b style="color:green">Activated</b>
+									{% elif quote.status_id == 3 %}
+									<b style="color:black">Active-Pending</b>
+									{%else%}
+									<span id="demo_value"><a href="/quote-accept/{{quote.id}}/" title="Accept/rejectQuote" 
+									id="quotedata">Accept/Reject Quote</a></span>
+									
+									<!-- <span id="demo_value"><a class="item-action danger modal-with-zoom-anim glyphicon glyphicon-trash buzz " href="#deleteModel" style="text-decoration:none;color:rgba(210, 70, 45, 0.95);" title="Delete"  data-href="/quote-accept/{{quote.id}}/"></a></span> -->
+
+									</td>
+									{%endif%}
+								</tr>
+						{%endfor%}
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</section>
+
+				<!-- end: page -->
+				</section>
+
+{% endblock %}

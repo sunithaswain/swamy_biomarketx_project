@@ -1,0 +1,39 @@
+﻿Python-dev:
+
+sudo apt-get install libpq-dev python-dev
+
+mysql-dev:
+
+sudo apt-get install libmysqlclient-dev
+
+git :
+
+sudo apt-get install git
+
+pip:
+
+sudo apt-get install python-pip
+
+virutulenv:
+
+sudo pip install virtualenv
+
+---------------------------------------------
+for sublime:
+---------------------------------------------
+
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+sudo apt-get update; sudo apt-get install -y sublime-text-installer
+
+----------------------------------------------
+Open In Terminal:
+----------------------------------------------
+
+------> sudo apt-get install nautilus-open-terminal
+
+------>nautilus -q
+
+
+
+
+

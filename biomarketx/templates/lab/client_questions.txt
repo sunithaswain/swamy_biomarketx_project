@@ -1,0 +1,31 @@
+Services & Lab services
+
+Regarding services,
+
+Could you please provide me clear information about provider services and services.
+
+Actually We have two type of services i.e 
+
+1.services are created by provider through Add service button in provider profile page.
+
+2. Another one is the services are created in admin module.these services are categorized into parent services,sub services,etc.
+
+Could you please provide the difference between these two services.
+
+Could you please tell me the services created from admin comes under which labs?How can we categorized labs for these services.
+
+
+Work Room
+
+Regarding Work room,After accepting the quote the the buyer make the payments with the credit card order will be created with the status "Order active",
+if the payments are done with wire-transfer status will be order "active pending" if order is "active" work room will be created,in work room both buyer and provider share the information,files etc related to order. I am creating the workroom like our PMS application.
+
+Could you please give me more clarification about the work room creation.  
+
+
+Messaging
+
+Regarding Messages,
+
+We have implemented the messaging functionality.in that both provider and buyer will communicate,we have implemented inbox,sentbox,trash functionalities  in both dashboard.once please let me know if any changes.
+

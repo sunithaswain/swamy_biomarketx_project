@@ -1,0 +1,212 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+{% block content %}
+		
+		<section class="body">
+
+			<!-- start: header -->
+			<!-- end: header -->
+
+			<div class="">
+
+
+				<section role="main" class="content-body">
+				<p><a href="/buyer/quotes/"><b>Back to Quotes</b></a></p>
+					<!-- start: page -->
+
+					<section class="panel">
+						<div class="panel-body">
+							<div class="invoice">
+							{% for quote in quote_info %}
+								<header class="clearfix">
+									<div class="row">
+										
+										<div class="col-sm-5 mt-md">
+											<h2 class="h2 mt-none mb-sm text-dark text-weight-bold">Quote</h2>
+											<h4 class="h4 m-none text-dark text-weight-bold">#{{quote.sid}}</h4>
+										</div>
+										<div class="col-sm-7 text-right mt-md mb-md">
+											<address class="ib mr-xlg">
+												{{lab_name}}
+												<br/>
+												{{lab_country}}
+												<br/>
+												Phone: +61 3 8376 6284
+												<br/>
+												Lab@yahoo.com
+											</address>
+											<div class="ib">
+												<!-- <img src="/images/invoice-logo.png" alt="OKLER Themes" /> -->
+												<img src="../../static/img/invoice-logo.png" alt="OKLER Themes" />
+												
+											</div>
+
+										</div>
+									</div>
+								</header>
+								<div class="bill-info">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="bill-to">
+												<p class="h5 mb-xs text-dark text-weight-semibold">To:</p>
+												<address>
+													{{res_name}}
+													<br/>
+													USA
+													<br/>
+													Phone: {{res_phone}}
+													<br/>
+													{{res_email}}
+												</address>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="bill-data text-right">
+												<p class="mb-none">
+													<span class="text-dark">Qutoe Date:</span>
+													<span class="value">{{quote.created_at|date:"d/m/Y"}}</span>
+												</p>
+												<p class="mb-none">
+													<span class="text-dark">Due Date:</span>
+													<span class="value">{{quote.duration}}</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+								<div class="table-responsive">
+									<table class="table invoice-items">
+										<thead>
+											<tr class="h4 text-dark">
+												<th id="cell-id"     class="text-weight-semibold">#</th>
+												<th id="cell-item"   class="text-weight-semibold">Service</th>
+												<th id="cell-desc"   class="text-weight-semibold">Description</th>
+												<th id="cell-price"  class="text-center text-weight-semibold">Price</th>
+												<th id="cell-qty"    class="text-center text-weight-semibold">Quantity</th>
+												<th id="cell-total"  class="text-center text-weight-semibold">Total</th>
+												<th id="cell-total"  class="text-center text-weight-semibold">Status</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td class="text-weight-semibold text-dark">{{quote.service_name}}</td>
+												<td>{{quote.desc}}</td>
+												<td class="text-center">${{quote.price}}.00</td>
+												<td class="text-center">1</td>
+												<td class="text-center">${{quote.price}}.00</td>
+							                      {%if quote.status_id == 1 %}
+							                      
+							                      <td class="text-center">Quote Pending</td>
+							                      {% elif quote.status_id == 2 %}
+							                      <td class="text-center">Quote Declined</td>
+							                      {% elif quote.status_id == 3 %}
+							                      <td class="text-center">Quote Active-Pending</td>
+							                      {% elif quote.status_id == 4 %}
+							                      <td class="text-center">Quote Active</td>
+							                      {%else%}
+							                     <td class="text-center">------</td>
+							                      {%endif%}											
+							                </tr>
+									
+									</tbody>
+									</table>
+								</div>
+							
+								<div class="invoice-summary">
+									<div class="row">
+										<div class="col-sm-4 col-sm-offset-8">
+											<table class="table h5 text-dark">
+												<tbody>
+													<tr class="b-top-none">
+														<td colspan="2">Subtotal</td>
+														<td class="text-left">${{quote.price}}.00</td>
+													</tr>
+													<tr>
+														<td colspan="2">Shipping</td>
+														<td class="text-left">$0.00</td>
+													</tr>
+													<tr class="h4">
+														<td colspan="2">Grand Total</td>
+														<td class="text-left">${{quote.price}}.00</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="text-right mr-lg">
+								<!-- <a href="/buyer/quote-accept/credit-card/{{quote.id}}" class="btn btn-primary">Accept Quote</a> -->
+								<!-- <a href="/buyer/payment-type/{{quote.id}}" class="btn btn-primary">Accept Quote11111111</a> -->
+
+								<a class="mt-xs mb-xs popup-with-move-anim btn btn-primary" href="#small-dialog">Accept Quote</a></td>
+								
+								<span id="reject_quote"><a href="#deleteModel" class="btn btn-primary modal-with-zoom-anim"name="/buyer/quote-reject/{{quote.id}}">Reject Quote</a></span>
+								
+							</div>
+							{%endfor%}
+						</div>
+					</section>
+
+					<!-- end: page -->
+				</section>
+			</div>
+			<div id="deleteModel" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+								<section class="panel">
+									<header class="panel-heading">
+										<h2 class="panel-title">Are you sure?</h2>
+									</header>
+									<div class="panel-body">
+										<div class="modal-wrapper">
+											<div class="modal-icon">
+												
+											</div>
+											<div class="modal-text">
+												<p>Are you sure that you want to Reject this Quote?</p>
+											</div>
+										</div>
+									</div>
+									<footer class="panel-footer">
+										<div class="row">
+											<div class="col-md-12 text-right">
+												<button class="btn btn-primary modal-confirm" id="remove_quote">Confirm</button>
+												<button class="btn btn-default modal-dismiss">Cancel</button>
+											</div>
+										</div>
+									</footer>
+								</section>
+							</div>
+
+</section>
+
+<div id="small-dialog" class="dialog dialog-sm zoom-anim-dialog mfp-hide">
+	<section class="panel">
+		<div class="panel-body">
+			<form action="" method="POST" id="payment-form"> 
+				<span class="payment-errors" style="color:red"></span>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-12">
+						    <label class="form-lable">Select Type Of Payment</label>
+						    <select class="form-control input-lg" id="payment_type">
+						    	<option value="select">Select</option>
+						    	<option value="/buyer/quote-accept/wiretransfer/{{qut_id}}">Wire Transfer</option>
+						    	<option value="/buyer/quote-accept/creditcard/{{qut_id}}">Credit Card</option>
+						    </select>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+</div>
+
+{% endblock %}

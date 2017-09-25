@@ -1,0 +1,619 @@
+{% extends "researcher/dash_index.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load pagination_tags %}
+{% block content %}
+
+
+<section role="main" class="content-body">
+
+  <div class="row">
+            <div class="col-md-12">
+              <div class="tabs">
+                <ul class="nav nav-tabs">
+                  <li >
+                    <a href="#basics" data-toggle="tab">Basics</a>
+                  </li>
+                  <li>
+                    <a href="#password" data-toggle="tab">Password</a>
+                  </li>                  
+                  <li class="active">
+                    <a href="#employment" data-toggle="tab">Employment</a>
+                  </li>
+                  <li>
+                    <a href="#education" data-toggle="tab">Education</a>
+                  </li>
+                  <li>
+                    <a href="#publications" data-toggle="tab">Publications</a>
+                  </li>
+                  
+
+                </ul>
+                <div class="tab-content" style="overflow:hidden;">
+
+                {% include "messages.html" %}
+
+                  <div id="basics" class="tab-pane ">
+                  <h3>Account Details</h3>
+                <form action="/buyer/edit/basics/" id="frmSignIn" method="post"class="form-background"  enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+                          
+                          <div class="col-md-12">
+                          <p class="errorlist">{{error_message}}</p>
+                          
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12 label-height">
+                                <label class="form-lable">Email</label>
+
+                               {% if form.email.errors %}
+                                
+                                {{form.email|add_class:"error-div-style"}}
+                                {{form.email.errors}}
+                                {%else%}
+                               
+                                <input type="text"class="form-control input-lg " name="email" value="{{email}}">
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Phone</label>
+                                
+
+                               {% if form.phone_number.errors %}
+                                
+                                {{form.phone_number|add_class:"error-div-style"}}
+                                {{form.phone_number.errors}}
+                                {%else%}
+                               
+                                <input type="text"class="form-control input-lg " name="phone_number" value="{{phone}}" >
+                                {%endif%}
+                                
+                              </div>
+                            </div>
+                          </div>
+                         
+                                                   <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12 label-height">
+                                <label class="form-lable">Description</label>
+                                <p class="form-message">Must be minimum 10 characters.</p>
+                               {% if form.notes.errors %}
+                                
+                                {{form.notes|add_class:"error-div-style"}}
+                                {{form.notes.errors}}
+                                {%else%}
+                               <textarea class="form-control" rows="3" data-plugin-maxlength name="notes">{{user_desc}}</textarea>
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+
+
+                         <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">First Name</label>
+                                
+                                {% if form.first_name.errors %}
+                                {{form.first_name|add_class:"error-div-style"}}
+                                {{form.first_name.errors}}
+                                {%else%}
+                                <p class="form-message">Must be 3 characters.</p>
+                                <input type="text"class="form-control input-lg " name="first_name" value="{{fname}}" >
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Last Name</label>
+                                
+                                {% if form.last_name.errors %}
+                                
+                                {{form.last_name|add_class:"error-div-style"}}
+                                {{form.last_name.errors}}
+                                {%else%}
+                                <input type="text"class="form-control input-lg " name="last_name" value="{{lname}}" >
+                                
+                                {%endif%}
+                             </div>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                
+                               <label class="form-lable">Company</label>
+                               
+                               {% if form.companey.errors %}
+                                
+                                {{form.companey|add_class:"error-div-style"}}
+                                {{form.companey.errors}}
+                                {%else%}
+                               <p class="form-message">Must be 3 characters.</p>
+                                <input type="text"class="form-control input-lg " name="companey" value="{{org_name}}">
+                                {%endif%}
+ 
+                              </div>
+                            </div>
+                            </div>
+                             
+
+
+
+                          <div class="row" >
+                            <div class="form-group" >
+                              <div class="col-md-12">
+                                
+                               <label class="form-lable">Logo</label><br>
+                                <div style="border:solid #ddd;border-width:2px;
+                                border-radius:11px">
+                                <div>
+                                {% if researcher_logo %}
+
+                                <div class="row"><div class="col-md-3" style="margin-left:5px;margin-top:13px"><img src="../../static/media/{{researcher_logo}}"/></div></div><br><br><br>
+                                
+                                {%else%}
+
+                                <div class="row">
+                                <div class="col-md-3" style="margin-left:5px;margin-top:13px"><img src="{% static 'img/member-1.png'%}"/></div></div><br><br><br>
+                                 
+                                 {%endif%}
+                                  
+                                 </div>
+                                 <div class="row">
+                                 
+                                 <input id="id_image" type="file" name="image" class="" style="margin-left:20px;margin-top:-30px;margin-right:18px;"></div>
+                                
+                                </div>
+                                
+                              </div>
+                            </div>
+                            </div>
+                             
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Publications</label>
+                               <input type="text"class="form-control input-lg" name="publications" value="" placeholder="Publications">
+                                
+                              </div>
+                            </div>
+                              <div class="col-md-12 ">
+                              <input type="submit" value="Update Changes" class="btn btn-primary pull-right mb-xl " data-loading-text="Loading...">
+                            </div>
+
+                          </div>
+                          </div>
+                       
+                        </form>
+
+                  </div>
+
+                  <div id="password" class="tab-pane">
+
+
+                    <h3>Change Password</h3>
+                  <form action="/buyer/edit/password/" id="frmSignIn" class="form-background"
+                        method="post">
+                        {% csrf_token %}
+                          
+                          <div class="col-md-12">
+                          <p class="errorlist">{{error_msg}}</p>
+                         
+                          <div class="row">
+                            <div class="form-group label-height">
+                              <div class="col-md-12">
+                                 <label class="form-lable">New Password</label>
+                                {% if form1.password1.errors %}
+                                {{form1.password1|add_class:"error-div-style"}}
+                                {{form1.password1.errors}}
+                                {%else%}
+                                 <p class="form-message">Must be 6 characters or longer.</p>
+                                {{form1.password1}}
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                         <label class="form-lable">Confirm New Password</label>
+                                       
+                                        {% if form1.password2.errors %}
+                                        
+                                        {{form1.password2|add_class:"error-div-style"}}
+                                        {{form1.password2.errors}}
+                                        {%else%}
+                                         <p class="form-message">Must be 6 characters or longer.</p>
+                                        {{form1.password2}}
+                                        
+                                        {%endif%}
+
+                                      </div>
+                                    </div>
+                                  <div class="col-md-12">
+                              <input type="submit" value="Update Changes" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..." style="margin-top:20px">
+                            </div>
+                                  </div>
+
+                             <div>
+                           
+                          </div>
+                            </div>
+                        </form>
+
+
+
+                    
+                  </div>
+                  <div id="employment" class="tab-pane active">
+
+                    <h3>Add A New Position</h3>
+                        <form action="/buyer/edit/employment/add" id="frmSignIn" method="post"class="form-background">
+                        {% csrf_token %}
+                          <div class="col-md-12">
+                          <p class="errorlist">{{error_msg}}</p>
+                         
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12 label-height">
+                                <label class="form-lable">Employer</label>
+                                <p class="form-message">Must be minimum 3 characters.</p>
+                               
+                               {% if form2.employer.errors %}
+                                
+                                {{form2.employer|add_class:"error-div-style"}}
+                                {{form2.employer.errors}}
+                                {%else%}
+                                {{form2.employer}}
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+                            
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12 label-height">
+                                <label class="form-lable">Title</label>
+                                <p class="form-message">Must be minimum 3 characters.</p>
+                               {% if form2.title.errors %}
+                                
+                                {{form2.title|add_class:"error-div-style"}}
+                                {{form2.title.errors}}
+                                {%else%}
+                                {{form2.title}}
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Year Started</label>
+                                    <input name="study_start" id="startDate" class="date-picker form-control input-lg" />
+                                    
+                                    </div>
+                                    </div>
+                                    </div>
+
+                          <div class="row" id="study_checked">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                               <input type="checkbox" name="study_checked" value="red">  I currently study here.
+                                </div>
+                                </div>
+                                </div>
+
+
+                          <div class="row red">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label class="form-lable">Year Ended</label>
+                                    <input name="study_end" id="startDate" class="date-picker form-control input-lg" />
+                                    </div>
+                                    </div>
+                                    </div>
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12 label-height">
+                                <label class="form-lable">Notes</label>
+                                <p class="form-message">Must be minimum 10 characters.</p>
+                               {% if form2.notes.errors %}
+                                
+                                <textarea class="form-control error-div-style" rows="3" data-plugin-maxlength></textarea>
+                                {{form2.notes.errors}}
+                                {%else%}
+                                
+                                 <textarea class="form-control" rows="3" data-plugin-maxlength name="notes">
+                                </textarea>
+                                 
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            <div class="col-md-12 ">
+                              <input type="submit" value="Save" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..." 
+                              >
+                            </div>
+                          </div>
+                          </div>
+                            
+                       
+                        </form>
+
+                  </div>
+                  <div id="education" class="tab-pane ">
+
+
+
+                  <div>{{eductaion_info3}}
+                        
+                        {% if education_info3 %}
+                        <div class="col-md-12">
+                                <h4 class="pull-left">Your Degrees</h4>
+                                <a href="{% url 'bioapp:add_degree' %}" class="pull-right"><input type="submit" data-loading-text="Loading..." class="btn btn-primary pull-right mb-xl " value="ADD A DEGREE "></a>
+                        </div>
+
+
+                        <div style="margin-top:10px" class="col-md-12">
+                        
+                            <div class="lb-dtl-blk ">
+                            <div style="margin-top:10px" class="form-background">
+                            
+                                {% for educ in contacts1 %}
+                                    <div style="width:100%;margin:0px auto;height: 200px;margin-top: 20px;background:#f5f5f5;border:1px solid #ccc;padding:20px;border-radius:3px;">
+                                         <div>
+                                         {{educ.id}}
+
+
+                                        <p style="float:right">
+                                        <a title="Edit" href="/buyer/edit/education/edit/{{educ.id}}"><i class="glyphicon glyphicon-edit"></i></a> &nbsp; &nbsp; 
+                                        
+                                        <a title="Delete" data-target="#confirm-delete1" data-toggle="modal" data-href="/buyer/edit/education/delete/{{educ.id}}" href="#"><i class="glyphicon glyphicon-trash"></i></a>
+
+                                        
+                                         </p><p></p><h5>{{educ.degree}},{{educ.field_study}}</h5>
+                                        <p></p> 
+
+                                        </div>
+                                        <p><a href="#">{{educ.institute}}</a></p>
+                                        {% if educ.study_start and educ.study_stop %}
+                                        <p>{{educ.study_start}}-{{educ.study_stop}}</p>
+                                        {% else %}
+                                        <p>{{educ.study_start}}</p>
+                                        <p>{{educ.study_stop}}</p>
+
+                                        {% endif %}
+
+                                        <p>{{educ.notes}}</p>
+                                        
+                                        
+
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="lb-dtl-blk ">
+                       
+
+                            <div class="pagination col-md-12">
+                                <span class="step-links">
+
+                                    {% if contacts1.has_previous %}
+                                        <a href="?page={{ contacts1.previous_page_number }}" style="float:right;font-size:15px"><b>Previous</b></a>
+                                    {% endif %}
+
+                                    <span class="current">
+                                        <b>Page {{ contacts1.number }} of {{ contacts1.paginator.num_pages }}.</b>
+                                    </span>
+
+
+                                    {% if contacts1.has_next %}
+                                        <a href="?page={{ contacts1.next_page_number }}" style="float:right;font-size:15px"><b>Next</b></a>
+                                    {% endif %}                       
+
+                                </span>
+                            </div>
+                
+                
+                        </div>
+
+
+                
+{%else%}
+<div class="col-md-12">
+    <h4 class="pull-left">ADD A DEGREE</h4>
+    <a href="{% url 'bioapp:add_degree' %}" class="pull-right"><input type="submit" data-loading-text="Loading..." class="btn btn-primary pull-right mb-xl " value="ADD A DEGREE "></a>
+</div>
+<div class="col-md-9 form-background"style="height:150px;margin-top:-5px">
+
+    <!-- lab detail block start -->
+
+    <div class="lb-dtl-blk">
+
+    <div style="width:100%;margin:0px auto;height: 100px;margin-top: 20px;background:#f5f5f5;border:1px solid #ccc;padding:20px;border-radius:3px;">
+    <p><h5>You haven't added any education information...</h5></p>
+    <p>Click the button above to add a new degree</p>
+    </div>    </div>
+</div>
+               
+{% endif %}
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="confirm-delete1" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 id="myModalLabel" class="modal-title">Confirm Delete</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>This Will delete all the corresponding records</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+                    
+
+
+                  </div>
+                  <div id="publications" class="tab-pane ">
+
+
+                  {% if contacts2 %}
+            <div class="col-md-12">
+                      <h4 class="pull-left">Your Publications</h4>
+                      <a href="{% url 'bioapp:adding_pub' %}"><input type="submit" value="ADD A PUBLICATION" class="btn btn-primary pull-right mb-xl " data-loading-text="Loading..." ></a>
+            </div>
+            <div>
+
+            <div class="col-md-5">
+                <!-- <h4 class="heading_style">Your Publications</h4> -->
+              </div>
+            <div class="col-md-9 "style="margin-top:-4px">
+            {%for pub in contacts2 %}
+
+            <div class="lb-dtl-blk ">
+            <div class="form-background"style="margin-top:10px">
+            <div class="row">
+                          </div>
+                <div style="width:123%;margin:0px auto;height: 165px;margin-top: 20px;background:#f5f5f5;border:1px solid #ccc;padding:20px;border-radius:3px;">
+                   <div>
+
+                  <p style="float:right"><a href="#" data-href="
+                  /buyer/edit/publications/delete/{{pub.id}}" data-toggle="modal" data-target="#confirm-delete2" title="Delete"><i class="glyphicon glyphicon-trash"></i></a></p>
+                   <p><h5>{{pub.title}}</h5>
+                  </p> 
+                  </div>
+                  <p><a href="#">{{pub.scientist_name}}</a></p>
+                  <p>{{pub.used_for}}</p>
+                  
+                </div>
+          </div>
+            {%endfor%}
+        </div>
+        
+        <div class="pagination col-md-12">
+            <span class="step-links">
+
+                {% if contacts2.has_next %}
+                    <a href="?page={{ contacts.next_page_number }}" style="float:right;font-size:15px"><b>Next</b></a>
+                {% endif %}
+
+                <span class="current">
+                    <b>Page {{ contacts2.number }} of {{ contacts2.paginator.num_pages }}.</b>
+                </span>
+
+
+                {% if contacts2.has_previous %}
+                    <a href="?page={{ contacts.previous_page_number }}"><b>Previous&nbsp;&nbsp;&nbsp;</b></a>
+                {% endif %}
+
+            </span>
+        </div>
+
+            {%else%}
+            <div class="col-md-5">
+                <h4 style="margin-top: 20px;">Your Publications</h4>
+              </div>
+            <div class="col-md-9 form-background"style="height:150px;margin-top:-5px">
+            <div>
+            <!-- lab detail block start -->
+            
+            <div class="lb-dtl-blk">
+            <div class="row">
+                          </div>
+                <div style="width:700px;margin:0px auto;margin-top:50px">
+                    <p><h5>You haven't added any publication information...</h5></p>
+                  <p>Click the button above to add new publications</p>
+                </div>
+          </div>
+        </div>
+</div>
+{%endif%}
+<div class="modal fade" id="confirm-delete2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>This will delete all the corresponding records.</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button"class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+                   
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+  </section>
+ 
+
+
+{%endblock%}

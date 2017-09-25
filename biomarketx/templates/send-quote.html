@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load aloha_editor %}
+{% load widget_tweaks %}
+{% block content %}
+
+			<div role="main" class="main">
+				
+				
+				<div class="container">
+
+					<div class="row mt-xl">
+						<div class="counters-text-dark prof-srvcs">
+						<div class="col-md-3">
+						<h5><b>Requesting from:</b></h5>
+						<div class="spsl-rqst">						
+						
+						
+						<div style="text-align:left;"><img src="../../static/media/{{image}}" title="" alt="" class="thumbnail" style="margin-bottom:5px;" /></div>
+							<a href="#" title=""><b>{{lab_title}}</b></a>
+							<p>{{city}}</p>
+							<div style="border-bottom:1px solid #ddd;margin:15px 0px;overflow:hidden;"></div>
+							<p><i class="glyphicon glyphicon-star" style="color: #fed530;"></i><b>&nbsp;100% Positive Reviews</b></p>
+							<p><i class="glyphicon glyphicon-ok-sign" style="color: #67cf5f;"></i><b>&nbsp;32 Orders Completed</b></p>
+						</div>
+						</div>
+						<div class="col-md-9">
+						<h5><b>Request Quote</b></h5>
+						<div class="spsl-rqst">					
+
+
+							<form action="#" id="frmSignIn" method="post"class="form-background"
+            enctype="multipart/form-data" action>
+            				{% csrf_token %}
+            			<p style="color:red">{{error_message}}</p>
+            			{% if not request.user.id %}	
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                 <label class="form-lable"><b>Email</b></label>
+                                {% if form.email.errors %}
+                                
+                                {{form.email|add_class:"error-div-style"}}
+                                {{form.email.errors}}
+                                {%else%}
+                               
+                                {{form.email}}
+                                
+                                {%endif%}
+                                </div>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                
+                                <label class="form-lable"><b>Password</b></label>
+                               
+                                {% if form.password1.errors %}
+                                
+                                {{form.password1|add_class:"error-div-style"}}
+                                {{form.password1.errors}}
+                                {%else%}
+                                 <p class="form-message">Must be 6 characters or longer.</p>
+                                {{form.password1}}
+                                
+                                {%endif%}
+                             </div>
+                            </div>
+                            </div>
+
+
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                
+                                <label class="form-lable"><b>Confirm Password</b></label>
+                               
+                                {% if form.password2.errors %}
+                                {{form.password2|add_class:"error-div-style"}}
+                                {{form.password2.errors}}
+                                {%else%}
+                                 <p class="form-message">Must be 6 characters or longer.</p>
+                                {{form.password2}}
+                                
+                                
+                             </div>
+                            </div>
+                            </div>
+
+                            {%endif%}
+                            {%endif%}
+
+
+							<div class="form-group">
+
+							<label><b>Service Name</b></label>
+							
+							<select class="col-md-12" name="service">
+
+ 									<option value="{{ser}}">{{service_name}}</option>
+ 									{% for ser in services_list%}
+ 									
+ 									<option value="{{ser}}">{{ser}}</option>
+ 									{%endfor%}
+
+     							</select>
+
+							</div>							
+                            <div class="row">
+                            <div class="form-group">
+                              <div class="col-md-12 label-height">
+                                <label class="form-lable"><b>Description</b></label>
+                                <p class="form-message">Must be minimum 10 characters.</p>
+                               {% if form.Desc.errors %}
+                                
+                                <textarea class="form-control error-div-style" rows="3" name="Desc"></textarea>
+                                
+                                {{form.Desc.errors}}
+                                {%else%}
+                               <textarea class="form-control" rows="3" name="Desc"></textarea>
+                                
+                                {%endif%}
+
+                              </div>
+                            </div>
+                            </div>
+
+							<div class="form-group">
+							<label for="qutUplad"><b>Attach File(s)</b></label>
+							<input type="file" id="qutUplad" name="send_file" class="form-control input-lg">
+							</div>
+
+							<div class="form-group">
+							<label><b>Due date for Completion</b></label>
+							<div class="clr"></div>
+							<input type="text" id="datepicker" placeholder="Select Date" class="form-control input-lg">
+							</div>
+							<button class="btn btn-default rigtr-btn pull-right" type="submit">Submit</button>
+							</form>
+						</div>
+						</div>						
+						</div>
+
+				</div>
+				</div>				
+			</div>
+
+{% endblock %}

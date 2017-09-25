@@ -1,0 +1,33 @@
+
+<div class="col-md-12">
+
+<table id="example" class="display" cellspacing="0" width="100%">
+
+						<thead>
+							<tr>
+				                <th>Name</th>
+				                <th>Date</th>
+				                <th>Client</th>
+				                <th>Action</th>
+				                <th>Submit Quote</th>
+				                <!-- <th>Salary</th> -->
+            				</tr>							
+						</thead>
+						<tbody>
+
+            				{% for quote in quote_filters %}
+								<tr>
+
+									<td>{{quote.service_name}}</td>
+									<td>{{quote.created_at|date:"d/m/y"}}</td>
+									<td>{{quote.researcher_name}}</td>
+									<td><a href="/desc/{{quote.id}}">View Details</a></td>
+									<td><a href="/provider-quote/{{quote.id}}">Submit Quote</a></td>
+								</tr>
+							{%endfor%}
+
+						</tbody>
+
+
+					</table>
+</div>
