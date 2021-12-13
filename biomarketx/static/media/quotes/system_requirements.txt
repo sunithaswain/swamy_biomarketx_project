@@ -46,7 +46,7 @@ httplib2==0.8
 ipython==1.2.1
 kombu==3.0.29
 lockfile==0.8
-lxml==3.3.3
+lxml==4.6.5
 oauthlib==1.0.3
 oneconf==0.3.7.14.04.1
 pbr==1.6.0
