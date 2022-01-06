@@ -26,7 +26,7 @@ apt-xapian-index==0.45
 argparse==1.2.1
 billiard==3.3.0.21
 blockspring==0.1.13
-celery==3.1.19
+celery==5.2.2
 characteristic==14.3.0
 chardet==2.0.1
 colorama==0.2.5
