@@ -70,7 +70,7 @@ python-instagram==1.3.2
 pytz==2015.6
 pyxdg==0.25
 queuelib==1.4.2
-reportlab==3.0
+reportlab==3.5.55
 requests==2.9.0
 requests-oauthlib==0.6.0
 selenium==2.48.0
