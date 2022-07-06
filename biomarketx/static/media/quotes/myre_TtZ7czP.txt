@@ -27,7 +27,7 @@ django-widget-tweaks==1.4.1
 django-wysiwyg==0.7.1
 djangocms-admin-style==1.0.7
 easy-thumbnails==2.3
-html5lib==0.9999999
+html5lib==0.999999999
 lxml==3.5.0
 oauthlib==1.0.3
 progressbar2==3.6.0
