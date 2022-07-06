@@ -41,7 +41,7 @@ django-messages==0.5.1
 duplicity==0.6.23
 facebook-sdk==0.4.0
 gunicorn==17.5
-html5lib==0.999
+html5lib==0.999999999
 httplib2==0.8
 ipython==1.2.1
 kombu==3.0.29
